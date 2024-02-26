@@ -1,8 +1,10 @@
 ---
-title: "The redistribution of German Small-scale Fisheries effort and impact due to regulatory area closures"
+title: "Good software and modeling practise - a case study"
 keyword:
-  - North Sea
-  - Fisheries; Area closure; MuSSeL project; VIABLE; ViNoS; Agent-based Model; ABM"
+  - Good Modeling Practise
+  - Good Software Practise
+  - Standards
+  - Reuse
 author:
   - Carsten Lemmen, Helmholtz-Zentrum Hereon, Max-Planck-Str. 1, 21502 Geesthacht, Germany
 correspondence: C. Lemmen <carsten.lemmen@hereon.de>
@@ -18,72 +20,137 @@ conflictsofinterests: "The author declares that no conflict of interest has aris
 abbreviations:
   - short: ABM
     long: "Agent-based Model"
-  - short: EEZ
-    long: "Exclusive Economic Zone"
-  - short: FAO
-    long: "United Nations Food and Agricultural Organization"
-  - short: OWF
-    long: "Offshore Wind Farm"
   - short: ViNoS
     long: "Viable North Sea"
   - short: MuSSeL
     long: "Multiple Stressors on North Sea Life"
-  - short: VIABLE
-    long: "Values and Investments from Agent-Based interaction and Learning in Environmental systems"
 ---
 
 # Introduction
 
-# Methods
+In environmental or socie-environmental sciences, models are used as tools to represent, understand, project and predict the behaviour of these complex systems.
+The degree of formalization of such models ranges from conceptual thought models to mathematical equations and to implementations in software, but by definition all of these models are purpose-driven simplifications of the system they represent Romanowska2014,Stachowiak1973.
 
-We use the Viable North Sea (ViNoS)Agent-based Model (ABM) of the German North Sea Small-scale Fisheries [@Lemmen2023a] to describe the adaptive behaviour of fishers facing regulatory, economic and resource changes.
+The concept of Good Modeling Practise has been put forward since XXXX, and has been widely adopted in a number of community standards such a ODD for ABM
+The focus of Good Modeling Practise is the purpose of the model, not its specific implementation;
+Separate ideas have been put forward for scope (Wang2023), for assumptions ()
 
-## ViNoS Model
+Whenever a socio-ecological model is realized in software, however, there are additional challenges to address beyond Good Modeling Practise: Good Software Practise, which includes but is not restricted to writing good code.
+The concept of Good Software Practise can be traced back to the origin of the UNIX systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by Ritchie1974. These little tools should also allow to develop new software in a better way, argued Kernighan1976, cautioning against reinventing the weel (DNRY). In 1996 Kernighan published the practise of programming, which was followed up by Raymonds Raymonds 2003 The Art of Unix Programming, of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!" (an initially military term attributed to Stropp1960).
 
-The Viable North Sea (ViNoS) Agent-Based model (ABM) is a socio-ecological systems (SES) modeling environment for interactive simulation of the German Small-scale Fisheries. It is built on the NetLogo [@Wilensky1999] platform and available as Open Source [@Lemmen2023a]. ViNoS describes describes spatial, temporal and structural adaptations of the fishing fleet. It adaptively describes (1) where to fish and how far to go out to sea; (2) how often to go out ; and (3) what gear to use and what species to target.
+In his book The Art of Unix Programming that was first published in 2003,[11] Eric S. Raymond (open source advocate and programmer) summarizes the Unix philosophy as KISS Principle of "Keep it Simple, Stupid."[12] He provides a series of design rules:[1]
 
-The model represents 300 fishing vessels based in German ports along the North Sea coast and fishing in the German Bight, including but not restricted to Germany's exclusive economic zone (EEZ). The target species considered are plaice, sole and brown shrimp using a variety of beam trawling gear and otter boards.
+OSS: In the 1960’s and 1970’s software was developed by researchers in universities like Berkeley and MIT. In 1983 Richard Stallman, one of the first public advocates of the OSS movement, claimed that information should be free and computer programs should not be owned by companies but be public goods (Stallman 1994; Stallman 1983)
 
-The ABM is an adaptive model with the **objective** of increasing profits, subject to environmental, economic, and individual constraints. The **adaptation** is currently restricted to
-changing gear with shifting priorities for allocating fishing effort, and discribed by the VIABLE approach [@BenDor2019;@Scheffran2000].
+Software Carpentry Wilson2016
+Software carpentry: t’s to teach computational competence: live coding, pair programming, open everthing
 
-In the VIABLE approach, each boat carries a list of priorities that are subject to change based on the boats perception and evaluation of its activities. During each haul, the costs of that haul (wage and fuel) are subtracted from the benefits (i.e. the price of the catch times the amount caught) in parallel for all gears available to a boat. The marginal value (gain or loss, in €, divided by XXXX) for each gear type and is multiplied by an adaptation rate determining the relative change in priorities.
+## Structure
 
-More general, there are strategies $i \in 1..n$ with priorities $r_i$, values $V_i$ and adaptation rates $a_i$. The marginal benefit of a change in $V$ with respect to $r$ is $v_i=\partial{V_i}/\partial{r_i}$.
+Socio-environmental modeling software can be created by a single person; in fact, it often is in student projects or individual programming sprints. But even if only one person ever looks at her own code and applies it for simulations, she will have to understand what she did in the past, she will have to retrace the steps that led her to the current state of the software, she will have to have backups. She will have to have verifiable codes. All the software should be covered by tests.
 
-The temporal change of the priorities $r_i$ is given by
+If the model is to be used to produce scientific results subject to peer review, the single person will have to ensure replicability of results, will have to subject it to review (thus make it readable), and documented it.
 
-$$
-\frac{dr_i}{dt} = a_i r_i \cdot \frac{v_i - \sum r_i v_i }{\sum v_i}
-$$
+If at least one other person is using the model, the permission issue becomes pertinent. The model needs a license. Also the user needs a way to communicate with the developer, for feature requests or bugs/issues.
 
-The emergent property is the spatial pattern of fishing activities, which is best recorded as maps of effort or maps of swept area ratio (SAR). This property can be compared to existing data on effort or SAR, and it gives information on the location of the largest potential environmental impact of fisheries.
+If at least one other person is contributing to the model, the permissions become more important, needing contributor agreements and codes of conduct. How are decisions made?
+The more persons are contributing, the governance becomes more important. Even a community management system might be required, with granular access, distributed roles, and fine-grained permissions. To keep the code quality, structured reviews, pre-commits, common coding standards.
 
-A full Overview, Design and Details (ODD) model documentation is available as @Lemmen2023b.
+Software sustainabilty is critical once a larger user base is established, or other scientific software depends on the model. Boosting to truck factor!
 
-## Supporting data sets
+# Tools for Good Modeling Practise
 
-The model makes use of extensive external data sources to describe the environment
-All data are publicly available and licensed for use. The data sources are
+## Source code management
 
-| **Description**                                        | **Source**                                    |
-| ------------------------------------------------------ | --------------------------------------------- |
-| Clustered vessel data                                  | Hochschule Bremerhaven, CC-by-NC-ND-4.0       |
-| Species distribution of plaice, sole, and brown shrimp | Thünen Institute, DL-DE-BY-2.0                |
-| Species information                                    | FAO                                           |
-| Bathymetry                                             | GEBCO                                         |
-| Offshore Wind farms                                    | EMODNet                                       |
-| EEZ                                                    | United Nations                                |
-| ICES subregional divisions                             | ICES                                          |
-| Plaice box                                             | European Commision                            |
-| Geodetic information                                   | International Earth Rotation Service, CC0-1.0 |
-| National Park boundaries                               |  NLWKN, DL-DE-BY-2.0                          |
+Start with version control, source code management
 
-# CRediT authorship contribution statement
+## DNRY - good software development templates
 
-C.Lemmen: Conceptualization, Methodology, Resources, Software, Formal analysis, Data curation, Project administration, Writing – original draft, Writing – review & editing.
-S.Hokamp: Conceptualization, Software, Methodology, Formal analysis, Writing – review & editing.
-S.Örey: Conceptualization, Data curation, Writing – review & editing.
-J. Scheffran: Conceptualization, Formal analysis, Writing – review & editing
+Use software templates
+
+## Folder documentation
+
+## Licensing
+
+REUSE.sfotawre
+Fossology
+ORT
+
+## Contributor guideline
+
+- Project Harmony
+- Contributor Covenant
+- Platforms, wikis, bugs, emails
+
+## Versioning and Releasing
+
+## Documentation
+
+- readMe
+- User documentaiton
+- API documentation
+
+## Code formatting
+
+- The code is the coumentaion
+  "Code should be written to minimize the time it would take for someone else to understand it." Boswell & Foucher
+- Code conventions
+- Black
+- F
+- Prettier
+
+## Code Structure
+
+- Clear, consise, well-commented
+- Accessible and consistent naming practise
+- Modular, complex tasks in managable functions
+- error handling
+- reuse and recycle, don't reinvent the wheel, use small tools (Kernighan 1976)
+- The practise of programming "Simplicity, Generality, clarity"
+
+## Maintanance
+
+- Regularly updating and maintaining code.
+- Keeping dependencies up to date.
+
+## Unit tests
+
+- unitt testing
+- code coverage
+
+## Continuous integration
+
+- Reproducibility/regression tests
+
+## Continuous deployment
+
+- Product updates
+- Documentation updates
+
+## Archiving
+
+- Zenodo
+
+## Governance
+
+A benevolent dictator in software development refers to a leadership style where one individual, often the project's creator or lead developer, has significant control over decision-making processes within the project. Despite holding considerable authority, this individual typically exercises their power with the best interests of the project and its community in mind, hence the term "benevolent." This leadership model aims to maintain direction and cohesion within the project while still allowing for contributions and feedback from other team members or contributors.
+
+# Self-checks and badges
+
+- https://www.repostatus.org/#active
+- Open SSF best practises
+
+Clearly defining the objectives and scope of the model.
+Using appropriate model structure and complexity.
+Documenting assumptions and limitations.
+Validating and verifying the model with empirical data.
+Conducting sensitivity analysis to understand model behavior.
+Providing clear and transparent documentation.
+Collaborating with domain experts for model development.
+Adhering to coding standards and version control.
+Ensuring model reproducibility.
+Communicating results effectively.
 
 # References
+
+Stroop 1960, U.S. Navy "Project KISS", Chicago Daily Tribune, p.43, 4 December 1960; reported in The Routledge Dictionary of Modern American Slang and Unconventional English, Tom Dalzell, 2009, 1104 pages, p.595
