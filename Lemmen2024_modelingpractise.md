@@ -51,7 +51,7 @@ Socio-environmental modeling software can be created by a single person; in fact
 
 If the model is to be used to produce scientific results subject to peer review, the single person will have to ensure replicability of results, will have to subject it to review (thus make it readable), and documented it.
 
-If at least one other person is using the model, the permission issue becomes pertinent. The model needs a license. Also the user needs a way to communicate with the developer, for feature requests or bugs/issues.
+If at least one other person is using the model, the permission issue becomes pertinent. The model needs a license. Also the user needs a way to communicate with the developer, for feature requests or bugs/issues. Self checks and badges.
 
 If at least one other person is contributing to the model, the permissions become more important, needing contributor agreements and codes of conduct. How are decisions made?
 The more persons are contributing, the governance becomes more important. Even a community management system might be required, with granular access, distributed roles, and fine-grained permissions. To keep the code quality, structured reviews, pre-commits, common coding standards.
@@ -150,6 +150,10 @@ Collaborating with domain experts for model development.
 Adhering to coding standards and version control.
 Ensuring model reproducibility.
 Communicating results effectively.
+
+# Good enough software practise - a use case
+
+Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries (Lemmen2023,Lemmen2024). It is an agent-based model coded in NetLogo (Wilensky1999) embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
 
 # References
 
