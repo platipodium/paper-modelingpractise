@@ -6,17 +6,23 @@ keyword:
   - Standards
   - Reuse
 author:
-  - Carsten Lemmen, Helmholtz-Zentrum Hereon, Max-Planck-Str. 1, 21502 Geesthacht, Germany
-correspondence: C. Lemmen <carsten.lemmen@hereon.de>
+  - name: Carsten Lemmen
+    affil: 1
+    email: carsten.lemmen@hereon.de
+  - name: Philipp Sommer
+    affil: 1
+affiliation:
+  - num: 1
+    address: Helmholtz-Zentrum Hereon, Max-Planck-Str. 1, 21502 Geesthacht, Germany
 citation_author: Lemmen et al.
-date: submitted to SESMO, April 2024
+date: to be submitted to Ecological Modelling, April 2024
 license: CC-BY-4.0
 bibliography: Lemmen2024_modelingpractise.bib
 SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 SPDX-License-Identifier: CC-BY-4.0
-abstract: ""
-acknowledgements: "This research is funded by the German Ministry of Education and Research (BMBF) through the Küstenforschung Nord- und Ostseee (KüNO) project 'Multiple Stressors on North Sea Life' (MuSSeL) with grant numbers 03F0862A and by the Helmholtz-Gemeinschaft der Forschungszentren program Chaning Coasts."
-conflictsofinterests: "The author declares that no conflict of interest has arisen from this work."
+abstract: "In environmental or socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems."
+acknowledgements: "This research is funded by the program Changing Coasts of the Helmholtz-Gemeinschaft der Forschungszentren and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by BMBF."
+conflictsofinterests: "The authors declare that no conflict of interest has arisen from this work."
 abbreviations:
   - short: ABM
     long: "Agent-based Model"
