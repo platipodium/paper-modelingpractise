@@ -6,7 +6,7 @@ keywords:
   - Good Software Practise
   - Standards
   - Reuse
-authors:
+author:
   - name: Carsten Lemmen
     affil: 1
     orcid: 0000-0003-3483-6036
@@ -26,13 +26,20 @@ SPDX-License-Identifier: CC-BY-4.0
 abstract: "In Socio-Environmental Systems sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.  Along the modeling chain, Good Modeling Practices (GMP) have been evolving that ensure -- amongst others -- that models are transparent and replicable.   Whenever such models are represented in software, GMP meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, and archiving. Too often in existing SES model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding.  We here argue for making a habit of following a list of simple practices early on in the implementation modeling chain.  We contextualize cherry-picked and hands-on practices for the support the goals of GMP, and we demonstrate their application in the example context of the Viable North Sea fisheries SES model."
 acknowledgements: "This research is funded by the program Changing Coasts of the Helmholtz-Gemeinschaft der Forschungszentren and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by BMBF."
 conflictsofinterests: "The authors declare that no conflict of interest has arisen from this work."
+authorcontributions: "C. Lemmen: Conceptualization, Methodology, Writing – original draft, Writing – review & editing. P. Sommer: Writing - original draft, Writing - review & editing."
 abbreviations:
   - short: ABM
-    long: "Agent-based Model"
+    long: Agent-based Model
   - short: ViNoS
-    long: "Viable North Sea"
+    long: Viable North Sea
   - short: MuSSeL
-    long: "Multiple Stressors on North Sea Life"
+    long: Multiple Stressors on North Sea Life
+  - short: DNRY
+    long: Do not repeat yourself
+  - short: KISS
+    long: Keep it simple, stupid!
+  - short: GMP
+    long: Good Modeling Practise
 ---
 
 <!--
@@ -45,7 +52,7 @@ This joint special issue intends to provide a platform for visible and ongoing a
 In environmental or socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.
 The degree of formalization of such models ranges from conceptual thought models to mathematical equations and to implementations in software, but by definition all of these models are purpose-driven simplifications of the system they represent [@Romanowska2014,@Stachowiak1973]. I will here concentrate on socio-environmental models that are implemented in software, and there are many of those out there. @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, a subset of some 1360 ecological models counted by @Benz2001 in 2001.
 
-<!comses model library 1117 https://www.comses.net/codebases/>
+<!--comses model library 1117 https://www.comses.net/codebases/ -->
 
 Those omnipresent in our field -- with undoubted value -- have been criticised as "unscientific", as they escape the concept of falsification. @Refsgaard2004 differentiates the model code from its domain specific-application
 
@@ -64,6 +71,14 @@ Cambridge University Press, 17.02.2011 - 572 Seiten
 RH Van Waveren, S Groot, H Scholten, F Van Geer… - 1999 - research.wur.nl
 Vloeiend modelleren in het waterbeheer : Handboek Good Modelling Practice —
 -->
+
+<!-- Barnes2010
+That the code is a little raw is one of the main reasons scientists give
+climate science and should do so across all fields. Some disciplines,
+for not sharing it with others
+-->
+
+<!-- Flesch1950 conclusion: you need to write code that minimizes the time it would take someone else to understand it—even if that someone else is you. -->
 
 put forward since XXXX, and has been widely adopted in a number of community standards such a ODD for ABM
 The focus of Good Modeling Practise is the purpose of the model, not its specific implementation;
@@ -174,7 +189,7 @@ ORT
 
 ## Code formatting
 
-- The code is the coumentaion
+- The code is the doumentaion
   "Code should be written to minimize the time it would take for someone else to understand it." Boswell & Foucher
 - Code conventions
 - Black
@@ -214,6 +229,8 @@ ORT
 - Zenodo
 
 ## Governance
+
+<!-- See Schneider2022 and DeNoni2014 -->
 
 A benevolent dictator in software development refers to a leadership style where one individual, often the project's creator or lead developer, has significant control over decision-making processes within the project. Despite holding considerable authority, this individual typically exercises their power with the best interests of the project and its community in mind, hence the term "benevolent." This leadership model aims to maintain direction and cohesion within the project while still allowing for contributions and feedback from other team members or contributors.
 

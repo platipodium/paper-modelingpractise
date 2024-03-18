@@ -36,12 +36,14 @@
 %% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
 
 %% Some pieces required from the pandoc template
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
 %\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
 %\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
 \usepackage{longtable}
+\usepackage[
+colorlinks=true
+]{hyperref}
 
 $if(highlighting-macros)$
 $highlighting-macros$
@@ -62,13 +64,10 @@ $endif$
 %% \usepackage{lineno}
 
 \journal{$journal$}
-
 \begin{document}
-
 \begin{frontmatter}
 
 %% Title, authors and addresses
-
 %% use the tnoteref command within \title for footnotes;
 %% use the tnotetext command for theassociated footnote;
 %% use the fnref command within \author or \affiliation for footnotes;
@@ -110,12 +109,20 @@ $endif$
 %%             state={},
 %%             country={}}
 
-\author{$for(author)$$author.name$$$^{$author.affil$}$$$if(author.orcid)$\href{https://orcid.org/$author.orcid$}{\orcidicon}$endif$$sep$, $endfor$}
+$for(author)$
+\author%
+$if(author)$[$author$]$endif$%
+{%
+$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
+$author.name$$if(author.email)$\corref{$author.email$}$endif$}
+$sep$,
+$endfor$
 
-$for(affiliation)$
-\affiliation{%
-$$^{$affiliation.num$}$$ \quad $affiliation.address$\\
-}
+
+$for(affiliations)$
+$if(affiliations/length)$
+\affiliation[$affiliations.num$]{$affiliations.address$}
+$endif$
 $endfor$
 
 %\affiliation{organization={},%Department and Organization
@@ -132,15 +139,19 @@ $abstract$
 $endif$
 
 %%Graphical abstract
+$if(graphicalabstract)$
 \begin{graphicalabstract}
-%\includegraphics{grabs}
+\includegraphics{$graphicalabstract$}
 \end{graphicalabstract}
+$endif$
 
 %%Research highlights
+$if(highlights)$
 \begin{highlights}
-\item Research highlight 1
-\item Research highlight 2
+$for(highlights)$\item $highlights$
+$endfor$
 \end{highlights}
+$endif$
 
 %% Keywords
 $if(keywords)$
