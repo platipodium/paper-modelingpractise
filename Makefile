@@ -18,6 +18,7 @@ TOCCMD=
 
 LTX=
 CMD=$(PANDOC) $(MDFORMAT) $(BIBCMD) $(TOCCMD)
+TEMPLATE=elsarticle-pandoc-template.tex
 
 ## All markdown files in the working directory
 #SRC = $(wildcard *.$(MEXT))
@@ -54,11 +55,15 @@ txt:  $(TXT) $(SRC) Makefile
 %.epub:	%.md  %.bib Makefile
 	$(CMD) --to=epub -s -o $@ $<  # --epub-cover-image=cover-image.gif
 
-%.tex:	%.docx Makefile
-	$(CMD) -s  --from docx --to latex  -o $@ $<
+#%.tex:	%.docx Makefile
+#	$(CMD) -s  --from docx --to latex  -o $@ $<
+#%.pdf:	%.docx Makefile
+#	$(CMD) -s  --from docx --to pdf  -o $@ $<
+%.tex:	%.md  %.bib Makefile  $(TEMPLATE)
+	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
 
-%.pdf:	%.docx Makefile
-	$(CMD) -s  --from docx --to pdf  -o $@ $<
+%.pdf:	%.md  %.bib Makefile  $(TEMPLATE)
+	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
 
 %.docx:	%.md  %.bib Makefile pandoc-scholar.docx
 	$(CMD)--to=docx --reference-doc=pandoc-scholar.docx -s -o $@ $<

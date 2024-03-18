@@ -1,17 +1,20 @@
 ---
-title: "Good modeling software practises"
-keyword:
+title: Good modeling software practises
+journal: Ecological Modelling
+keywords:
   - Good Modeling Practise
   - Good Software Practise
   - Standards
   - Reuse
-author:
+authors:
   - name: Carsten Lemmen
     affil: 1
+    orcid: 0000-0003-3483-6036
     email: carsten.lemmen@hereon.de
-  - name: Philipp Sommer
+  - name: Philipp Sebastian Sommer
     affil: 1
-affiliation:
+    orcid: 0000-0001-6171-7716
+affiliations:
   - num: 1
     address: Helmholtz-Zentrum Hereon, Max-Planck-Str. 1, 21502 Geesthacht, Germany
 citation_author: Lemmen et al.
@@ -20,7 +23,7 @@ license: CC-BY-4.0
 bibliography: Lemmen2024_modelingpractise.bib
 SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 SPDX-License-Identifier: CC-BY-4.0
-abstract: "In environmental or socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems."
+abstract: "In Socio-Environmental Systems sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.  Along the modeling chain, Good Modeling Practices (GMP) have been evolving that ensure -- amongst others -- that models are transparent and replicable.   Whenever such models are represented in software, GMP meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, and archiving. Too often in existing SES model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding.  We here argue for making a habit of following a list of simple practices early on in the implementation modeling chain.  We contextualize cherry-picked and hands-on practices for the support the goals of GMP, and we demonstrate their application in the example context of the Viable North Sea fisheries SES model."
 acknowledgements: "This research is funded by the program Changing Coasts of the Helmholtz-Gemeinschaft der Forschungszentren and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by BMBF."
 conflictsofinterests: "The authors declare that no conflict of interest has arisen from this work."
 abbreviations:
@@ -31,6 +34,11 @@ abbreviations:
   - short: MuSSeL
     long: "Multiple Stressors on North Sea Life"
 ---
+
+<!--
+This joint special issue intends to provide a platform for visible and ongoing attention to what ought to be the current standard(s) for an appropriate modelling protocol that considers uncertainty in all its facets and promotes transparency in the quest for robust and reliable results. It aims to bring together and highlight work that develops, applies, or evaluates procedures for a trustworthy modelling workflow or that investigates good modelling practices for particular aspects of the workflow. We invite research that aims to improve the scientific basis of the entire modelling chain and places good modelling practice in focus.
+- Examples of developing FAIR principles for digital assets in the modelling chain (Findable, Accessible, Interoperable and Reusable – see https://www.comses.net/education/responsible-practices/)
+-->
 
 # Introduction
 

@@ -38,8 +38,8 @@
 %% Some pieces required from the pandoc template
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
-\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
-\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
+%\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
+%\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
 \usepackage{longtable}
 
@@ -142,16 +142,15 @@ $endif$
 \item Research highlight 2
 \end{highlights}
 
-% Keywords
-\keyword{$keywords$}
-
+%% Keywords
 $if(keywords)$
 \begin{keyword}
 $for(keywords)$$keywords$\sep
-%% keywords here, in the form: keyword \sep keyword
-%% PACS codes here, in the form: \PACS code \sep code
-%% MSC codes here, in the form: \MSC code \sep code
-%% or \MSC[2008] code \sep code (2000 is the default)
+%%% keywords here, in the form: keyword \sep keyword
+%%% PACS codes here, in the form: \PACS code \sep code
+%%% MSC codes here, in the form: \MSC code \sep code
+%%% or \MSC[2008] code \sep code (2000 is the default)
+$endfor$
 \end{keyword}
 $endif$
 
@@ -173,7 +172,9 @@ $endif$
 $body$
 
 $if(bibliography)$
-\reftitle{References}
-\externalbibliography{yes}
+%\reftitle{References}
+%\externalbibliography{yes}
 \bibliography{$bibliography$}
 $endif$
+
+\end{document}
