@@ -16,7 +16,7 @@ This joint special issue intends to provide a platform for visible and ongoing a
 - Developing robust parameterization, calibration and evaluation frameworks
 - Going beyond common metrics in assessing model performance and realism, including qualitative methods
 - Conducting controlled model comparison studies
-- Investigating subjectivity and reflexivity along the modelling chain, and addressing \* model fitness for purpose
+- Investigating subjectivity and reflexivity along the modelling chain, and addressing model fitness for purpose
 - Identifying and prioritising sources of uncertainty and/or investigating uncertainty propagation along the modelling chain, and data acquisition planning for reducing uncertainty
 - Communicating model results and their uncertainty to end users of model results
 - Evaluating implications of model limitations and identifying priorities for future model development

@@ -20,7 +20,7 @@ affiliations:
 citation_author: Lemmen et al.
 date: to be submitted to Ecological Modelling, April 2024
 license: CC-BY-4.0
-bibliography: Lemmen2024_modelingpractise.bib
+bibliography: paper.bib
 SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 SPDX-License-Identifier: CC-BY-4.0
 abstract: "In Socio-Environmental Systems sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.  Along the modeling chain, Good Modeling Practices (GMP) have been evolving that ensure -- amongst others -- that models are transparent and replicable.   Whenever such models are represented in software, GMP meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, and archiving. Too often in existing SES model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding.  We here argue for making a habit of following a list of simple practices early on in the implementation modeling chain.  We contextualize cherry-picked and hands-on practices for the support the goals of GMP, and we demonstrate their application in the example context of the Viable North Sea fisheries SES model."
@@ -50,7 +50,7 @@ This joint special issue intends to provide a platform for visible and ongoing a
 # Introduction
 
 In environmental or socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.
-The degree of formalization of such models ranges from conceptual thought models to mathematical equations and to implementations in software, but by definition all of these models are purpose-driven simplifications of the system they represent [@Romanowska2014,@Stachowiak1973]. I will here concentrate on socio-environmental models that are implemented in software, and there are many of those out there. @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, a subset of some 1360 ecological models counted by @Benz2001 in 2001.
+The degree of formalization of such models ranges from conceptual thought models to mathematical equations and to implementations in software, but by definition all of these models are purpose-driven simplifications of the system they represent [@Romanowska2015,@Stachowiak1973]. I will here concentrate on socio-environmental models that are implemented in software, and there are many of those out there. @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, a subset of some 1360 ecological models counted by @Benz2001 in 2001.
 
 <!--comses model library 1117 https://www.comses.net/codebases/ -->
 
@@ -93,14 +93,15 @@ In summary, while GMP is about ensuring the reliability and validity of models, 
 -->
 
 <!-- Compute rmodel is only one part of the modeling cycle EFSA -->
+<!-- Clean code -->
 
 The concept of Good Software Practise can be traced back to the origin of the UNIX systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should also allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel (DNRY). In 1996 Kernighan published the practise of programming, which was followed up by Raymonds Raymonds 2003 The Art of Unix Programming, of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!" (an initially military term attributed to @Stropp1960).
 
-In his book The Art of Unix Programming that was first published in 2003,[11] Eric S. Raymond (open source advocate and programmer) summarizes the Unix philosophy as KISS Principle of "Keep it Simple, Stupid."[12] He provides a series of design rules:[1]
+In his book The Art of Unix Programming that was first published in 2003,[11] Eric S. Raymond (open source advocate and programmer) @Raymond2003 summarizes the Unix philosophy as KISS Principle of "Keep it Simple, Stupid."[12] He provides a series of design rules:[1]
 
-OSS: In the 1960’s and 1970’s software was developed by researchers in universities like Berkeley and MIT. In 1983 Richard Stallman, one of the first public advocates of the OSS movement, claimed that information should be free and computer programs should not be owned by companies but be public goods (Stallman 1994; Stallman 1983)
+OSS: In the 1960’s and 1970’s software was developed by researchers in universities like Berkeley and MIT. In 1983 Richard Stallman, one of the first public advocates of the OSS movement, claimed that information should be free and computer programs should not be owned by companies but be public goods [@Stallman1994; @Stallman1983]
 
-Software Carpentry Wilson2016
+Software Carpentry @Wilson2016
 Software carpentry: t’s to teach computational competence: live coding, pair programming, open everthing
 
 ## Structure
@@ -125,7 +126,7 @@ Software sustainabilty is critical once a larger user base is established, or ot
 <!-- The Agile manifesto: Individuals and interactions over processes and tools. Working software over comprehensive documentation. Customer collaboration over contract negotiation. Responding to change over following a plan.
 That is, while we value the items on the right, we value the items on the left more.-->
 
-<!-- Singer et al. 2008: “Software engineering is an intensely people-oriented activity, yet little is known about how software engineers perform their work.”2 -->
+<!-- @Singer2008: “Software engineering is an intensely people-oriented activity, yet little is known about how software engineers perform their work.”2 -->
 
 <!-- Joel test: The Joel Test
 
@@ -190,7 +191,7 @@ ORT
 ## Code formatting
 
 - The code is the doumentaion
-  "Code should be written to minimize the time it would take for someone else to understand it." Boswell & Foucher
+  "Code should be written to minimize the time it would take for someone else to understand it." @Flesch1950
 - Code conventions
 - Black
 - F
@@ -202,7 +203,7 @@ ORT
 - Accessible and consistent naming practise
 - Modular, complex tasks in managable functions
 - error handling
-- reuse and recycle, don't reinvent the wheel, use small tools (Kernighan 1976)
+- reuse and recycle, don't reinvent the wheel, use small tools [@Kernighan1976]
 - The practise of programming "Simplicity, Generality, clarity"
 
 ## Maintanance
@@ -252,8 +253,4 @@ Communicating results effectively.
 
 # Good enough software practise - a use case
 
-Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries (Lemmen2023,Lemmen2024). It is an agent-based model coded in NetLogo (Wilensky1999) embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
-
-# References
-
-Stroop 1960, U.S. Navy "Project KISS", Chicago Daily Tribune, p.43, 4 December 1960; reported in The Routledge Dictionary of Modern American Slang and Unconventional English, Tom Dalzell, 2009, 1104 pages, p.595
+Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.

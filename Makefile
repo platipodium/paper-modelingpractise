@@ -37,6 +37,8 @@ EPUB=$(SRC:.md=.epub)
 TXT=$(SRC:.md=.txt)
 BIB=$(SRC:.md=.bib)
 
+.PHONY: all pdf html docx odt epub tex txt allbib localbib
+
 all:  tex pdf
 pdf:	$(PDF) $(SRC) Makefile
 html:	$(HTML) $(SRC) Makefile
@@ -59,10 +61,10 @@ txt:  $(TXT) $(SRC) Makefile
 #	$(CMD) -s  --from docx --to latex  -o $@ $<
 #%.pdf:	%.docx Makefile
 #	$(CMD) -s  --from docx --to pdf  -o $@ $<
-%.tex:	%.md  %.bib Makefile  $(TEMPLATE)
+%.tex:	%.md  %.bib Makefile  style $(TEMPLATE)
 	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
 
-%.pdf:	%.md  %.bib Makefile  $(TEMPLATE)
+%.pdf:	%.md  %.bib Makefile  style $(TEMPLATE)
 	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
 
 %.docx:	%.md  %.bib Makefile pandoc-scholar.docx
@@ -85,3 +87,8 @@ clean:
 bib:
 	pandoc allbib.tex -o allbib.html --citeproc --bibliography Lemmen2024_modelingpractise.md.bib
 	pandoc allbib.tex -o allbib.pdf --citeproc --bibliography Lemmen2024_modelingpractise.md.bib
+
+localbib:
+	cp /Users/Lemmen/temp/mendeley/MuSSeL-Modelingpractise.bib paper.bib
+
+style: ecomod.csl
