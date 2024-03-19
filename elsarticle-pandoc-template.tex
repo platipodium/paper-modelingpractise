@@ -21,149 +21,18 @@
 %% Template article for Elsevier's document class `elsarticle'
 %% with harvard style bibliographic references
 
-\documentclass[preprint,12pt,authoryear]{elsarticle}
+\documentclass[preprint,11pt,5p]{elsarticle}
 
-%% Use the option review to obtain double line spacing
-%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+\usepackage{enumitem}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
+\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
+\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
-%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
-%% for a journal layout:
-%% \documentclass[final,1p,times,authoryear]{elsarticle}
-%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
-%% \documentclass[final,3p,times,authoryear]{elsarticle}
-%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
-%% \documentclass[final,5p,times,authoryear]{elsarticle}
-%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
-
-%% Some pieces required from the pandoc template
-\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{4pt}}
-%\setlist[itemize]{leftmargin=*,labelsep=5.8mm}
-%\setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
-
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{calc}
 \usepackage{longtable}
-\usepackage[
-colorlinks=true
-]{hyperref}
-
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-
-%% For including figures, graphicx.sty has been loaded in
-%% elsarticle.cls. If you prefer to use the old commands
-%% please give \usepackage{epsfig}
-
-%% The amssymb package provides various useful mathematical symbols
-\usepackage{amssymb}
-%% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
-
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers.
-%% \usepackage{lineno}
-
-\journal{$journal$}
-\begin{document}
-\begin{frontmatter}
-
-%% Title, authors and addresses
-%% use the tnoteref command within \title for footnotes;
-%% use the tnotetext command for theassociated footnote;
-%% use the fnref command within \author or \affiliation for footnotes;
-%% use the fntext command for theassociated footnote;
-%% use the corref command within \author for corresponding author footnotes;
-%% use the cortext command for theassociated footnote;
-%% use the ead command for the email address,
-%% and the form \ead[url] for the home page:
-%% \title{Title\tnoteref{label1}}
-%% \tnotetext[label1]{}
-%% \author{Name\corref{cor1}\fnref{label2}}
-%% \ead{email address}
-%% \ead[url]{home page}
-%% \fntext[label2]{}
-%% \cortext[cor1]{}
-%% \affiliation{organization={},
-%%            addressline={},
-%%            city={},
-%%            postcode={},
-%%            state={},
-%%            country={}}
-%% \fntext[label3]{}
-
-\title{$title$}
-
-%% use optional labels to link authors explicitly to addresses:
-%% \author[label1,label2]{}
-%% \affiliation[label1]{organization={},
-%%             addressline={},
-%%             city={},
-%%             postcode={},
-%%             state={},
-%%             country={}}
-%%
-%% \affiliation[label2]{organization={},
-%%             addressline={},
-%%             city={},
-%%             postcode={},
-%%             state={},
-%%             country={}}
-
-$for(author)$
-\author%
-$if(author)$[$author$]$endif$%
-{%
-$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
-$author.name$$if(author.email)$\corref{$author.email$}$endif$}
-$sep$,
-$endfor$
-
-
-$for(affiliations)$
-$if(affiliations/length)$
-\affiliation[$affiliations.num$]{$affiliations.address$}
-$endif$
-$endfor$
-
-%\affiliation{organization={},%Department and Organization
-%            addressline={},
-%            city={},
-%            postcode={},
-%            state={},
-%            country={}}
-
-$if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
-$endif$
-
-%%Graphical abstract
-$if(graphicalabstract)$
-\begin{graphicalabstract}
-\includegraphics{$graphicalabstract$}
-\end{graphicalabstract}
-$endif$
-
-%%Research highlights
-$if(highlights)$
-\begin{highlights}
-$for(highlights)$\item $highlights$
-$endfor$
-\end{highlights}
-$endif$
-
-%% Keywords
-$if(keywords)$
-\begin{keyword}
-$for(keywords)$$keywords$\sep
-%%% keywords here, in the form: keyword \sep keyword
-%%% PACS codes here, in the form: \PACS code \sep code
-%%% MSC codes here, in the form: \MSC code \sep code
-%%% or \MSC[2008] code \sep code (2000 is the default)
-$endfor$
-\end{keyword}
-$endif$
+\usepackage{booktabs}
 
 $if(csl-refs)$
 % definitions for citeproc citations
@@ -200,17 +69,103 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
+\journal{$journal$}
 
+\begin{document}
+\begin{frontmatter}
+
+	%% use the tnoteref command within \title for footnotes;
+	%% use the tnotetext command for theassociated footnote;
+	%% use the fnref command within \author or \affiliation for footnotes;
+	%% use the fntext command for theassociated footnote;
+	%% use the corref command within \author for corresponding author footnotes;
+	%% use the cortext command for theassociated footnote;
+	%% use the ead command for the email address,
+	%% and the form \ead[url] for the home page:
+	%% \title{Title\tnoteref{label1}}
+	%% \tnotetext[label1]{}
+	%% \author{Name\corref{cor1}\fnref{label2}}
+	%% \ead{email address}
+	%% \ead[url]{home page}
+	%% \fntext[label2]{}
+	%% \cortext[cor1]{}
+	%% \affiliation{organization={},
+	%%            addressline={},
+	%%            city={},
+	%%            postcode={},
+	%%            state={},
+	%%            country={}}
+	%% \fntext[label3]{}
+
+\title{$title$}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+
+$for(author)$
+\author%
+$if(author.affil)$[$author.affil$]$endif$%
+{%
+$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
+$author.name$$if(author.email)$\corref{$author.email$}$endif$}
+$sep$$endfor$
+
+$for(affiliations)$
+$if(affiliations/length)$
+\affiliation[$affiliations.num$]{$affiliations.address$}
+$endif$
+$endfor$
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+%%Graphical abstract
+$if(graphicalabstract)$
+\begin{graphicalabstract}
+\includegraphics{$graphicalabstract$}
+\end{graphicalabstract}
+$endif$
+
+%%Research highlights
+$if(highlights)$
+\begin{highlights}
+$for(highlights)$\item $highlights$
+$endfor$
+\end{highlights}
+$endif$
+
+%--
+%% Keywords
+%%% keywords here, in the form: keyword \sep keyword
+%%% PACS codes here, in the form: \PACS code \sep code
+%%% MSC codes here, in the form: \MSC code \sep code
+%%% or \MSC[2008] code \sep code (2000 is the default)
+$if(keywords)$
+\begin{keyword}
+$for(keywords)$$keywords$\sep
+$endfor$
+\end{keyword}
+$endif$
+
+\date{\today}
 \end{frontmatter}
 
-%% \linenumbers
-
 $body$
-
-$if(bibliography)$
-%\reftitle{References}
-%\externalbibliography{yes}
-\bibliography{$bibliography$}
-$endif$
 
 \end{document}

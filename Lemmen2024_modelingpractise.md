@@ -59,7 +59,7 @@ Those omnipresent in our field -- with undoubted value -- have been criticised a
 <!-- A distinction is made between the conceptual model, the model code and the site-specific model. A conceptual model is subject to confirmation or falsification like scientific theories. A model code may be verified within given ranges of applicability and ranges of accuracy, but it can never be universally verified. Similarly, a model may be validated, but only with reference to site- specific applications and to pre-specified performance (accuracy) criteria. Thus, a model’s validity will always be limited in terms of space, time, boundary conditions and types of application
 -->
 
-So all we can do is to provide at best verified and validated models, and the concept of Good Modeling Practice aims at ensuring this. Good practices often named are a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality. But also collaboration, ethical considerations and communication about the model (REFS).
+So all we can do is to provide at best verified and validated models, and the concept of Good Modeling Practice aims at ensuring this. Good practices often named are a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality. But also collaboration, ethical considerations and communication about the model (REFS). @Crout2008
 
 The concept of Good Modeling Practise has been mentioned early in @Porteus1962, but likely first used in an environmental model context by @Smagorinsky1982, who claimed that "under any cirumstance, GMP demands an awareness of the sensitivity ... to parametrization" (p.16). Water management seems to have been the original domain of GWP, as the Dutch Institute for Inland water managmeet put together the first handbook of GWP in 1999.
 
@@ -95,7 +95,7 @@ In summary, while GMP is about ensuring the reliability and validity of models, 
 <!-- Compute rmodel is only one part of the modeling cycle EFSA -->
 <!-- Clean code -->
 
-The concept of Good Software Practise can be traced back to the origin of the UNIX systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should also allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel (DNRY). In 1996 Kernighan published the practise of programming, which was followed up by Raymonds Raymonds 2003 The Art of Unix Programming, of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!" (an initially military term attributed to @Stropp1960).
+The concept of Good Software Practise can be traced back to the origin of the UNIX systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should also allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel (DNRY). In 1996 Kernighan published the practise of programming, which was followed up by Raymonds Raymonds 2003 The Art of Unix Programming, of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!" (an initially military term attributed to @Stroop1960).
 
 In his book The Art of Unix Programming that was first published in 2003,[11] Eric S. Raymond (open source advocate and programmer) @Raymond2003 summarizes the Unix philosophy as KISS Principle of "Keep it Simple, Stupid."[12] He provides a series of design rules:[1]
 
@@ -103,6 +103,8 @@ OSS: In the 1960’s and 1970’s software was developed by researchers in unive
 
 Software Carpentry @Wilson2016
 Software carpentry: t’s to teach computational competence: live coding, pair programming, open everthing
+
+Free software (@Stallmann2015; p3); Freedom to run for any purpose, study and modify, distribute, modify and distribute.
 
 ## Structure
 
