@@ -7,10 +7,18 @@ SPDX-License-Identifier: CC-BY-NC-4.0
 <!-- Badges -->
 
 [![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./code_of_conduct.md)
+[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/codebase.helmholtz.cloud/mussel/paper-modelingpractise)
+[![Prettier style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 In this folder, the Good Modeling Practise joint special issue paper is compiled.
 
 
+# Good modeling software practises
+
+In Socio-Environmental Systems sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.  Along the modeling chain, Good Modeling Practices (GMP) have been evolving that ensure -- amongst others -- that models are transparent and replicable.   Whenever such models are represented in software, GMP meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, and archiving. Too often in existing SES model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding.  We here argue for making a habit of following a list of simple practices early on in the implementation modeling chain.  We contextualize cherry-picked and hands-on practices for the support the goals of GMP, and we demonstrate their application in the example context of the Viable North Sea fisheries SES model."
+acknowledgements: "This research is funded by the program Changing Coasts of the Helmholtz-Gemeinschaft der Forschungszentren and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by BMBF."
+conflictsofinterests: "The authors declare that no conflict of interest has arisen from this work.
 
 ## Joint Special Issue on Good Modelling Practice - Ecological Modelling
 
@@ -63,3 +71,9 @@ All submissions deemed suitable to be sent for peer review will be reviewed by a
 
 Keywords:
 Modelling practices; Integrated assessment and modelling; Socio-ecological systems; Decision support; uncertainty; scaling
+
+## Viable North Sea (ViNoS): A NetLogo Agent-based Model of German Small-scale Fisheries
+
+Viable North Sea (ViNoS) is an Agent-based Model (ABM) of the German Small-scale Fisheries. As a Social-Ecological Systems (SES) model it focusses on the adaptive behaviour of fishers facing regulatory, economic, and resource changes. Small-scale fisheries are an important part both of the cultural perception of the German North Sea coast and of its fishing industry. These fisheries are typically family-run operations that use smaller boats and traditional fishing methods to catch a variety of bottom-dwelling species, including plaice, sole, and brown shrimp.
+
+Fishers in the North Sea face area competition with other uses of the sea---long practiced ones like shipping, gas exploration and sand extractions, and currently increasing ones like marine protection and offshore wind farming (OWF). German authorities have just released a new maritime spatial plan implementing the need for 30% of protection areas (of these 30% as no-use zones) demanded by the United Nations High Seas Treaty and aiming at up to 70 GW of offshore wind power generation by 2045. Fisheries in the North Sea also have to adjust to the northward migration of their established resources following the climate heating of the water. And they have to re-evaluate their economic balance by figuring in the foreseeable rise in oil price and the need for re-investing into their aged fleet.
