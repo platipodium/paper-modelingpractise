@@ -4,7 +4,7 @@
 #
 include:
   - ".gitlab/license.yaml"
-  - ".gitlab/docker.yaml"
+  - ".gitlab/pandoc.yaml"
   - ".gitlab/ecomod.yaml"
   - ".gitlab/zenodo.yaml"
 stages:
