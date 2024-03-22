@@ -8,9 +8,9 @@
 ecomod-paper:
   image: $CI_REGISTRY_IMAGE/pandoc:3.1.12.2
   script:
-    - make -C pdf
+    - make pdf
   artifacts:
     paths:
       - ./Lemmen2024_modelingpractise.pdf
   needs: []
-  stage: deploy
+  stage: build
