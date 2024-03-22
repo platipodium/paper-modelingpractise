@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2022-2024 Helmholtz-Zentrum hereon GmbH
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileContributor: Carsten Lemmen <carsten.lemmen@hereon.de>
+#
+include:
+  - ".gitlab/license.yaml"
+  - ".gitlab/docker.yaml"
+  - ".gitlab/ecomod.yaml"
+  - ".gitlab/zenodo.yaml"
+stages:
+  - lint
+  - build
+  - deploy
+  - release
+
+# Job to deploy the web page of the project, currently showing
+# the generated pdf papers for JOSS and COMSES.
+pages:
+  stage: deploy
+  script:
+    - cp -r .gitlab/public .
+    - cp ./Lemmen2024_modelingpractise.pdf public/Lemmen2024_modelingpractise.pdf
+  #    - cp ./Lemmen2024_modelingpractise.cff public/Lemmen2024_modelingpractise.cff
+  artifacts:
+    paths:
+      - public/
+  needs:
+    - ecomod-paper
+
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG # Run this job when a tag is created
+  script:
+    - echo "Running release_job"
+  release: # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
+    tag_name: "$CI_COMMIT_TAG"
+    description: "$CI_COMMIT_TAG"
