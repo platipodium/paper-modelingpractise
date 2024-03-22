@@ -37,7 +37,8 @@ EPUB=$(SRC:.md=.epub)
 TXT=$(SRC:.md=.txt)
 BIB=$(SRC:.md=.bib)
 
-.PHONY: all pdf html docx odt epub tex txt allbib localbib
+.PHONY: all pdf html docx odt epub tex txt allbib localbib \
+  assets elsevier-logo ecomod-cover
 
 all:  tex pdf
 pdf:	$(PDF) $(SRC) Makefile
@@ -48,30 +49,42 @@ epub: $(EPUB) $(SRC) Makefile
 tex:  $(TEX) $(SRC) Makefile
 txt:  $(TXT) $(SRC) Makefile
 
+# Pull some files from Elsevier so we don't have to store them on the
+# repository
+assets: ecomod-cover elsevier-logo
+elsevier-logo: ./assets/elsevier-non-solus-new-with-wordmark.pdf
+./assets/elsevier-non-solus-new-with-wordmark.svg:
+	wget -O $@ https://cdn.elsevier.io/matrix/includes/svg/logo-elsevier-wordmark.svg
+./assets/elsevier-non-solus-new-with-wordmark.pdf: ./assets/elsevier-non-solus-new-with-wordmark.svg
+	svg2pdf $< $@
+ecomod-cover: ./assets/X03043800.jpg
+./assets/X03043800.jpg:
+	wget -O $@ https://ars.els-cdn.com/content/image/X03043800.jpg
+
 %.txt:	%.md %.bib Makefile
 	$(CMD) --to=plain -o $@ $<
 
-%.html:	%.md Makefile
+%.html:	%.md Makefile assets
 	$(CMD) --to=html -o $@ $<
 
-%.epub:	%.md  %.bib Makefile
+%.epub:	%.md  %.bib Makefile assets
 	$(CMD) --to=epub -s -o $@ $<  # --epub-cover-image=cover-image.gif
 
 #%.tex:	%.docx Makefile
 #	$(CMD) -s  --from docx --to latex  -o $@ $<
 #%.pdf:	%.docx Makefile
 #	$(CMD) -s  --from docx --to pdf  -o $@ $<
-%.tex:	%.md  %.bib Makefile  style $(TEMPLATE)
+%.tex:	%.md  %.bib Makefile  style $(TEMPLATE) assets
 	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
 
-%.pdf:	%.md  %.bib Makefile  style $(TEMPLATE)
+%.pdf:	%.md  %.bib Makefile  style $(TEMPLATE) assets
 	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
 
-%.docx:	%.md  %.bib Makefile pandoc-scholar.docx
+%.docx:	%.md  %.bib Makefile pandoc-scholar.docx assets
 	$(CMD)--to=docx --reference-doc=pandoc-scholar.docx -s -o $@ $<
 #	$(CMD)--to=docx --reference-doc=custom-reference.docx -s -o $@ $<
 
-%.odt:	%.docx Makefile
+%.odt:	%.docx Makefile assets
 	$(CMD) -s  --from docx --to odt  -o $@ $<
 
 # --reference-doc= --filter pandoc-citeproc --bibliography

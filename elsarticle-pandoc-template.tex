@@ -4,10 +4,7 @@
 %% SPDX-FileCopyrightText: 2007-2020 Elsevier Ltd
 %% SPDX-License-Identifier: LPPL-1.2
 %% SPDX-FileContributor: Carsten Lemmen
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% ---------------------------------------------
-%%
+%%%%
 %% It may be distributed under the conditions of the LaTeX Project Public
 %% License, either version 1.2 of this license or (at your option) any
 %% later version.  The latest version of this license is in
@@ -33,6 +30,16 @@
 \usepackage{calc}
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{fancyhdr}
+
+% Define page style with header on the first page
+\fancypagestyle{firstpage}{
+  \fancyhf{} % Clear header and footer
+  \fancyhead[L]{\includegraphics[height=3cm]{./assets/elsevier-non-solus-new-with-wordmark.pdf}}
+  \fancyhead[C]{submitted to Ecological Modelling}
+  \fancyhead[R]{\includegraphics[height=3cm]{./assets/X03043800.jpg}}
+  \renewcommand{\headrulewidth}{0pt} % Remove header rule
+}
 
 $if(csl-refs)$
 % definitions for citeproc citations
@@ -72,7 +79,9 @@ $endif$
 \journal{$journal$}
 
 \begin{document}
+
 \begin{frontmatter}
+\thispagestyle{firstpage}
 
 	%% use the tnoteref command within \title for footnotes;
 	%% use the tnotetext command for theassociated footnote;
