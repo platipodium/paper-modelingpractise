@@ -56,7 +56,7 @@ elsevier-logo: ./assets/elsevier-non-solus-new-with-wordmark.pdf
 ./assets/elsevier-non-solus-new-with-wordmark.svg:
 	wget -O $@ https://cdn.elsevier.io/matrix/includes/svg/logo-elsevier-wordmark.svg
 ./assets/elsevier-non-solus-new-with-wordmark.pdf: ./assets/elsevier-non-solus-new-with-wordmark.svg
-	svg2pdf $< $@
+	rsvg-convert -f pdf -o $@ $<
 ecomod-cover: ./assets/X03043800.jpg
 ./assets/X03043800.jpg:
 	wget -O $@ https://ars.els-cdn.com/content/image/X03043800.jpg
@@ -101,7 +101,15 @@ bib:
 	pandoc allbib.tex -o allbib.html --citeproc --bibliography Lemmen2024_modelingpractise.md.bib
 	pandoc allbib.tex -o allbib.pdf --citeproc --bibliography Lemmen2024_modelingpractise.md.bib
 
-localbib:
-	cp /Users/Lemmen/temp/mendeley/MuSSeL-Modelingpractise.bib paper.bib
-
 style: ecomod.csl
+
+# This following targets are developer-only ones specific to the developmet
+# platform used here and may not work universally
+localbib:
+	cp $(HOME)/temp/mendeley/MuSSeL-Modelingpractise.bib paper.bib
+
+docker:
+	docker run -v $(shell pwd):/home -it ubuntu-pandoc /bin/bash
+
+docker-make:
+	docker run -v $(shell pwd):/home -it ubuntu-pandoc make -C /home
