@@ -13,6 +13,8 @@ SPDX-License-Identifier: CC-BY-NC-4.0
 
 In this folder, the Good Modeling Practise joint special issue paper is compiled.
 
+Pad: https://notes.desy.de/QOCyGjeKQc2-9ST37MgPfg?edit
+
 # Good modeling software practises
 
 In Socio-Environmental Systems sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. Along the modeling chain, Good Modeling Practices (GMP) have been evolving that ensure -- amongst others -- that models are transparent and replicable. Whenever such models are represented in software, GMP meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, and archiving. Too often in existing SES model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding. We here argue for making a habit of following a list of simple practices early on in the implementation modeling chain. We contextualize cherry-picked and hands-on practices for the support the goals of GMP, and we demonstrate their application in the example context of the Viable North Sea fisheries SES model."
