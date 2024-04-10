@@ -22,7 +22,7 @@ TEMPLATE=elsarticle-pandoc-template.tex
 
 ## All markdown files in the working directory
 #SRC = $(wildcard *.$(MEXT))
-SRC = Lemmen2024_modelingpractise.$(MEXT)
+SRC = Lemmen2024_Sommer_ecologicalmodelling.$(MEXT)
 
 ## Location of Pandoc support files.
 PREFIX = $(HOME)/.pandoc
