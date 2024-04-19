@@ -61,42 +61,37 @@ In environmental or socio-environmental sciences, models are frequently used as 
 The degree of formalization of such models ranges from conceptual thought models to mathematical equations and to implementations in software -- by definition -- all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on environmental or socio-ecological models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@CoMSES2024]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological models.
 
 So models are plenty and omnipresent in our field. But despite their undoubted value, the approaches that socio-environmental models have taken have been criticised as "unscientific", as they often escape the concept of falsification beyond the conceptual stage: the code may be verifiable within accuracy and applicability ranges but not universally; the model may be validated only in site-specific application and performance criteria but not universally [@Refsgaard2004].
-So all we can and should do is to provide at best verified and validated models, and Good Modeling Practice aims at ensuring this. Examples of such good practices often named are: a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality [@Crout2008].
+So all we can and should do is to provide at best verified and validated models, and Good Modeling Practice aims at ensuring this. Examples of such good practices often named are: a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality [@Crout2008]. GMP may have been used first in socio-environmental sciences by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16), and the first application area of GMP seems to have been hydrology, with the first handbook on GMP by @VanWaveren1999; it has by now been applied to all areas of in socio-environmental, and socio-economic sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2010].
 
-<!-- check list in ref -->
-
-But also collaboration, ethical considerations and communication about the model including a software publication. But much of the model corpus is not published at all: @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
-
-<!-- add ref -->
-
-<!-- history of GMP -->
-
-One of the first uses of the term Good Modeling Practice may be by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). Water management seems to have been the original domain of GMP, as the Dutch Institute for Inland water managment put together the first handbook on GMP [@VanWaveren1999].
-
-<!-- when did it appear in SES science? need ref -->
-
-put forward since XXXX, and has been widely adopted in a number of community standards such a ODD for ABM
-The focus of Good Modeling Practise is the purpose of the model, not its specific implementation;
-Separate ideas have been put forward for scope [@Wang2023], for assumptions ()
-Whenever a socio-ecological model is realized in software, however, there are additional challenges to address beyond Good Modeling Practise: Good Scientific Conduct and Good Software Practise, which includes but is not restricted to writing good code.
-
-<!-- Good Modeling Practice (GMP) and Good Software Practice (GSP) are both important in their respective fields, but they focus on different aspects:
-Good Modeling Practice: This is primarily concerned with the creation and use of models, particularly in scientific and engineering contexts. It involves setting the scope and context of use, defining the project goal, and designing calibration runs and a model validation strategy1. It also includes considerations for dealing with complex socio-environmental systems2. The basis of GMP is the knowledge of relevant processes and the availability of data of sufficient quality3.
-Good Software Practice: On the other hand, GSP is more focused on the development and maintenance of software. It includes principles related to coding standards, software design, testing, and documentation. It emphasizes on practices that ensure the software is reliable, maintainable, and efficient.
-In summary, while GMP is about ensuring the reliability and validity of models, GSP is about ensuring the quality and reliability of software. Both are crucial in their respective fields and often intersect in areas such as computational modeling.
--->
+@Jakeman2024 provide a list of studies on GMP (their table 1) and identify five main phases in the model life cycle, where GMP is relevant: (1) Problem scoping, (2) Problem conceptualization, (3) Model formulation and evaluation, (4) Model application, and (5) Model perpetuation, and the reiteration of these phase. Good Modeling Software Practices (GSP) span their phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of model -- possibly foremost its purpose, scope and assumptions [@Wang2023], the part on GSP is concerned with the quality and reliability of its software implementation. A good quality software is not restricted to good computer code, but can also aid to support the iterative model life cycle and help to follow Good Scientific Conduct [@DFG2022].
 
 <!-- Compute rmodel is only one part of the modeling cycle EFSA -->
 <!-- Clean code -->
 
-The concept of Good Software Practise can be traced back to the origin of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should also allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel: "Do not repeat yourself" (DRY). In 1996 Kernighan published the practise of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to @Stroop1960. But there was also a political component to it, advocated by Richard Stallman and implemented by researchers in universities like Berkeley and MIT: information should be free and computer programs should not be owned by companies but be public goods [@Stallman1994; @Stallman1983]. The Free Software movement emerged carrying the four basic freedoms to (1) run for any purpose, (2) be studied and modified, (3) distribute, and (4) modify and distribute [@Stallman2015].
+Independent of GMP, other scientific and technical fields where software plays a major role have developed the concept of Good Software Practise.
+This concept can be traced back to the origin of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should also allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel: "Do not repeat yourself" (DRY).
+In 1996 Kernighan published the practise of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to @Stroop1960. But there was also a political component to it, advocated by Richard Stallman and implemented by researchers in universities like Berkeley and MIT: information should be free and computer programs should not be owned by companies but be public goods [@Stallman1994; @Stallman1983]. The Free Software movement emerged carrying the four basic freedoms to (1) run for any purpose, (2) be studied and modified, (3) distribute, and (4) modify and distribute [@Stallman2015].
 
+<!--
 - Raymond provides a series of design rules:
 - Software Carpentry @Wilson2016 Software carpentry: t’s to teach computational competence: live coding, pair programming, open everthing
+-->
+
+Good software and good modeling practices have been brought together earlier: @Wilson2017 formulated "Good Enough Practices in Scientific Computing", addressing data managment, software organization, collaboration, project organization, change tracking, and manuscripts; @Comses2024c published a video tutorial series on "Responsible practices for Scientific Software", educating on the value of FAIR (Findable, Accessiple, Interoperable, Reusable, @ChueHong2022) principles, rich metadata, code management, archiving, documentation, and licensing.
+
+<!--
+Comses2024c
+https://www.comses.net/education/responsible-practices/
+-->
+
+Despite these published best practise guidelines, much of the model corpus is not published at all, and for a trivial reason: @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model. Here we aim to address this fear. We combine the existing advice on Good Modeling and on Good Software Practices, including those that address both, and break them down to concrete recipes on how to implement those good practices during the modeling software creation process. We start off by motivating each of the good practices and contextualizing them towards the goal of publishing a model software or a scientific result arising from model software. Then, we describe the tools that can be used in a non-exhausive way, but covering the entire range of good practices. You may deviate from the tools we selected, or disagree with them, and you may add others or leave some out that we suggested.
+
+<!-- Wilson:
+Scientists typically develop their own software for these purposes because doing so requires substantial domain-specific knowledge. As a result, recent studies have found that scientists typically spend 30% or more of their time developing software [1,2]. However, 90% or more of them are primarily self-taught [1,2], Prabhu2011 -->
 
 ## Structure
 
-All models start with a purpose. That is the number one Good Modeling Practise advice put forward: know the purpose of the model. It doesn't hurt to know about your domain, either! Speak to experts, develop a conceptual model, only then start formalizing your model in math or in software.
+All models start with a purpose. That is the number one Good Modeling Practise advice put forward: know the purpose of the model. It doesn't hurt to know about your domain, either! Speak to experts, develop a conceptual model, only then start formalizing your model in math or in software [e.g. @Wang2023;Grimm2010].
 
 Socio-environmental modeling software can be created by a single person; in fact, it often is in student projects or individual programming sprints<<!-- find reference -->. But even if only one person ever looks at her own code and applies it for simulations, she will have to have a development plan, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state of the software, she will have to have backups. She will have to have verifiable codes. All the software should be covered by tests.
 
@@ -324,7 +319,7 @@ Communicating results effectively.
 
 Use software templates, copy from other projects
 
-# Good enough software practise - a use case
+# Good enough modeling software practise - a use case
 
 Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
 
