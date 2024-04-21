@@ -84,7 +84,7 @@ Comses2024c
 https://www.comses.net/education/responsible-practices/
 -->
 
-Despite these published best practise guidelines, much of the model corpus is not published at all, and for a trivial reason: @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model. Here we aim to address this fear. We combine the existing advice on Good Modeling and on Good Software Practices, including those that address both, and break them down to concrete recipes on how to implement those good practices during the modeling software creation process. We start off by motivating each of the good practices and contextualizing them towards the goal of publishing a model software or a scientific result arising from model software. Then, we describe the tools that can be used in a non-exhausive way, but covering the entire range of good practices. You may deviate from the tools we selected, or disagree with them, and you may add others or leave some out that we suggested.
+Despite these published best practise guidelines, much of the model corpus is not published at all, and for a trivial reason: @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model. Here we aim to address this fear and help build confidence that the model code is good enough. We combine the existing advice on Good Modeling and on Good Software Practices, including those that address both, and break them down to concrete recipes on how to implement those good practices during the modeling software creation process. We start off by motivating each of the good practices and contextualizing them towards the goal of publishing a model software or a scientific result arising from model software. Then, we describe the tools that can be used in a non-exhausive way, but covering the entire range of good practices. You may deviate from the tools we selected, or disagree with them, and you may add others or leave some out that we suggested.
 
 <!-- Wilson:
 Scientists typically develop their own software for these purposes because doing so requires substantial domain-specific knowledge. As a result, recent studies have found that scientists typically spend 30% or more of their time developing software [1,2]. However, 90% or more of them are primarily self-taught [1,2], Prabhu2011 -->
@@ -132,35 +132,47 @@ While most reviewers may only need passive (read) access to the software, it is 
 
 # Tools for Good Modeling Software Practise
 
-The tools used should be adequate for the purpose of the modeling software, geared towards its software life cycle and tailored to its developer and user groups.
+## 1. Version control software
 
-## Before you start
+A transparent and reproducible distributed source code management (SCM, a modern term for version control system, VCS) is the basis for good software. The dominant SCM software is Git, originally invented by Linus Torvalds, the creator of Linux. As source code is text, the SCM tracks changes in lines or parts of lines of text. It can be very well used to manage other kinds of changing texts, such as the text of this manuscript. In fact, this manuscript was started with `git init; git add manuscript.md; git commit -m "Added empty manuscript"`, and has been evolving with repeated recording of small changes à la `git add -u; git commit -m "Added sections"`, with descriptive texts in quotation marks, the so-called commit messages.
 
-- Sustainability
-- Availability/Re-use
-- Life cycle.
+With graphical interfaces to Git (such as Fork, Sourcetree or Tortoise), it is now easy to follow the step-wise development of code (or text documents), go back to points in time or critical development stages, to open experimental deviations from main development (`git branch`) and combine diverging developments (`git merge`). Did you mess up? Simply retrace your step back `git revert`; it helps you even to find in the recorded history those developments where things might have unnoticingly gone wrong `git bisect`.
 
-## Ethics
-
-Public money - public code?
-
-## Source code management
-
-<!-- Start with version control, source code management, offene Issue-Struktur
-
-:::info
-- [ ] to be reviewed by Carsten
-- [ ] needs citations
-:::
+<!--  Joel Spolsky described distributed version control systems as "possibly the biggest advance in software development technology in the [past] ten years". https://www.joelonsoftware.com/2010/03/17/distributed-version-control-is-here-to-stay-baby/
 -->
 
-A transparent and reproducible source code management (SCM, a modern term for version control system, VCS) is the basis for good software. The most common implementation nowadays is using the SCM-Software Git in combination with an online repository (a version control service), either hosted on the publicly available platform GitHub, GitLab, or an on-premise GitLab hosted and managed by an academic institution. This online platform serves as entrypoint for collaborators to contribute, provides a ticketing system, and offers functionalities for continuous integration and continuous deployment of the software. The platform (GitHub, GitLab or on-premise GitLab) should be chosen based upon the target group of collaborators. Platforms that are used already within a community are preffered. When there is an organization on this platform already, the developer should aim for adding the source code repository to this organizaiton, in order to increase visibility of the software within the community. When there is no such platform, one may choose GitHub because of the higher amount of potential contributors on this platform. On-premise GitLabs often offer more powerful Continuous Integration systems and may be preferred by academic institution, because the code is then hosted in the research center or a dedicated subcontracted partner. If an on-premise solution is chosen, one should make sure that external collaborators or reviewers can gain access to the source code and participate in discussions. Ideally the on-premise platform allows self-contained account creation.
+Git and others are most powerful as distributed version control systems, in combination with other locations on your own computer, an intranet or the internet, for saving the software in different places (the "repositories") while keeping all those versions synchronized. The interaction of two repositories is managed by `git pull` and `git push`, i.e. unidirectional synchronizations. These synchronization commands can be used to synchronize the managed code also across different source code management services, effectively allowing redunandt and distributed backups minimizing the risk of losing the software from technical or human errors.
 
-Source code management is more than just an online backup for the code. The collaborative tools they offer, such as issues, merge/pull requests, and continous integration, improve the reusability of the code as they serve as documentation of the release and development workflow. Each of the following sections offer integrations with the source code management, and/or are represented by the tools that these platforms offer.
+## 2. Source code management service
 
-## Sustainability
+The most prominent online SCM services are GitHub, Sourceforge, and Gitlab, but many academic institutions also offer on-premise or cross-institutional GitLab or GitHub as a dedicated service for its students and researchers. The platform should be chosen based upon the target group of collaborators. Platforms that are used already within a community are preferred. When there is an organization, a project, or group on this platform already, the developer should aim for adding the source code repository to this organizaiton, in order to increase the visibility of the software within that community. When there is no such platform, one may choose GitHub because of the higher amount of potential contributors on this platform. On-premise GitLabs be preferred by academic institution, because the code is then hosted in the research center or a dedicated subcontracted partner.
 
-How long to you want to use the software? Is it a one-off?
+All platforms allow the development to be visible publicly or to be private or accessible only to a small user group <!-- ; with Git's distributed capabilities it is also straightforward to have both a public and a private version of a repository and synchronize from the private one, where development may be hidden, to a public one.-->
+
+This online platform serves as the entrypoint for collaborators to contribute, provides a ticketing system and release managment, and offers functionalities for continuous integration and continuous deployment of the software.
+
+### Ticketing system
+
+Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one typically records the occurrence of an error, a "bug report", or a wish for future development, a "feature request". This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system.
+
+<!-- If an on-premise solution is chosen, one should make sure that external collaborators or reviewers can gain access to the source code and participate in discussions. Ideally the on-premise platform allows self-contained account creation. often offer more powerful Continuous Integration systems and may
+-->
+
+Also Wikis, Discussions, ...
+
+### Release management
+
+Serve as documentation of the release and development workflow.
+
+### Pull requests
+
+### Continuous integration and deployment
+
+The collaborative tools they offer, such as issues, merge/pull requests, and continous integration, improve the reusability of the code as tEach of the following sections offer integrations with the source code management, and/or are represented by the tools that these platforms offer.
+
+<!--
+The tools used should be adequate for the purpose of the modeling software, geared towards its software life cycle and tailored to its developer and user groups.
+-->
 
 ## Licensing
 
@@ -168,9 +180,21 @@ How long to you want to use the software? Is it a one-off?
 
 Strategic decisions copyleft or no copyleft?
 
+- Availability/Re-use
+- Public money - public code?
+
 REUSE.softawre - License manifesto
 Fossology - License compatibility checking
 ORT
+
+## Before you start
+
+- Sustainability
+- Life cycle
+
+## Sustainability
+
+How long to you want to use the software? Is it a one-off?
 
 ## Contributor guideline
 
@@ -322,6 +346,3 @@ Use software templates, copy from other projects
 # Good enough modeling software practise - a use case
 
 Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
-
-<!-- Wilson:
-Scientists typically develop their own software for these purposes because doing so requires substantial domain-specific knowledge. As a result, recent studies have found that scientists typically spend 30% or more of their time developing software [1,2]. However, 90% or more of them are primarily self-taught [1,2], Prabhu2011
