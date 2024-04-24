@@ -235,19 +235,44 @@ Version control services, such as GitHub and GitLab, additionally allow the crea
 
 ## Documentation
 
-- readMe
-- User documentation
-- API documentation
-- Contributor/Developer Guide
+:::info
+
+- [ ] to be reviewed by Carsten
+- [ ] needs citations
+- [ ] needs to be shortened/reformatted?
+      :::
+
+A crucial aspect that often determines the software's impact and usability is its documentation. This chapter underscores the necessity of automated documentation for research software, focusing on six key components:
+
+1. **The Necessity of a Proper README**: The README file serves as the first point of contact between the user and the software. It provides an overview of the software, its purpose, and its scope. A well-crafted README can significantly enhance user experience by providing clear, concise, and relevant information about the software. It can also include a brief description of the software's architecture and its main components.
+
+2. **The Need for Installation Instructions**: Detailed and clear installation instructions eliminate guesswork, making the software accessible to a broader audience. These instructions should cover various operating systems and potential issues that might arise during the installation process. They should also specify the prerequisites, such as required libraries or dependencies.
+
+3. **The Need for User Manuals**: User manuals are essential for enabling other modelers to rerun and use your code. They provide step-by-step guidance on how to use the software, explaining the functionality of different modules, and providing examples of how to use them. This allows users to understand the software's capabilities and apply it effectively to their research.
+
+4. **The Necessity of an API Documentation**: API documentation provides a detailed description of how the software's functions work, the parameters they take, and the output they return. This is crucial for users who want to integrate the software into their own code or use it for more complex tasks. Good API documentation enhances the software's usability and encourages its adoption.
+
+5. **The Need for a Developer Guide**: A developer guide is essential for fostering a collaborative environment and encouraging contributions from other researchers. It provides guidelines on how to contribute to the software, the coding standards to follow, and the process for submitting changes. This ensures that the software continues to evolve and improve, benefiting the entire research community.
+
+6. **The Need for Automated Documentation Tools**: Tools like Sphinx or MkDocs, which automate the process of building documentation, are invaluable. They ensure that the documentation, including the API documentation, is always up-to-date. Additionally, they support doctests, which are tests embedded in the documentation. This ensures that the examples in the documentation work as expected, enhancing the reliability of the documentation.
 
 ## Code formatting
 
-- The code is the documentation
-  "Code should be written to minimize the time it would take for someone else to understand it." @Flesch1950
-- Code conventions
-- Black/Flake8/isort => but python specific
-- Prettier
-- linting?
+:::info
+
+- [ ] to be reviewed by Carsten
+- [ ] needs citations
+      :::
+
+@Flesch1950 once stated that "Code should be written to minimize the time it would take for someone else to understand it". This principle underscores the importance of code readability and maintainability, which can be significantly enhanced through automated code formatting and linting.
+
+Adherence to community conventions is a key aspect of this process. For instance, the PEP8 conventions for Python ensure consistency across different parts of the codebase. This makes the code easier to read and understand, thereby reducing the time it takes for someone else to comprehend it.
+
+Following such conventions can be facilitated by using automated formatters. They play a crucial role in maintaining these conventions. Tools like Black and isort for python adjust the code to meet specific formatting guidelines, eliminating the need for manual formatting and ensuring consistency across the codebase.
+
+Linters, such as flake8, go a step further by analyzing the code for potential errors and violations of coding standards. They provide feedback that can help developers improve their code quality and adhere to best practices.
+
+Linters and formatters should both be combined in pre-commit hooks. Pre-commit hooks facilitate the formatting and linting process by automatically running these tools before each commit. This ensures that all committed code adheres to the defined standards, further enhancing code quality and readability.
 
 ## Code Structure
 
@@ -267,11 +292,19 @@ Version control services, such as GitHub and GitLab, additionally allow the crea
 
 ## Code verification
 
-- unit testing (only available if you have units :=)
-- code coverage
-- doesitcompile?
-- Continuous integration
-- Reproducibility/regression tests
+:::info
+
+- [ ] to be reviewed by Carsten
+- [ ] needs citations
+      :::
+
+Code verification is a critical aspect of climate modelling. It ensures good scientific practice, as well as the accuracy and reliability of the models.
+
+Model developers should aim for using Continuous Integration (CI) in their software development process. Not only for post-processing software, but ideally even for the models themselves. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible. This practice is particularly important in climate modelling, where the codebase is often large and complex.
+
+The methods used in the CI ranges simple tests whether the models compile, over unit tests that check individual routines in the model, to reproducibility/regression tests that ensure the scientific validity and integrity of the model. The compilation test is a basic but essential step in the code verification. If the model doesn't compile, it's an immediate indication that there's an issue that needs to be addressed. Unit tests can be challenging to implement in the realm of climate modelling. This is because it's often difficult to extract small, independent parts from the larger codebase for testing. Despite these challenges, unit tests are crucial for maintaining code quality and should be implemented wherever possible.
+
+Finally, code coverage reports are an invaluable tool in code verification, in particular for post processing software that often contains analysis routines for various scientific questions. These reports provide a visual representation of what parts of the code are not covered by the test suite. This helps developers identify areas of the code that need more thorough testing.
 
 ## Continuous deployment
 
@@ -323,7 +356,9 @@ Communicating results effectively.
 - change of personnel
 -->
 
-:::example The Joel Test
+:::warning
+
+### The Joel Test
 
 - [ ] Do you use source control?
 - [ ] Can you make a build in one step?
