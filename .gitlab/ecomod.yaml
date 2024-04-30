@@ -11,6 +11,6 @@ ecomod-paper:
     - make pdf
   artifacts:
     paths:
-      - ./Lemmen2024_modelingpractise.pdf
+      - ./Lemmen2024_Sommer_ecologicalmodelling.pdf
   needs: []
   stage: build
