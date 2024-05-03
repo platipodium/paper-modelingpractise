@@ -53,18 +53,20 @@ abbreviations:
     long: Good Modeling Practise
   - short: OOP
     long: Object-oriented programming
+  - short: WIP
+    long: Work in progress
 ---
 
 # Introduction
 
 In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of formalization of such models ranges from conceptual models to mathematical equations and to implementations in software, and -- by definition -- all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological models.
 
-So models are plenty and omnipresent in our field. But despite their undoubted value, the approaches that socio-environmental models have taken have been criticised as "unscientific", as they often escape the requirment of falsifiability beyond the conceptual stage: the code may be verifiable only within accuracy and applicability ranges but not universally; the model may be validated only in site-specific application and towards specific performance criteria but not universally [@Refsgaard2004].
-So all we can and should do is to provide at best verified and validated models, and Good Modeling Practice (GMP) aims at ensuring this. Examples of such good practices often named are: a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality [e.g. @Crout2008]. The first reference to GMP may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). GMP became widespread first in the field of hydrology, with the first handbook on GMP by @VanWaveren1999; it has by now been applied to all areas of in socio-environmental, and socio-economic sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2010].
+So models are plenty and omnipresent in our field. But despite their undoubted value, the approaches that socio-environmental models have taken have been criticised as "unscientific", as they often escape the requirement of falsifiability beyond the conceptual stage: the code may be verifiable only within accuracy and applicability ranges but not universally; the model may be validated only in site-specific application and towards specific performance criteria but not universally [@Refsgaard2004].
+So all we can and should do is to provide at best verified and validated models, and Good Modeling Practice (GMP) aims at ensuring this. Examples of such good practices often named are: a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). Good Modeling Practise became widespread first in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has by now been applied to all areas of in socio-environmental, and socio-economic sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
 <!-- No good transition yet from prior paragraph -->
 
-@Jakeman2024 provide a list of studies on GMP (their table 1) and identify five main phases in the model life cycle, where GMP is relevant: (1) Problem scoping, (2) Problem conceptualization, (3) Model formulation and evaluation, (4) Model application, and (5) Model perpetuation, and the reiteration of these phase. Good Modeling Software Practices (GSP) span their phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of model -- possibly foremost its purpose, scope and assumptions [@Wang2023], the part on GSP is concerned with the quality and reliability of its software implementation. A good quality software is not restricted to good computer code, but can also aid to support the iterative model life cycle and help to follow Good Scientific Conduct [@DFG2022].
+@Jakeman2024 provide a list of studies on Good Modeling Practise (their table 1) and identify five main phases in the model life cycle, where it becomes relevant: (1) Problem scoping, (2) Problem conceptualization, (3) Model formulation and evaluation, (4) Model application, and (5) Model perpetuation, and the reiteration of these phase. Good Modeling Software Practices (GSP) span their phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of model -- possibly foremost its purpose, scope and assumptions [@Wang2023], the part on GSP is concerned with the quality and reliability of its software implementation. A good quality software is not restricted to good computer code, but can also aid to support the iterative model life cycle and help to follow Good Scientific Conduct [@DFG2022].
 
 <!-- Clean code -->
 
@@ -78,11 +80,6 @@ In 1996 Kernighan published the practise of programming, which was followed up b
 
 Good software and good modeling practices have been brought together earlier: @Wilson2017 formulated "Good Enough Practices in Scientific Computing", addressing data managment, software organization, collaboration, project organization, change tracking, and manuscripts;
 @Comses2024fair published a video tutorial series on "Responsible practices for Scientific Software", educating on the value of FAIR (Findable, Accessiple, Interoperable, Reusable, @ChueHong2022) principles, rich metadata, code management, archiving, documentation, and licensing.
-
-<!--
-Comses2024c
-https://www.comses.net/education/responsible-practices/
--->
 
 Despite these published best practise guidelines, much of the model corpus is not published at all, and for a trivial reason:
 @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
@@ -240,17 +237,17 @@ For the purpose of reproducibility and making software FAIR, any post processing
 - Semantic Versioning
 - Distribute pre-compiled binaries?
 
-:::info
+In contrast to standard journal publications, software is always a work-in-progress (WIP). Even if there are no new features implemented, software needs to receive regular updates because of the rapid technological development -- both in hardware as well as software. Without updates to the software, scientific analysis may become irreproducible because the software cannot be used, known as "code rot" [@Liew2017]; but also heterogeneous and scattered incremental updates of the the software may lead to "code decay", where the global code quality declines despite local improvements [@Eick2001].
 
-- [ ] to be reviewed by Carsten
-- [ ] needs citations
-      :::
+This need for continoues maintenance requires tracking the state of software and to record changes to software. The state can be recorded ideally by a _software bill of material_ [SBOM, @Stewart2022]. In the version-controlled source code, each state can be tagged, i.e. marked with an identifier `git tag` that carries a human readable short description of the state, as well as version information following the _semantic versioning_ or the _date versioning_ strategy[^semver]
 
-In contrast to standard journal publications, software is always a work-in-progress (WIP). Even if there are no new features implemented, software needs to receive regular updates because of the rapid technological development we are facing. Without updates to the software, scientific analysis may become irreproducible because the software cannot be used, known as "code rot".
+<!-- to make it reproducible, and in order to evaluate the analysis in the light of subsequent improvements of the software. -->
 
-This need for continoues maintenance requires tracking the state of the software. Each scientific analysis should state what versions has been used (ideally in form of a _software bill of material_ (needs citation, lookup)) to make it reproducible, and in order to evaluate the analysis in the light of subsequent improvements of the software. The version of the software is thereby derived from so-called _tags_ in the source code repository. Each _tag_ has a name and describes the version of the software at a specific point, for instance after a major feature integration. The name of the _tag_ should follow the _semantic versioning_ or the _date versioning_ strategy (https://semver.org/lang/de/, https://packaging.python.org/en/latest/specifications/version-specifiers/). By following these versioning schemes, one guarantees the human- and machine-readibility of the software state.
+The name of the _tag_ should follow the (https://semver.org/lang/de/, https://packaging.python.org/en/latest/specifications/version-specifiers/). By following these versioning schemes, one guarantees the human- and machine-readibility of the software state.
 
 Version control services, such as GitHub and GitLab, additionally allow the creation of so-called releases. _Releases_ are an addon to _tags_ in the source code repository and allow to equip the tag with additional notes, pre-compiled binaries of build artifacts, such as the documentation. Furthermore, _releases_ can and should be uploaded to an archive such as zenodo.org (see below), to make the software citeable at the given point in time.
+
+<!-- Add the possibility for a permanent DOI with changing versions on Zenodo -->
 
 ## Documentation
 
@@ -405,3 +402,5 @@ Use software templates, copy from other projects
 # Good enough modeling software practise - a use case
 
 Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
+
+[semver] https://semver.org/lang/de/
