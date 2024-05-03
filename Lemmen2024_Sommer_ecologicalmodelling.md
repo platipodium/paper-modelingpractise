@@ -233,19 +233,25 @@ For the purpose of reproducibility and making software FAIR, any post processing
 
 ## Versioning and Releasing
 
+<!--
 - Keepachangelog (also concerning input/output of the model)
-- Semantic Versioning
 - Distribute pre-compiled binaries?
+-->
 
 In contrast to standard journal publications, software is always a work-in-progress (WIP). Even if there are no new features implemented, software needs to receive regular updates because of the rapid technological development -- both in hardware as well as software. Without updates to the software, scientific analysis may become irreproducible because the software cannot be used, known as "code rot" [@Liew2017]; but also heterogeneous and scattered incremental updates of the the software may lead to "code decay", where the global code quality declines despite local improvements [@Eick2001].
 
-This need for continoues maintenance requires tracking the state of software and to record changes to software. The state can be recorded ideally by a _software bill of material_ [SBOM, @Stewart2022]. In the version-controlled source code, each state can be tagged, i.e. marked with an identifier `git tag` that carries a human readable short description of the state, as well as version information following the _semantic versioning_ or the _date versioning_ strategy[^semver]
+This need for continoues maintenance requires tracking the state of software and to record changes to software. The state can be recorded ideally by a _software bill of material_ [SBOM, @Stewart2022]. In an SCM, each state can be tagged, i.e. marked with an identifier `git tag` that carries a human readable short description as well as version information following a consistent strategy, such as _semantic versioning_[^semver] or _calendar versioning_[^datever].
 
 <!-- to make it reproducible, and in order to evaluate the analysis in the light of subsequent improvements of the software. -->
 
-The name of the _tag_ should follow the (https://semver.org/lang/de/, https://packaging.python.org/en/latest/specifications/version-specifiers/). By following these versioning schemes, one guarantees the human- and machine-readibility of the software state.
+SCM services also allow the creation of _releases_. They are an elaborated version of tags, and can include further resources, such as additional documentation or pre-compiled binaries. They also integrate with archiving services such as Zenodo (see below) upon a new release.
 
-Version control services, such as GitHub and GitLab, additionally allow the creation of so-called releases. _Releases_ are an addon to _tags_ in the source code repository and allow to equip the tag with additional notes, pre-compiled binaries of build artifacts, such as the documentation. Furthermore, _releases_ can and should be uploaded to an archive such as zenodo.org (see below), to make the software citeable at the given point in time.
+[^semver]: Semantic versioning https://semver.org/lang/de/
+[^datever]: Calendar versioning https://calver.org
+
+While changes to the source code are tracked in the SCM, the reasoning behind those and the user-focused communication of these changes should be kept in a change log (https://keepachangelog.com/en/1.1.0/), a technology since long enforcedby the GNU coding standard [@Schach2004].
+
+<!-- GNU coding standard 2002: You can think of the change log as a conceptual ‘‘undo list’’ which explains how earlier versions were different from the current version. People can see the current version; they don’t need the change log to tell them what is in it. What they want from a change log is a clear explanation of how the earlier version differed. -->
 
 <!-- Add the possibility for a permanent DOI with changing versions on Zenodo -->
 
@@ -302,9 +308,8 @@ Linters and formatters should both be combined in pre-commit hooks. Pre-commit h
 
 ## Maintenance
 
-- Code Rot
 - Regularly updating and maintaining code.
-- Keeping dependencies up to date.
+- Keeping dependencies up to date. -> packaging, SBOM
 
 ## Code verification
 
@@ -314,9 +319,9 @@ Linters and formatters should both be combined in pre-commit hooks. Pre-commit h
 - [ ] needs citations
       :::
 
-Code verification is a critical aspect of climate modelling. It ensures good scientific practice, as well as the accuracy and reliability of the models.
+Every time model code changes, it needs to be verified. The automation of the verification process as part of software development is termed Continuous Integration (CI) and is provided by an SCM service or an external one like Travis or Circle CI. <!-- should we name these? -->
 
-Model developers should aim for using Continuous Integration (CI) in their software development process. Not only for post-processing software, but ideally even for the models themselves. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible. This practice is particularly important in climate modelling, where the codebase is often large and complex.
+Not only for post-processing software, but ideally even for the models themselves. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible. This practice is particularly important in climate modelling, where the codebase is often large and complex.
 
 The methods used in the CI ranges simple tests whether the models compile, over unit tests that check individual routines in the model, to reproducibility/regression tests that ensure the scientific validity and integrity of the model. The compilation test is a basic but essential step in the code verification. If the model doesn't compile, it's an immediate indication that there's an issue that needs to be addressed. Unit tests can be challenging to implement in the realm of climate modelling. This is because it's often difficult to extract small, independent parts from the larger codebase for testing. Despite these challenges, unit tests are crucial for maintaining code quality and should be implemented wherever possible.
 
@@ -401,6 +406,5 @@ Use software templates, copy from other projects
 
 # Good enough modeling software practise - a use case
 
+^
 Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
-
-[semver] https://semver.org/lang/de/
