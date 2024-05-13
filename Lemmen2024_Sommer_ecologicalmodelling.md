@@ -55,14 +55,30 @@ abbreviations:
     long: Object-oriented programming
   - short: WIP
     long: Work in progress
+  - short: SemVer
+    long: Semantic versioning
+  - short: CalVer
+    long: Calendar versioning
+  - short: CI
+    long: Continuous Integration
+  - short: CD
+    long: Continuous Deployment
+  - short: CTA
+    long: Copyright Transfer Agreement
+  - short: CLA
+    long: Contributor License Agreement
+  - short: OS
+    long: Open Source
+  - short: OSI
+    long: Open Source Initiative
 ---
 
 # Introduction
 
-In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of formalization of such models ranges from conceptual models to mathematical equations and to implementations in software, and -- by definition -- all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological models.
+In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of a model's formalization ranges from conceptual to mathematical equations to implementation in software, and--by definition--all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological models.
 
-So models are plenty and omnipresent in our field. But despite their undoubted value, the approaches that socio-environmental models have taken have been criticised as "unscientific", as they often escape the requirement of falsifiability beyond the conceptual stage: the code may be verifiable only within accuracy and applicability ranges but not universally; the model may be validated only in site-specific application and towards specific performance criteria but not universally [@Refsgaard2004].
-So all we can and should do is to provide at best verified and validated models, and Good Modeling Practice (GMP) aims at ensuring this. Examples of such good practices often named are: a clear purpose of a model, a thorough domain understanding, going from simple to complex, ensuring reproducibility and validation with data; exploring sensitivities and carefully selecting data of good quality [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). Good Modeling Practise became widespread first in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has by now been applied to all areas of in socio-environmental, and socio-economic sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
+So models are plenty and omnipresent in our field. But despite their undoubted value, the approaches taken have been criticised as "unscientific", as they often escape the requirement of falsifiability beyond the conceptual stage: the code may be verifiable only within certain accuracy ranges but not universally; the model may be validated only in site-specific application but not universally [@Refsgaard2004].
+So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). Good Modeling Practise became widespread early in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
 <!-- No good transition yet from prior paragraph -->
 
@@ -70,8 +86,9 @@ So all we can and should do is to provide at best verified and validated models,
 
 <!-- Clean code -->
 
-Independent of GMP, other scientific and technical fields where software plays a major role have developed the concept of Good Software Practise. This concept can be traced back to the origin of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should also allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel: "Do not repeat yourself" (DRY).
-In 1996 Kernighan published the practise of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to @Stroop1960. But there was also a political component to it, advocated by Richard Stallman and implemented by researchers in universities like Berkeley and MIT: information should be free and computer programs should not be owned by companies but be public goods [@Stallman1983]. The Free Software movement emerged carrying the four basic freedoms to (1) run for any purpose, (2) be studied and modified, (3) distribute, and (4) modify and distribute [@Stallman1996].
+Independent of modeling, other scientific and technical fields where software plays a major role developed the concept of Good Software Practise. This concept can be traced back to the origin of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well", a later summary of the philosphy published by @Ritchie1974. These little tools should allow to develop new software in a better way, argued @Kernighan1976, cautioning against reinventing the weel: "Do not repeat yourself" (DRY). [@Kernighan1999] published the practise of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to @Stroop1960. But there was also a political component to it, advocated by Richard Stallman and implemented by researchers in universities like Berkeley and MIT: information should be free and computer programs should not be owned by companies but be public goods [@Stallman1983]. The Free Software movement emerged carrying the four basic freedoms to (1) run for any purpose, (2) be studied and modified, (3) distribute, and (4) modify and distribute [@Stallman1996].
+
+<!-- needs reference to GNU system -->
 
 <!--
 - Raymond provides a series of design rules:
@@ -192,14 +209,15 @@ The tools used should be adequate for the purpose of the modeling software, gear
 
 <!-- it's a nobrainer that you *have* to give permission -->
 
-Strategic decisions copyleft or no copyleft?
+Model software development is a creative process. It thus constitutes intellectual property and the right to determine how the model software can be used, re-used and shared and modified, the copy rights. The exact terms are laid down in what is called a license. Without a license there is no permission, so every model software needs a license, and with it the name of the person or organization holding the copyrights. While some model software may be published under proprietary licenses and without disclosing the source code, the majority of current modelings software is distributed as open source software, as defined by @OSI2024, and under a permissive or copyleft open source license, among them the widely used BSD, MIT, Apache and GPL licenses. <!-- ref most used licenses -->
 
-- Availability/Re-use
-- Public money - public code?
+<!-- public money public code -->
 
-REUSE.softawre - License manifesto
-Fossology - License compatibility checking
-ORT
+There are strategic decisions involved in choosing for copyleft versus permissive licenses, also related to the community in your field and dependent on third-party software used in your modeling software paper. There are tools to support choosing a license (REF), to manage licenses towards better reuse (REUSE.software), and to assess the compatibliity of differnet licenses with a project (Fossology)
+
+<!--  ORT -->
+
+With collaboration also comes the obligation to sort out the copy rights evolving from different contributors, who are all creators and thus natural copyright holders (or their organization). Your contributors may choose to assign their copyrights to you in what is usually called a copyright transfer agreement (CTA), and is well known from scientific publishing models before the Open Access (OA) movement. Your contributors permit you to exercise copy rights arising from their contribution in a separate agreement, a Contributor License Agreement (CLA). The Project Harmony supports the drafting of such CTA or CLA.
 
 ## Before you start
 
@@ -217,20 +235,6 @@ How long to you want to use the software? Is it a one-off?
 - Platforms, wikis, bugs, emails (oder ist das SCM?)
 - Attribution
 
-## Packaging
-
-:::info
-
-- [ ] to be reviewed by Carsten
-- [ ] needs citations
-- [ ] needs to distinguish pre- and post processing routines from real model
-- [ ] do some research whether there are models that are distributed as package
-      :::
-
-Packages are commonly used in programming languages to standardize and simplify the installation of software, and to make the software findable via machine- and human-readable metadata. We distinguish language-specific package managers, such as they exist for Python, Julia, R, NPM or Fortran, from language inpendent package managers, such as Debians `dpkg` or Continuums `conda`. Language independent package managers commonly rely on the language-specific ones and build packages for a specific operating system (e.g. Debian Linux) or ecosystem (e.g. `conda`).
-
-For the purpose of reproducibility and making software FAIR, any post processing routine, model or even small analysis scripts should be distibuted in form of a package. As packages declare dependencies, authorships, copyright, etc., they improve reusability and findability of the code. These packages should be built and deployed as part of the continuous integration and deployment pipeline to document the software architecture.
-
 ## Versioning and Releasing
 
 <!--
@@ -246,14 +250,30 @@ This need for continoues maintenance requires tracking the state of software and
 
 SCM services also allow the creation of _releases_. They are an elaborated version of tags, and can include further resources, such as additional documentation or pre-compiled binaries. They also integrate with archiving services such as Zenodo (see below) upon a new release.
 
-[^semver]: Semantic versioning https://semver.org/lang/de/
+[^semver]: Semantic versioning https://semver.org
 [^datever]: Calendar versioning https://calver.org
+[^changelog]: Keep a ChangeLog https://keepachangelog.com
 
-While changes to the source code are tracked in the SCM, the reasoning behind those and the user-focused communication of these changes should be kept in a change log (https://keepachangelog.com/en/1.1.0/), a technology since long enforcedby the GNU coding standard [@Schach2004].
+While changes to the source code are tracked in the SCM, the reasoning behind those and the user-focused communication of these changes should be kept in a change log (https://keepachangelog.com/en/1.1.0/), a technology since long enforcedby the GNU coding standard [@Chen2004].
 
 <!-- GNU coding standard 2002: You can think of the change log as a conceptual ‘‘undo list’’ which explains how earlier versions were different from the current version. People can see the current version; they don’t need the change log to tell them what is in it. What they want from a change log is a clear explanation of how the earlier version differed. -->
 
 <!-- Add the possibility for a permanent DOI with changing versions on Zenodo -->
+
+## Packaging
+
+:::info
+
+- [ ] to be reviewed by Carsten
+- [ ] needs citations
+- [ ] needs to distinguish pre- and post processing routines from real model
+- [ ] do some research whether there are models that are distributed as package
+- [ ] reference versioning section and versioneer
+      :::
+
+Packages are commonly used in programming languages to standardize and simplify the installation of software, and to make the software findable via machine- and human-readable metadata. We distinguish language-specific package managers, such as they exist for Python, Julia, R, NPM or Fortran, from language inpendent package managers, such as Debians `dpkg` or Continuums `conda`. Language independent package managers commonly rely on the language-specific ones and build packages for a specific operating system (e.g. Debian Linux) or ecosystem (e.g. `conda`).
+
+For the purpose of reproducibility and making software FAIR, any post processing routine, model or even small analysis scripts should be distibuted in form of a package. As packages declare dependencies, authorships, copyright, etc., they improve reusability and findability of the code. These packages should be built and deployed as part of the continuous integration and deployment pipeline to document the software architecture.
 
 ## Documentation
 
