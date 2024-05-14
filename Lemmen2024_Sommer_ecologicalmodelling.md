@@ -284,9 +284,9 @@ For the purpose of reproducibility and making software FAIR, any post processing
 - [ ] needs to be rewritten from a user-perspective. Who am I and what is my software, and what do I need?
       :::
 
-A crucial aspect that often determines the software's impact and usability is its documentation. This chapter underscores the necessity of automated documentation for research software, focusing on six key components:
+A crucial aspect that often determines the software's impact and usability is its documentation. Everybody knows inline comments for code, and they are indeed important, but they do not help other scientists in contributing or using the software. Above all, proper README-files are important. The README is the first entry point for the user of contributor to the software to understand, what he or she is looking at, as SCM services are rendering an HTML representation to the user. It provides an overview of the software, its purpose, and its scope. A well-crafted README can significantly enhance user experience by providing clear, concise, and relevant information about the software. It can also include a brief description of the software's architecture and its main components, as well as installation instructions.
 
-1. **The Necessity of a Proper README**: The README file serves as the first point of contact between the user and the software. It provides an overview of the software, its purpose, and its scope. A well-crafted README can significantly enhance user experience by providing clear, concise, and relevant information about the software. It can also include a brief description of the software's architecture and its main components.
+Besides inline comments and the README, there are several documentation methods that are of particular importance for post processing routines.
 
 2. **The Need for Installation Instructions**: Detailed and clear installation instructions eliminate guesswork, making the software accessible to a broader audience. These instructions should cover various operating systems and potential issues that might arise during the installation process. They should also specify the prerequisites, such as required libraries or dependencies.
 
