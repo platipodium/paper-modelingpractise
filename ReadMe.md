@@ -73,8 +73,7 @@ All submissions deemed suitable to be sent for peer review will be reviewed by a
 Keywords:
 Modelling practices; Integrated assessment and modelling; Socio-ecological systems; Decision support; uncertainty; scaling
 
-## Viable North Sea (ViNoS): A NetLogo Agent-based Model of German Small-scale Fisheries
+# Reviewers
 
-Viable North Sea (ViNoS) is an Agent-based Model (ABM) of the German Small-scale Fisheries. As a Social-Ecological Systems (SES) model it focusses on the adaptive behaviour of fishers facing regulatory, economic, and resource changes. Small-scale fisheries are an important part both of the cultural perception of the German North Sea coast and of its fishing industry. These fisheries are typically family-run operations that use smaller boats and traditional fishing methods to catch a variety of bottom-dwelling species, including plaice, sole, and brown shrimp.
-
-Fishers in the North Sea face area competition with other uses of the sea---long practiced ones like shipping, gas exploration and sand extractions, and currently increasing ones like marine protection and offshore wind farming (OWF). German authorities have just released a new maritime spatial plan implementing the need for 30% of protection areas (of these 30% as no-use zones) demanded by the United Nations High Seas Treaty and aiming at up to 70 GW of offshore wind power generation by 2045. Fisheries in the North Sea also have to adjust to the northward migration of their established resources following the climate heating of the water. And they have to re-evaluate their economic balance by figuring in the foreseeable rise in oil price and the need for re-investing into their aged fleet.
+- Maria Pierce (TI Baltic Sea Fisheries)
+- Koen Meesters (WUR Modeling group)
