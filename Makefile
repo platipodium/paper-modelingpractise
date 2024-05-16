@@ -75,10 +75,10 @@ ecomod-cover: ./assets/X03043800.jpg
 #%.pdf:	%.docx Makefile
 #	$(CMD) -s  --from docx --to pdf  -o $@ $<
 %.tex:	%.md  %.bib Makefile  style $(TEMPLATE) assets
-	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
+	$(CMD) -s  --filter divenv.py  --template=./$(TEMPLATE)  -o $@ $<
 
 %.pdf:	%.md  %.bib Makefile  style $(TEMPLATE) assets
-	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
+	$(CMD) -s  --filter divenv.py  --template=./$(TEMPLATE)  -o $@ $<
 
 %.docx:	%.md  %.bib Makefile pandoc-scholar.docx assets
 	$(CMD)--to=docx --reference-doc=pandoc-scholar.docx -s -o $@ $<
