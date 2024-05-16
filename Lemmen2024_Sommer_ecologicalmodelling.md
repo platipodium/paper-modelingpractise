@@ -71,6 +71,10 @@ abbreviations:
     long: Open Source
   - short: OSI
     long: Open Source Initiative
+  - short: RT
+    long: Regression Testing
+  - short: PR
+    long: Pull Request
 ---
 
 # Introduction
@@ -78,7 +82,7 @@ abbreviations:
 In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of a model's formalization ranges from conceptual to mathematical equations to implementation in software, and--by definition--all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological models.
 
 So models are plenty and omnipresent in our field. But despite their undoubted value, the approaches taken have been criticised as "unscientific", as they often escape the requirement of falsifiability beyond the conceptual stage: the code may be verifiable only within certain accuracy ranges but not universally; the model may be validated only in site-specific application but not universally [@Refsgaard2004].
-So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). Good Modeling Practise became widespread early in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
+So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). From here on, Good Modeling Practise were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
 <!-- No good transition yet from prior paragraph -->
 
@@ -157,49 +161,47 @@ How does an author deal with the feedback she receives during a friendly or jour
 
 ## Collaborators
 
-While most reviewers may only need passive (read) access to the software, it is often desirable to collaboratively develop the software, i.e. involve another person or persons in improving the software. With this collaboration come legal and governance decisions, as well as technical requirements. The legal once concerns copyrights of the different contributors, and often of the employers (research organizations): Many academic institutions do not have yet clear guidelines on the legal aspects of how to contribute to collaborative software or how to accept contributions by other institutions. These can be established in contributor agreements. <!-- often we have MoA or collaboration agreements as legal frameworks -->
+While most reviewers may only need passive (read) access to the software, it is often desirable to collaboratively develop the software, i.e. involve another person or persons in improving the software. With this collaboration come legal and governance decisions, as well as technical requirements. The legal once concerns copyrights of the different contributors, and often of the employers (research organizations): Many academic institutions do not have yet clear guidelines on the legal aspects of how to contribute to collaborative software or how to accept contributions by other institutions. These can be established in contributor agreements.
 
+<!-- often we have MoA or collaboration agreements as legal frameworks -->
 <!-- community building, badges -->
 
 # Tools for Good Modeling Software Practise
 
-## 1. Version control software
+## Version control software
 
 A transparent and reproducible distributed source code management (SCM, a modern term for version control system, VCS) is the basis for good software. The dominant SCM software is Git, originally invented by Linus Torvalds, the creator of Linux. As source code is text, the SCM tracks changes in lines or parts of lines of text. It can be very well used to manage other kinds of changing texts, such as the text of this manuscript. In fact, this manuscript was started with `git init; git add manuscript.md; git commit -m "Added empty manuscript"`, and has been evolving with repeated recording of small changes à la `git add -u; git commit -m "Added sections"`, with descriptive texts in quotation marks, the so-called commit messages.
 
-With graphical interfaces to Git (such as Fork, Sourcetree or Tortoise), it is now easy to follow the step-wise development of code (or text documents), go back to points in time or critical development stages, to open experimental deviations from main development (`git branch`) and combine diverging developments (`git merge`). Did you mess up? Simply retrace your step back `git revert`; it helps you even to find in the recorded history those developments where things might have unnoticingly gone wrong `git bisect`.
+With graphical interfaces to Git (such as Fork[^fork], Sourcetree[^sourcetree] or Tortoise[^tortoise]), it is now easy to follow the step-wise development of code (or text documents), go back to points in time or critical development stages, to open experimental deviations from main development (`git branch`) and combine diverging developments (`git merge`). Did you mess up? Simply retrace your step back `git revert`; it helps you even to find in the recorded history those developments where things might have unnoticingly gone wrong with `git bisect`.
 
 <!--  Joel Spolsky described distributed version control systems as "possibly the biggest advance in software development technology in the [past] ten years". https://www.joelonsoftware.com/2010/03/17/distributed-version-control-is-here-to-stay-baby/
 -->
 
-Git and others are most powerful as distributed version control systems, in combination with other locations on your own computer, an intranet or the internet, for saving the software in different places (the "repositories") while keeping all those versions synchronized. The interaction of two repositories is managed by `git pull` and `git push`, i.e. unidirectional synchronizations. These synchronization commands can be used to synchronize the managed code also across different source code management services, effectively allowing redunandt and distributed backups minimizing the risk of losing the software from technical or human errors.
+Git and others are most powerful as distributed version control systems, in combination with other locations on your own computer, an intranet or the internet, for saving your work in different places (the "repositories") while keeping all those versions synchronized. The interaction of two repositories is managed by `git pull` and `git push`, i.e. unidirectional synchronizations. These synchronization commands can be used to synchronize the managed code also across different source code management services, effectively allowing redunandt and distributed backups minimizing the risk of losing the software from technical or human errors.
 
-## 2. Source code management service
+## Source code management service
 
-The most prominent online SCM services are GitHub, Sourceforge, and Gitlab, but many academic institutions also offer on-premise or cross-institutional GitLab or GitHub as a dedicated service for its students and researchers. The platform should be chosen based upon the target group of collaborators. Platforms that are used already within a community are preferred. When there is an organization, a project, or group on this platform already, the developer should aim for adding the source code repository to this organizaiton, in order to increase the visibility of the software within that community. When there is no such platform, one may choose GitHub because of the higher amount of potential contributors on this platform. On-premise GitLabs be preferred by academic institution, because the code is then hosted in the research center or a dedicated subcontracted partner.
+Prominent online SCM services are GitHub, Sourceforge, and Gitlab, but many academic institutions also offer on-premise or cross-institutional GitLab or GitHub as a dedicated service for its students and researchers.
 
-All platforms allow the development to be visible publicly or to be private or accessible only to a small user group <!-- ; with Git's distributed capabilities it is also straightforward to have both a public and a private version of a repository and synchronize from the private one, where development may be hidden, to a public one.-->
+<!-- The platform should be chosen based upon the target group of collaborators. Platforms that are used already within a community are preferred. When there is an organization, a project, or group on this platform already, the developer should aim for adding the source code repository to this organizaiton, in order to increase the visibility of the software within that community. -->
 
+A good reason to choose GitHub is the higher amount of potential contributors on this platform; on-premise GitLabs may be preferred by academic institution, because the code is then hosted in the research center or a dedicated subcontracted partner. But ultimately, the platform should be chosen based upon the collaborator target group.
 This online platform serves as the entrypoint for collaborators to contribute, provides a ticketing system and release managment, and offers functionalities for continuous integration and continuous deployment of the software.
+
+<!--All platforms allow the development to be visible publicly or to be private or accessible only to a small user group  with Git's distributed capabilities it is also straightforward to have both a public and a private version of a repository and synchronize from the private one, where development may be hidden, to a public one.-->
 
 ### Ticketing system
 
-Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one typically records the occurrence of an error, a "bug report", or a wish for future development, a "feature request". This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system.
+Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one records the occurrence of an error, a "bug report", or a wish for future development, a "feature request". This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system. Beyond the ticketing system, the SCM service may also offer communication facilities like discussion forums, wikis, mailing list or help lines.
 
 <!-- If an on-premise solution is chosen, one should make sure that external collaborators or reviewers can gain access to the source code and participate in discussions. Ideally the on-premise platform allows self-contained account creation. often offer more powerful Continuous Integration systems and may
 -->
-
-Also Wikis, Discussions, ...
-
-### Release management
-
-Serve as documentation of the release and development workflow.
 
 ### Pull requests
 
 ### Continuous integration and deployment
 
-The collaborative tools they offer, such as issues, merge/pull requests, and continous integration, improve the reusability of the code as tEach of the following sections offer integrations with the source code management, and/or are represented by the tools that these platforms offer.
+The collaborative tools they offer, such as issues, merge/pull requests, and continous integration, improve the reusability of the code as each of the following sections offer integrations with the source code management, and/or are represented by the tools that these platforms offer.
 
 <!--
 The tools used should be adequate for the purpose of the modeling software, geared towards its software life cycle and tailored to its developer and user groups.
@@ -213,11 +215,18 @@ Model software development is a creative process. It thus constitutes intellectu
 
 <!-- public money public code -->
 
-There are strategic decisions involved in choosing for copyleft versus permissive licenses, also related to the community in your field and dependent on third-party software used in your modeling software paper. There are tools to support choosing a license (REF), to manage licenses towards better reuse (REUSE.software), and to assess the compatibliity of differnet licenses with a project (Fossology)
+There are strategic decisions involved in choosing for copyleft versus permissive licenses, also related to the community in your field and dependent on third-party software used in your modeling software paper. There are tools to support choosing a license[^choosealicense], to manage licenses towards better reuse[^reuse], and to assess the compatiblility of different licenses with a project[^fossology][^ort]
 
 <!--  ORT -->
 
-With collaboration also comes the obligation to sort out the copy rights evolving from different contributors, who are all creators and thus natural copyright holders (or their organization). Your contributors may choose to assign their copyrights to you in what is usually called a copyright transfer agreement (CTA), and is well known from scientific publishing models before the Open Access (OA) movement. Your contributors permit you to exercise copy rights arising from their contribution in a separate agreement, a Contributor License Agreement (CLA). The Project Harmony supports the drafting of such CTA or CLA.
+[^choosealicense]: https://choosealicense.com
+[^reuse]: https://reuse.software
+[^fossology]: https://www.fossology.org
+[^ort]: https://github.com/oss-review-toolkit/ort
+
+With collaboration also comes the obligation to sort out the copy rights evolving from different contributors, who are all creators and thus natural copyright holders (or their organization). Your contributors may choose to assign their copyrights to you in what is usually called a copyright transfer agreement (CTA), and is well known from scientific publishing models before the Open Access (OA) movement. Your contributors permit you to exercise copy rights arising from their contribution in a separate agreement, a Contributor License Agreement (CLA). The Project Harmony[^harmony] supports the drafting of such agreenments.
+
+[^harmony]: https://www.harmonyagreements.org
 
 ## Before you start
 
@@ -254,7 +263,7 @@ SCM services also allow the creation of _releases_. They are an elaborated versi
 [^datever]: Calendar versioning https://calver.org
 [^changelog]: Keep a ChangeLog https://keepachangelog.com
 
-While changes to the source code are tracked in the SCM, the reasoning behind those and the user-focused communication of these changes should be kept in a change log (https://keepachangelog.com/en/1.1.0/), a technology since long enforcedby the GNU coding standard [@Chen2004].
+While changes to the source code are tracked in the SCM, the reasoning behind those and the user-focused communication of these changes should be kept in a change log[^changelog], a technology since long enforcedby the GNU coding standard [@Chen2004].
 
 <!-- GNU coding standard 2002: You can think of the change log as a conceptual ‘‘undo list’’ which explains how earlier versions were different from the current version. People can see the current version; they don’t need the change log to tell them what is in it. What they want from a change log is a clear explanation of how the earlier version differed. -->
 
@@ -274,6 +283,11 @@ While changes to the source code are tracked in the SCM, the reasoning behind th
 Packages are commonly used in programming languages to standardize and simplify the installation of software, and to make the software findable via machine- and human-readable metadata. We distinguish language-specific package managers, such as they exist for Python, Julia, R, NPM or Fortran, from language inpendent package managers, such as Debians `dpkg` or Continuums `conda`. Language independent package managers commonly rely on the language-specific ones and build packages for a specific operating system (e.g. Debian Linux) or ecosystem (e.g. `conda`).
 
 For the purpose of reproducibility and making software FAIR, any post processing routine, model or even small analysis scripts should be distibuted in form of a package. As packages declare dependencies, authorships, copyright, etc., they improve reusability and findability of the code. These packages should be built and deployed as part of the continuous integration and deployment pipeline to document the software architecture.
+
+### Continuous deployment
+
+- Product updates
+- Documentation updates
 
 ## Documentation
 
@@ -333,29 +347,27 @@ Linters and formatters should both be combined in pre-commit hooks. Pre-commit h
 
 ## Code verification
 
-:::info
+Every time model code changes, it can break technically or produce unreasonable results. Such errors introduced by changes are called regressions. To prevent them, the model can be manually verified, but optimally, this process is automated as Continuous Integration (CI) and is provided by an SCM service or an external one like Travis[^travisci] or Circle CI[^circleci] [@Rosero2015]. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible.
 
-- [ ] to be reviewed by Carsten
-- [ ] needs citations
-      :::
+<!-- should we name Travis or Circle? -->
 
-Every time model code changes, it needs to be verified. The automation of the verification process as part of software development is termed Continuous Integration (CI) and is provided by an SCM service or an external one like Travis or Circle CI. <!-- should we name these? -->
+[^circleci]: Circle CI https://circleci.com
+[^travisci]: Travis CI https://www.travis-ci.com
 
-Not only for post-processing software, but ideally even for the models themselves. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible. This practice is particularly important in climate modelling, where the codebase is often large and complex.
+<!--  Not only for post-processing software, but ideally even for the models themselves.  -->
 
-The methods used in the CI ranges simple tests whether the models compile, over unit tests that check individual routines in the model, to reproducibility/regression tests that ensure the scientific validity and integrity of the model. The compilation test is a basic but essential step in the code verification. If the model doesn't compile, it's an immediate indication that there's an issue that needs to be addressed. Unit tests can be challenging to implement in the realm of climate modelling. This is because it's often difficult to extract small, independent parts from the larger codebase for testing. Despite these challenges, unit tests are crucial for maintaining code quality and should be implemented wherever possible.
+<!--
+This practice is particularly important in climate modelling, where the codebase is often large and complex. -->
 
-Finally, code coverage reports are an invaluable tool in code verification, in particular for post processing software that often contains analysis routines for various scientific questions. These reports provide a visual representation of what parts of the code are not covered by the test suite. This helps developers identify areas of the code that need more thorough testing.
+The methods used in the CI ranges simple tests whether the models compile, over unit tests that check individual routines in the model, to reproducibility/regression tests (RT) that ensure the scientific validity and integrity of the model (XXXXX).
 
-## Continuous deployment
+<!-- The compilation test is a basic but essential step in the code verification. If the model doesn't compile, it's an immediate indication that there's an issue that needs to be addressed. Unit tests can be challenging to implement in the realm of climate modelling. This is because it's often difficult to extract small, independent parts from the larger codebase for testing. Despite these challenges,  -->
 
-:::info
+Unit tests are crucial for maintaining code quality, and automate verification, and code should be written having the testing framework in mind. How much of the code is unit tested is reported as the
 
-- can be removed? is actually part of the above sections of packaging and documentation
-  :::
+<!-- We could reference Test Driven Developmenent -->
 
-- Product updates
-- Documentation updates
+code coverage. <!-- reports are an invaluable tool in code verification, in particular for post processing software that often contains analysis routines for various scientific questions --> These reports provide a visual representation of what parts of the code are <!-- not covered by the test suite. This helps developers identify areas of the code --> that need more thorough testing.
 
 ## Archiving
 
@@ -402,7 +414,7 @@ Communicating results effectively.
 - change of personnel
 -->
 
-:::warning
+::: warning
 
 ### The Joel Test
 
@@ -428,3 +440,15 @@ Use software templates, copy from other projects
 
 ^
 Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea small-scale fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python data preprocessing and postprocessing scripts.
+
+<!-- Hi Jasmin, thanks for sharing your work on „Good enou!gh“ for reproducibility t.b.s to the JSI soon.  I am finalising a paper for the same issue „Good Modeling Software Practise“, and I believer there could be some overlaps and potential to refer to each other.  I’d be happy to share my draft with you and of course would be interested to have a peek into yours!  Please contact me at carsten.lemmen@hereon.de
+
+Comment to this was that instead of bullet lists there should be hands-on. -->
+
+<!-- Rosero et al:
+RT is usually run manually, based on personal experience or randomly, in the
+best-case scenario. Recently, test automation has become popular, especially with
+the advent of the agile movement [7, 8] where approaches such as eXtreme Program-
+ming (XP), Test Driven Development (TDD), Continuous Integration or Continuous
+Delivery are regularly used.
+-->
