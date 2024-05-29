@@ -75,6 +75,10 @@ abbreviations:
     long: Regression Testing
   - short: PR
     long: Pull Request
+  - short: RSE
+    long: Research Software Engineer
+  - short: SSI
+    long: Software Sustainability Institute
 ---
 
 # Introduction
@@ -99,37 +103,25 @@ Cotemporaneously the Free Software movement emerged to emancipate software from 
 - Raymond provides a series of design rules:
 -->
 
-<!-- https://arxiv.org/pdf/1811.08473
-The Software Sustainability Institute (SSI, https://www.software.ac.uk/) was established in 2010 to cultivate better and more sustainable research software to enable world-class research: “Better software, better research.” The SSI is unique in supporting the mainstream of researchers across all disciplines. It has established itself as the de facto authority for research software practice, acting as a focal point to enable best practices to be shared within and between disciplines.
-Better Scientific Software site (https://bssw.io)
--->
+“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2018;Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like @Comses2024fair educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, @Wilson2017 formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts.
 
-Whenever data or software is used for research, it is now required to comply with the FAIR criteria, it must be Findable, Accessiple, Interoperable, and Reusable [@ChueHong2022]. They demand that software is (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022].
-
-<!-- FAIR4RS
-https://www.nature.com/articles/s41597-022-01710-x
--->
-<!-- Integrate next paragraph in previous for smoother transition -->
-
-Good research software and good modeling practices have been brought together earlier: @Wilson2017 formulated "Good Enough Practices in Scientific Computing", addressing data managment, software organization, collaboration, project organization, change tracking, and manuscripts;
-@Comses2024fair published a video tutorial series on "Responsible practices for Scientific Software", educating on the value of FAIR ( principles, rich metadata, code management, archiving, documentation, and licensing.
-
-Despite these published best practise guidelines, much of the model source code corups, roughly 80% [@Barton2022] is not published at all along with the scientific publication, and for a trivial reason:
+Despite these published best practise guidelines, much of the model source code corpus, roughly 80% [@Barton2022] is not published at all along with the scientific publication, and for a trivial reason:
 @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
-Here we aim to address this fear and help build confidence that the model code is good enough.
-We combine the existing advice on Good Modeling and on Good Software Practices, including those that address both, and break them down to concrete recipes on how to implement those good practices during the modeling software creation process.
+Here we aim to address this fear and help build confidence that the model code is good enough in line with @Wilson2016 and @Barnes2010;
+beyond those, we break them down to concrete recipes on how to implement those good practices during the modeling software creation process.
 We start off by motivating each of the good practices and contextualizing them towards the goal of publishing a model software or a scientific result arising from model software.
-Then, we describe the tools that can be used in a non-exhausive way, but covering the entire range of good practices.
+We describe the tools that can be used in a non-exhausive way covering the entire range of good practices.
 You may deviate from the tools we selected, or disagree with them, and you may add others or leave some out that we suggested.
-
-<!-- Wilson:
-Scientists typically develop their own software for these purposes because doing so requires substantial domain-specific knowledge. As a result, recent studies have found that scientists typically spend 30% or more of their time developing software [1,2]. However, 90% or more of them are primarily self-taught [1,2], Prabhu2011 -->
 
 ## Structure
 
 All models start with a purpose. That has since long bin the number one Good Modeling Practise advice put forward: know the purpose of the model. It doesn't hurt to know about your domain, either. Speak to experts, develop a conceptual model, only then start formalizing your model in math or in software [e.g. @Wang2023;Romanowvska2013;@Grimm2006].
 
 Socio-environmental modeling software can be created by a single person; in fact, it often is in studend or postdoc projects or individual programming sprints [@Hettrick2022].
+
+<!-- Wilson:
+Scientists typically develop their own software for these purposes because doing so requires substantial domain-specific knowledge. As a result, recent studies have found that scientists typically spend 30% or more of their time developing software [1,2]. However, 90% or more of them are primarily self-taught [1,2], Prabhu2011 -->
+
 But even if only one person ever looks at her own code and applies it for simulations, she will have to have a development plan, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state of the software, she will have to have backups. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update.
 
 If the model is to be used to produce scientific results subject to peer review, the single person will have to ensure replicability of results, will have to subject it to review (thus make it readable), and document it.
