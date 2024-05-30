@@ -79,6 +79,7 @@ abbreviations:
     long: Research Software Engineer
   - short: SSI
     long: Software Sustainability Institute
+acknowledgements: "Open Modeling Foundation"
 ---
 
 # Introduction
@@ -86,12 +87,12 @@ abbreviations:
 In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of a model's formalization ranges from conceptual to mathematical equations to implementation in software, and--by definition--all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate computational models, i.e. on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological model softwares.
 
 So computational models are plenty and omnipresent in our field. But despite their undoubted value, they have been criticised as "unscientific", as they often escape a strict requirement of falsifiability: the code may be verifiable only within certain accuracy ranges but not universally; the model may be validated only in site-specific application but not universally [@Refsgaard2004].
-So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity ... to parametrization" (p.16). From here on, GMP were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
+So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity [] to parametrization" (p.16). From here on, GMP were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
 Good Modeling Practises appear as five phases in the model life cycle [@Jakeman2024; their table 1]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modeling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model --- possibly foremost its purpose, scope and assumptions [@Wang2023] --- GMSP is concerned with the quality and reliability of a model's software implementation and beyons: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow
 Good Scientific Practise [@DFG2022].
 
-Other scientific and technical fields where software plays a major role developed the concept of Good Software Practise, which can be traced back to the origins of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well" [@Ritchie1974]. These little tools should allow to develop new software in a better way, argued @Kernighan1976, for example by following the DRY principle: "Do not repeat yourself", and to "keep it simple, stupid!" [@Stroop1960,@Raymond2003, KISS].
+Other scientific and technical fields where software plays a major role developed the concept of Good Software Practise, which can be traced back to the origins of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well" [@Ritchie1974]. These little tools should allow to develop new software in a better way, argued @Kernighan1976, for example by following the DRY principle: "Do not repeat yourself", and to KISS --- "keep it simple, stupid!" [@Stroop1960;@Raymond2003].
 
 <!--. [@Kernighan1999] published the practise of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to .
 There was also a political component to it, advocated by Richard Stallman and implemented by researchers in universities like Berkeley and MIT: information should be free and computer programs should not be owned by companies but be public goods [@Stallman1983]. T
@@ -99,11 +100,11 @@ There was also a political component to it, advocated by Richard Stallman and im
 
 Cotemporaneously the Free Software movement emerged to emancipate software from the ownership of companies and consider it a public good, which can be (1) run for any purpose, (2) studied and modified, (3) distributed, and (4) modified and distributed [@Stallman1983;@Stallman1996], and with it the practices to ensure these freedoms in Open Source software. Educating about good practices became central in projects such as the Software Carpentry [@Wilson2016], highlighting the utility of live coding, pair programming and "open everything".
 
-<!-- needs reference to GNU system, also transition to Open Source or Fress Software
+<!-- needs reference to GNU Stallmann 1984 system, also transition to Open Source or Fress Software
 - Raymond provides a series of design rules:
 -->
 
-“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2018;Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like @Comses2024fair educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, @Wilson2017 formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts.
+“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2019;@Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like @Comses2024fair educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, @Wilson2017 formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts.
 
 Despite these published best practise guidelines, much of the model source code corpus, roughly 80% [@Barton2022] is not published at all along with the scientific publication, and for a trivial reason:
 @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
@@ -115,35 +116,22 @@ You may deviate from the tools we selected, or disagree with them, and you may a
 
 ## Structure
 
-All models start with a purpose. That has since long bin the number one Good Modeling Practise advice put forward: know the purpose of the model. It doesn't hurt to know about your domain, either. Speak to experts, develop a conceptual model, only then start formalizing your model in math or in software [e.g. @Wang2023;Romanowvska2013;@Grimm2006].
+All models start with a purpose. That has since long bin the number one Good Modeling Practise advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;Romanowvska2013;@Grimm2006] to arrive at at your computational model -- the purpose-driven and simplified representation of your system in software.
 
-Socio-environmental modeling software can be created by a single person; in fact, it often is in studend or postdoc projects or individual programming sprints [@Hettrick2022].
+Socio-environmental modeling software can be created by a _single person_; in fact, it often is in student or postdoc projects or individual programming sprints [@Hettrick2022]. Unfortunately from a software developing perspective, the necessity of having to be a domain expert at the same time means that 90% of scientists are self-taught developers without formal training in Good Software Practise, and who spend 30% of their time on software development. [@Wilson2016] .
+That one person will have to read her own code and to apply it for simulations, she will have to align the software development with her research, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state. All of this necessitates to some degree that the work is stored redundantly in backups, and that changes are documented. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update [@Rosero2016].
 
-<!-- Wilson:
-Scientists typically develop their own software for these purposes because doing so requires substantial domain-specific knowledge. As a result, recent studies have found that scientists typically spend 30% or more of their time developing software [1,2]. However, 90% or more of them are primarily self-taught [1,2], Prabhu2011 -->
+If the model is to be used to produce scientific results subject to peer review, the single person will have to ensure replicability of results. She will have to subject it to review (thus make it readable), and document it. And if feasible, she might be asked to support the reviewers in executing the model somewhere outside her own computer infrastructure. When feedback comes, there should be a platform to file the individual concerns and address them.
 
-But even if only one person ever looks at her own code and applies it for simulations, she will have to have a development plan, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state of the software, she will have to have backups. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update.
+If at least one _other person_ is using the model, the permission issue --- also known as the license -- becomes pertinent. This other user needs a way to communicate with the developer, for feature requests or for reporting bugs. If that person intents to improve on your work, the permissions become more important, needing contributor agreements and codes of conduct. How are decisions made about the now joint modeling software --- some form of governance model needs to be stablished. With the growth of a community, even a community management system <!-- we dont talk about it yet --> might be required, with granular access, distributed roles, and fine-grained permissions. Regardless of the size of the collaboration structured reviews, pre-commits, and common coding standards can beused to maintain high code quality.
 
-If the model is to be used to produce scientific results subject to peer review, the single person will have to ensure replicability of results, will have to subject it to review (thus make it readable), and document it.
-To record the reviewer feedback and answer to it, there should be a platform to file the individual concerns and address them.
+Software sustainabilty is critical once a larger user base is established, other scientific software depends on the model, or the model is used for supporting scientific conclusions:
+Good Scientific Practise demands that primary data are available for a minimum of 10 years after when a scientific publications relies on them, and so should models [@DFG2022].
+This is often a difficult requirement when models are developed in externally funded projects, when hardware and software environment change, or where mobility requirements demand for relocations of staff and frequent change of jobs. Mobility is a good argument in such circumstances for Free Software which can be taken along.
 
-If at least one other person is using the model, the permission issue becomes pertinent.
-The model needs a license.
-Also the user needs a way to communicate with the developer, for feature requests or bugs/issues. Self checks and badges.
-
-If at least one other person is contributing to the model, the permissions become more important, needing contributor agreements and codes of conduct. How are decisions made?
-The more persons are contributing, the governance becomes more important.
-Even a community management system <!-- we dont talk about it yet --> might be required, with granular access, distributed roles, and fine-grained permissions. To
-keep the code quality, structured reviews, pre-commits, and common coding standards are used.
-
-Software sustainabilty is critical once a larger user base is established, or other scientific software depends on the model.
-Good Scientific Practise demands that primary data are available for a minimum of 10 years after when a scientific publications relies on them, and so should models.
-This is often a difficult requirement when models are developed in externally funded projects, when hardware and software environment change, or where mobility requirements demand for relocations of staff and frequent change of jobs.
-One criterion to assess whether software is sustainable is the truck factor, asking: "How many people can get hit by a truck, before the project becomes unmaintainable?"; the OpenSSF gold standard requires that is truck factor is $>= 3$ [@OpenSSF2024].
+<!-- @todo Citation needed on support from communities, also better phrasing. -->
 
 ### Single authors
-
-<!-- @Singer2008: “Software engineering is an intensely people-oriented activity, yet little is known about how software engineers perform their work.”2 -->
 
 Authors of scientific models eventually become authors or co-authors of scientific publications arising from or with the help of a model. As scientific authors, they are bound by ethical considerations such as the Guidelines for Safeguarding Good Research Practice, among them the unambiguous declaration of intellectual property to the work and ensuring availability of the model for a prolonged period of time [@DFG2022]. The declaration of intellectual property carries with it the proper acknowledgement of software the model is built on, and respecting the permissions pertaining to the sources used. The archiving requirement carries with it the obligation to ensure that technical failures or changes in the circumstances of the model author do not lead to the loss of the model: decentralized backups or public repositories help.
 
@@ -152,6 +140,10 @@ Authors of scientific models eventually become authors or co-authors of scientif
 For many scientific model authors, getting stuff done may be more important than documenting it thoroughly, usefulness is more valued than red tape, spontaneous ideas are implemented preferably over those layed down in a management plan; individual agency supersedes organizational processes. In this way, scientific model software development reflects the ideas formulated in agile development: "Individuals and interactions over processes and tools. Working software over comprehensive documentation. Customer collaboration over contract negotiation. Responding to change over following a plan" [@Beck2001]. And while the items on the left are valued more, the items on the right are still important.<!-- this could go to discussion -->
 
 There are many tools available to structure and ameliorate the work for the less preferred actions. Some that help with clarifying legal constraints and documentation, and others that help with structuring the development process, among them source code management services.
+
+One criterion to assess whether software is sustainable is the truck factor, asking: "How many people can get hit by a truck, before the project becomes unmaintainable?"; the OpenSSF gold standard requires that is truck factor is $>= 3$ [@OpenSSF2024].
+
+Self checks and badges.
 
 ### Reviewers
 
@@ -381,7 +373,7 @@ Linters and formatters should both be combined in pre-commit hooks. Pre-commit h
 
 ## Code verification
 
-Every time model code changes, it can break technically or produce unreasonable results. Such errors introduced by changes are called regressions. To prevent them, the model can be manually verified, but optimally, this process is automated as Continuous Integration (CI) and is provided by an SCM service or an external one like Travis[^travisci] or Circle CI[^circleci] [@Rosero2015]. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible.
+Every time model code changes, it can break technically or produce unreasonable results. Such errors introduced by changes are called regressions. To prevent them, the model can be manually verified, but optimally, this process is automated as Continuous Integration (CI) [@Rosero2016]. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible.
 
 <!-- should we name Travis or Circle?
 CircleCI bietet ssh Zugang zu Pipeline
@@ -511,6 +503,7 @@ Locally, a pre-commit workflow, triggered upon each `git commit` ensures that th
 Comment to this was that instead of bullet lists there should be hands-on. -->
 
 <!-- Rosero et al:
+15 Years of Software Regression Testing Techniques — A Survey
 RT is usually run manually, based on personal experience or randomly, in the
 best-case scenario. Recently, test automation has become popular, especially with
 the advent of the agile movement [7, 8] where approaches such as eXtreme Program-
@@ -532,11 +525,6 @@ Simon Hettrick, Radovan Bast, Alex Botzki, Jeff Carver, Ian Cosden, Steve Crouch
 
 -->
 
-<!-- Community Organizations: Changing the Culture in
-Which Research Software Is Developed and Sustained
-https://doi.org/10.1109/MCSE.2018.2883051  Katz2019
--->
-
 <!-- Allen 2019 http://aspbooks.org/publications/523/593.pdf
 Specify how you want your software cited. Be specific in how you want your software cited and make this information easy to find by putting it in your README, on the code’s home page, in a citation file using the citation file format (CFF) standard (Druskat et al. 2018) or a codemeta.json file (Jones et al. 2017). To comply with the Force11 Software Citation Principles and ensure citation tracking in ADS, request ci- tation for the software itself via ASCL ID or a DOI from an archival service, such as Zenodo or Figshare.
 
@@ -546,4 +534,4 @@ Release your code.. Specify how you want your software cited., Assign a license.
 <!--  Barton2020 https://www.pnas.org/doi/epdf/10.1073/pnas.2202112119
  Articles that report the results of models are frequentlynot sufficient to reproduce the models, even when the articles describe theunderlying concepts and assumptions. 80% do not provide access to the model code. .  met in December 2021 to establish the OpenModeling Foundation (OMF).. Opinon paper. -->
 
- <!-- Publish MVP minimum viable product -->
+ <!-- @Singer2008: “Software engineering is an intensely people-oriented activity, yet little is known about how software engineers perform their work.”2 -->
