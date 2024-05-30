@@ -236,6 +236,10 @@ There are strategic decisions involved in choosing for copyleft versus permissiv
 
 With collaboration also comes the obligation to sort out the copy rights evolving from different contributors, who are all creators and thus natural copyright holders (or their organization). Your contributors may choose to assign their copyrights to you in what is usually called a copyright transfer agreement (CTA), and is well known from scientific publishing models before the Open Access (OA) movement. Your contributors permit you to exercise copy rights arising from their contribution in a separate agreement, a Contributor License Agreement (CLA). The Project Harmony[^harmony] supports the drafting of such agreenments.
 
+<!--
+https://contributoragreements.org/ Fiduciary License agreements
+-->
+
 [^harmony]: https://www.harmonyagreements.org
 
 ### Contributor guideline
