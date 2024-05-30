@@ -98,6 +98,8 @@ abbreviations:
     long: Free and Open Source Software
   - short: OA
     long: Open Access
+  - short: PEP
+    long: Python Enhancement Proposal
 ---
 
 # Introduction
@@ -257,9 +259,13 @@ Beyond the ticketing system, the SCM service may also offer communication facili
 
 ### Continuous integration and deployment
 
-:::warning
-we still need this
-:::
+<!-- Hint to "Fail fast" philosophy?" -->
+
+CI is a development practise where developers integrate code into a shared repository frequently, ideally several times a day, but at least on every `git push` to a repository. Each integration is then verified by an automated build and automated tests to detect errors as quickly as possible; the frequent and automated check reduce the risk of accumulating errors.
+SCM services like GitLab or GitHub provide such automated integrations, called "Actions" on GitHub, but there are many CI tools available outside the comprehensive SCM services, such as Circle CI[^circleci].
+CD is often triggered after the CI ends with success. In this automation, the products of a modeling software can be provisioned, such as a complete binary package for download, an updated and nicely formatted documentation, or a suite of simulation results and their statistical evalution, for example. CD often interacts with other external services to update web pages, to upload to package repositories, or to submit to an archiving service.
+
+[^circleci]: Circle CI https://circleci.com
 
 ### Pull requests
 
@@ -436,20 +442,7 @@ Linters and formatters should both be combined in pre-commit hooks. Pre-commit h
 
 ## Code verification
 
-Every time model code changes, it can break technically or produce unreasonable results. Such errors introduced by changes are called regressions. To prevent them, the model can be manually verified, but optimally, this process is automated as Continuous Integration (CI) [@Rosero2016]. CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day. Each integration is then verified by an automated build and automated tests to detect integration errors as quickly as possible.
-
-<!-- should we name Travis or Circle?
-CircleCI bietet ssh Zugang zu Pipeline
--->
-
-:::warning
-PS: I would not name Travis and Circle CI explicitly. There are sooo many different CI providers nowadays. So why are we choosing these two?
-:::
-
-[^circleci]: Circle CI https://circleci.com
-[^travisci]: Travis CI https://www.travis-ci.com
-
-<!--  Not only for post-processing software, but ideally even for the models themselves.  -->
+Every time model code changes, it can break technically or produce unreasonable results. Such errors introduced by changes are called regressions. To prevent them, the model can be manually verified, but optimally, this process is automated as Continuous Integration (CI) [@Rosero2016].
 
 <!--
 This practice is particularly important in climate modelling, where the codebase is often large and complex. -->
@@ -593,17 +586,19 @@ Communicating results effectively.
 
 Despite the many benefits of good research software engineering techniques, the above mentioned techniques and tools unarguably put a significant burden on the scientist.
 
-Not only that it requires quite some time to get used to them, the rapid technological development makes it difficult to stay up-to-date. The diverse skill sets of researchers and time constraints further complicates the situation. Consequently, software often becomes obsolete, challenging to maintain, and prone to errors. New projects should therefore be derived from software templates that implement these techniques, such as [@Pirogov2024] or [@Sommer2024]. To maintain the software derived from these packages, one should utilize cruft [^https://cruft.github.io/cruft] such as demonstrated by [@Sommer2024], or cookietemple[^https://github.com/cookiejar/cookietemple/]. Especially the fork- and cruft-based approach by [@Sommer2024] provides a methodology for modelling ecosystems to provide a standardized setup for post-processing routines, plugins, etc., implementing all the techniques and tools from the previous section.
-
-::: info
+Not only that it requires quite some time to get used to them, the rapid technological development makes it difficult to stay up-to-date. The diverse skill sets of researchers and time constraints further complicates the situation. Consequently, software often becomes obsolete, challenging to maintain, and prone to errors. New projects should therefore be derived from software templates that implement these techniques, such as [@Pirogov2024] or [@Sommer2024]. To maintain the software derived from these packages, one can utilize cruft [^https://cruft.github.io/cruft] such as demonstrated by [@Sommer2024], or cookietemple[^https://github.com/cookiejar/cookietemple/]. Especially the fork- and cruft-based approach by [@Sommer2024] provides a methodology for modelling ecosystems to provide a standardized setup for post-processing routines, plugins, etc., implementing all the techniques and tools from the previous sections.
 
 # Good enough modeling software practise - a use case
 
-Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea coastal fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python/R data pre- and postprocessing scripts. Its source code is managed by Git, with a primary SCM service on an academic Gitlab and a secondary one on public Github. On the primary SCM, gitlab issues provide the ticketing system, a CI produces docker images of the software and its dependencies for different versions of the underlying operating system and the NetLogo IDE and then performs unit and replicability testing. As part of the CD, a small production simulation generates model results and pushes them to a static web page on the SCM service; the documents provided with the model (ODD, JOSS, this manuscript) are compiled from their version-controlled sources to pdfs and uploaded. The CD is integrated with mkdocs pushes to a public readthedocs instance for the user guide. On the secondary CI, a release management hooks into Zenodo to provide permanent and DOI citable archives for each model release.
-Locally, a pre-commit workflow, triggered upon each `git commit` ensures that the copyrights and license catalogs are complete for each file, that all structured documents comply with their respective type definition, and that python codes conform to PEP coding standards. The project
-:::
+Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea coastal fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python/R data pre- and postprocessing scripts. Its source code is managed by Git, with a primary SCM service on an academic Gitlab[^vinos-gitlab] and a secondary one on public Github. On the primary SCM, GitLab issues provide the ticketing system, a CI produces docker images of the software and its dependencies for different versions of the underlying operating system and the NetLogo IDE and then performs unit and replicability testing. As part of the CD, a small production simulation generates model results and pushes them to a static web page on the SCM service; the documents provided with the model (ODD, JOSS, this manuscript, and others) are compiled from their version-controlled sources to pdfs and uploaded. The CD is integrated with Mkdocs and pushes to a public readthedocs instance for the user guide. On the secondary CI, a release management hooks into Zenodo to provide permanent and DOI citable archives for each model release.
+Locally, a pre-commit workflow, triggered upon each `git commit` ensures that the copyrights and license catalogs are complete for each file, that all structured documents comply with their respective type definition, and that python codes conform to PEP8 coding standards. The tools used for this are `reuse`, `black`, `flake8`, more general formatters to remove empty line endings, syntax checkers for metadata in `yaml`, `toml`, and `json` structured formats, and the general-purpose code beautifier `prettier`.
+In the program root folder, a `CITATION.cff` suggests how to cite the software, a `codemeta.json` provides package metainformation, a `ChangeLog.md` the user-oriented change information. Every directory contains at least a `ReadMe.md`.
 
-## References {.unnumbered}
+[^vinos-gitlab]: https://codebase.helmholtz.cloud/mussel/netlogo-northsea-species
+
+# Conclusion
+
+# References {.unnumbered}
 
 <!-- Comment to this was that instead of bullet lists there should be hands-on. -->
 
