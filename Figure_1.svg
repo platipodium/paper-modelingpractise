@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="255.47444"
+   width="344.45749"
+   version="1.1"
+   id="svg192"
+   sodipodi:docname="gmp_triangle.svg"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs196">
+    <rect
+       x="-129.66103"
+       y="-68.644066"
+       width="583.47461"
+       height="446.18643"
+       id="rect527" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview194"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.5733333"
+     inkscape:cx="169.0678"
+     inkscape:cy="174.15254"
+     inkscape:window-width="1406"
+     inkscape:window-height="800"
+     inkscape:window-x="1777"
+     inkscape:window-y="98"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg192" />
+  <text
+     xml:space="preserve"
+     id="text525"
+     style="font-size:40px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect527)"
+     transform="translate(29.220277,-22.262774)" />
+  <path
+     sodipodi:type="star"
+     style="mix-blend-mode:normal;fill:#ffffff;stroke:#e3dbdb;stroke-width:7.50031;stroke-dasharray:none;stroke-opacity:1"
+     id="path583"
+     inkscape:flatsided="false"
+     sodipodi:sides="3"
+     sodipodi:cx="104.23729"
+     sodipodi:cy="88.983047"
+     sodipodi:r1="46.907902"
+     sodipodi:r2="93.815804"
+     sodipodi:arg1="0.30893077"
+     sodipodi:arg2="1.5497239"
+     inkscape:rounded="0"
+     inkscape:randomized="0"
+     d="M 148.92453,103.24494 106.21407,182.77802 69.54251,120.55239 22.020068,43.797502 94.244824,43.151815 184.47773,40.373618 Z"
+     inkscape:transform-center-x="-5.8713236"
+     inkscape:transform-center-y="12.471283"
+     transform="matrix(-1.3202797,-0.03165373,0.03105671,-1.3456604,310.36796,282.11087)" />
+  <g
+     id="g4424"
+     transform="translate(123.92366,-31.161079)">
+    <g
+       id="g6095"
+       transform="translate(-98.516949,-13.347458)">
+      <ellipse
+         style="fill:#eed7f4;stroke:#e3dbdb;stroke-width:3.77953;stroke-dasharray:none;stroke-opacity:1"
+         id="path2853"
+         cx="148.72881"
+         cy="78.177963"
+         rx="52.754238"
+         ry="31.779661" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:Poppins;text-align:center;text-anchor:middle"
+         x="149.36441"
+         y="65.466103"
+         id="text4413"><tspan
+           sodipodi:role="line"
+           id="tspan4411"
+           x="149.36441"
+           y="65.466103"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Good</tspan><tspan
+           sodipodi:role="line"
+           x="149.36441"
+           y="82.132729"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
+           id="tspan4417">Modeling</tspan><tspan
+           sodipodi:role="line"
+           x="149.36441"
+           y="98.799355"
+           id="tspan4415"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+    </g>
+  </g>
+  <g
+     id="g4424-2"
+     transform="translate(-93.449213,144.26264)">
+    <ellipse
+       style="fill:#ffe6d5;stroke:#e3dbdb;stroke-width:3.77953;stroke-dasharray:none;stroke-opacity:1"
+       id="path2853-2"
+       cx="148.09322"
+       cy="76.271187"
+       rx="52.754238"
+       ry="31.779661" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:Poppins;text-align:center;text-anchor:middle"
+       x="150"
+       y="63.559322"
+       id="text4413-6"><tspan
+         sodipodi:role="line"
+         id="tspan4411-6"
+         x="150"
+         y="63.559322"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Good</tspan><tspan
+         sodipodi:role="line"
+         x="150"
+         y="80.225945"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
+         id="tspan4417-7">Research</tspan><tspan
+         sodipodi:role="line"
+         x="150"
+         y="96.89257"
+         id="tspan4415-8"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:Poppins;text-align:center;text-anchor:middle"
+       x="274.55994"
+       y="-9.2205744"
+       id="text4413-6-1"><tspan
+         sodipodi:role="line"
+         id="tspan4411-6-0"
+         x="274.55994"
+         y="-9.2205744"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Good</tspan><tspan
+         sodipodi:role="line"
+         x="274.55994"
+         y="7.4460502"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
+         id="tspan4417-7-1">Modeling</tspan><tspan
+         sodipodi:role="line"
+         x="274.55994"
+         y="24.112675"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
+         id="tspan6088">Software</tspan><tspan
+         sodipodi:role="line"
+         x="274.55994"
+         y="40.779301"
+         id="tspan4415-8-8"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+    <g
+       id="g4424-7"
+       transform="translate(235.16949,1.2711902)">
+      <ellipse
+         style="fill:#d7f4e3;stroke:#e3dbdb;stroke-width:3.77953;stroke-dasharray:none;stroke-opacity:1"
+         id="path2853-4"
+         cx="148.09322"
+         cy="76.271187"
+         rx="52.754238"
+         ry="31.779661" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:Poppins;text-align:center;text-anchor:middle"
+         x="150"
+         y="63.559322"
+         id="text4413-4"><tspan
+           sodipodi:role="line"
+           id="tspan4411-9"
+           x="150"
+           y="63.559322"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Good</tspan><tspan
+           sodipodi:role="line"
+           x="150"
+           y="80.225945"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
+           id="tspan4417-1">Software</tspan><tspan
+           sodipodi:role="line"
+           x="150"
+           y="96.89257"
+           id="tspan4415-5"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+    </g>
+  </g>
+</svg>

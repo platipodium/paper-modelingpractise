@@ -130,7 +130,7 @@ $for(author)$
 \author%
 $if(author.affil)$[$author.affil$]$endif$%
 {%
-$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
+%$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
 $author.name$$if(author.email)$\corref{$author.email$}$endif$}
 $sep$$endfor$
 

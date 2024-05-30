@@ -115,4 +115,7 @@ docker-make:
 	docker run -v $(shell pwd):/home -it ubuntu-pandoc make -C /home
 
 declaration: declaration_of_interest.md
-	pandoc -o declaration_of_interest.pdf $<
+	pandoc -o declaration_of_interest.docx $<
+
+Figure_1.pdf: Figure_1.svg
+	svg2pdf $< $@
