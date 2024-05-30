@@ -25,7 +25,9 @@ bibliography: paper.bib
 SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 SPDX-License-Identifier: CC-BY-4.0
 abstract: "In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.  Along the modeling chain, Good Modeling Practices have been evolving that ensure -- amongst others -- that models are transparent and replicable.   Whenever such models are represented in software, good modeling meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, publication of a software paper and archiving. Too often in existing socio-environemntal model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding.  We here argue for making a habit of following a list of simple and not so simple practices early on in the implementation of the model.  We contextualize cherry-picked and hands-on practices for supporting good modeling practises, and we demonstrate their application in the example context of the Viable North Sea fisheries socio-ecological systems model."
-acknowledgements: "This research is funded by the program Changing Coasts of the Helmholtz Society of German Research Centres and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by BMBF."
+acknowledgements:
+ - "This research is funded by the program Changing Coasts of the Helmholtz Society of German Research Centres and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by BMBF, and the DataHub Project of the Helmholtz Association [@Castell2023, https://doi.org/10.5194/egusphere-egu23-14605]."
+ - "Open Modeling Foundation"
 conflictsofinterests: "The authors declare that no conflict of interest has arisen from this work."
 authorcontributions: "C. Lemmen: Conceptualization, Methodology, Writing – original draft, Writing – review & editing. P. Sommer: Writing - original draft, Writing - review & editing."
 abbreviations:
@@ -79,18 +81,35 @@ abbreviations:
     long: Research Software Engineer
   - short: SSI
     long: Software Sustainability Institute
-acknowledgements: "Open Modeling Foundation"
+  - short: MIT
+    long: Massachusetts Institute of Technology
+  - short: BSD
+    long: Berkeley Software Distribution
+  - short: GNU
+    long: GNU is Not Unix
+  - short: GPL
+    long: GNU General Public License
+  - short: CC
+    long: Creative Commons
+  - short: DOI
+    long: Digital Object Identifier
+  - short: OMF
+    long: Open Modeling Foundation
+  - short: JOSS
+    long: Journal of Open Source Software
+acknowledgement: "C.L. and P.S. were both funded by the PACES programme Changing Coasts of the Helmholtz Gemeinschaft.  C.L. also received funding from the German Ministry of Education and Research through the KüNO project 'Multiple Stressors on North Sea Life' (MuSSeL) with grant number 03F0862A. This manuscript benefitted from discussions in the context of the Open Modeling Foundation (OMF, https://www.openmodelingfoundation.org). We thank the open source communities that make ours and other modelers' work possible, among them the developers of and contributors to Git, Python, pandoc, and LaTeX."
+conflictsofinterests: "The authors declare that no conflict of interest has arisen from this work."
+authorcontributions: "C.L: Conceptualization, Methodology, Project administration, Writing – original draft, Writing – review & editing. P.S.: Writing – original draft, Writing – review & editing."
 ---
 
 # Introduction
 
-In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of a model's formalization ranges from conceptual to mathematical equations to implementation in software, and--by definition--all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate computational models, i.e. on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological model softwares.
+In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of a model's formalization ranges from conceptual to mathematical equations to implementation in software, and--by definition--all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on computational models, i.e. on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological model softwares.
 
 So computational models are plenty and omnipresent in our field. But despite their undoubted value, they have been criticised as "unscientific", as they often escape a strict requirement of falsifiability: the code may be verifiable only within certain accuracy ranges but not universally; the model may be validated only in site-specific application but not universally [@Refsgaard2004].
 So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity [] to parametrization" (p.16). From here on, GMP were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
-Good Modeling Practises appear as five phases in the model life cycle [@Jakeman2024; their table 1]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modeling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model --- possibly foremost its purpose, scope and assumptions [@Wang2023] --- GMSP is concerned with the quality and reliability of a model's software implementation and beyons: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow
-Good Scientific Practise [@DFG2022].
+Good Modeling Practises appear as five phases in the model life cycle [@Jakeman2024; their table 1]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modeling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model --- possibly foremost its purpose, scope and assumptions [@Wang2023] --- GMSP is concerned with the quality and reliability of a model's software implementation and beyond: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow Good Scientific Practise [@DFG2022].
 
 Other scientific and technical fields where software plays a major role developed the concept of Good Software Practise, which can be traced back to the origins of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well" [@Ritchie1974]. These little tools should allow to develop new software in a better way, argued @Kernighan1976, for example by following the DRY principle: "Do not repeat yourself", and to KISS --- "keep it simple, stupid!" [@Stroop1960;@Raymond2003].
 
@@ -104,10 +123,19 @@ Cotemporaneously the Free Software movement emerged to emancipate software from 
 - Raymond provides a series of design rules:
 -->
 
-“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2019;@Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like @Comses2024fair educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, @Wilson2017 formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts.
+“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2019;@Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like [@Comses2024fair] educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, [@Wilson2017] formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts.
+
+:::warning
+
+> And as this seems too large a burden for many, [@Wilson2017] formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts.
+
+- PS: Müssen wir genauer darauf eingehen was wir daraus ableiten und was das für das paper hier bedeutet?
+  :::
+
+<!-- Do we need to talk about CARE, too? -->
 
 Despite these published best practise guidelines, much of the model source code corpus, roughly 80% [@Barton2022] is not published at all along with the scientific publication, and for a trivial reason:
-@Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
+[@Barnes2010]'s survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
 Here we aim to address this fear and help build confidence that the model code is good enough in line with @Wilson2016 and @Barnes2010;
 beyond those, we break them down to concrete recipes on how to implement those good practices during the modeling software creation process.
 We start off by motivating each of the good practices and contextualizing them towards the goal of publishing a model software or a scientific result arising from model software.
@@ -116,7 +144,7 @@ You may deviate from the tools we selected, or disagree with them, and you may a
 
 ## Structure
 
-All models start with a purpose. That has since long bin the number one Good Modeling Practise advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;Romanowvska2013;@Grimm2006] to arrive at at your computational model -- the purpose-driven and simplified representation of your system in software.
+All models start with a purpose. That has since long bin the number one Good Modeling Practise advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at at your computational model -- the purpose-driven and simplified representation of your system in software.
 
 Socio-environmental modeling software can be created by a _single person_; in fact, it often is in student or postdoc projects or individual programming sprints [@Hettrick2022]. Unfortunately from a software developing perspective, the necessity of having to be a domain expert at the same time means that 90% of scientists are self-taught developers without formal training in Good Software Practise, and who spend 30% of their time on software development. [@Wilson2016] .
 That one person will have to read her own code and to apply it for simulations, she will have to align the software development with her research, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state. All of this necessitates to some degree that the work is stored redundantly in backups, and that changes are documented. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update [@Rosero2016].
@@ -127,15 +155,13 @@ If at least one _other person_ is using the model, the permission issue --- also
 
 Software sustainabilty is critical once a larger user base is established, other scientific software depends on the model, or the model is used for supporting scientific conclusions:
 Good Scientific Practise demands that primary data are available for a minimum of 10 years after when a scientific publications relies on them, and so should models [@DFG2022].
-This is often a difficult requirement when models are developed in externally funded projects, when hardware and software environment change, or where mobility requirements demand for relocations of staff and frequent change of jobs. Mobility is a good argument in such circumstances for Free Software which can be taken along.
+This is often a difficult requirement when models are developed in externally funded projects, when hardware and software environment change, or where mobility requirements demand for relocations of staff and frequent change of jobs. Mobility is a good argument in such circumstances for releasing your model as Free Software so that you can take it along.
 
-<!-- @todo Citation needed on support from communities, also better phrasing. -->
+<!-- @todo Citation needed on support from communities, -->
 
 ### Single authors
 
 Authors of scientific models eventually become authors or co-authors of scientific publications arising from or with the help of a model. As scientific authors, they are bound by ethical considerations such as the Guidelines for Safeguarding Good Research Practice, among them the unambiguous declaration of intellectual property to the work and ensuring availability of the model for a prolonged period of time [@DFG2022]. The declaration of intellectual property carries with it the proper acknowledgement of software the model is built on, and respecting the permissions pertaining to the sources used. The archiving requirement carries with it the obligation to ensure that technical failures or changes in the circumstances of the model author do not lead to the loss of the model: decentralized backups or public repositories help.
-
-- software life cycle
 
 For many scientific model authors, getting stuff done may be more important than documenting it thoroughly, usefulness is more valued than red tape, spontaneous ideas are implemented preferably over those layed down in a management plan; individual agency supersedes organizational processes. In this way, scientific model software development reflects the ideas formulated in agile development: "Individuals and interactions over processes and tools. Working software over comprehensive documentation. Customer collaboration over contract negotiation. Responding to change over following a plan" [@Beck2001]. And while the items on the left are valued more, the items on the right are still important.<!-- this could go to discussion -->
 
@@ -143,11 +169,9 @@ There are many tools available to structure and ameliorate the work for the less
 
 One criterion to assess whether software is sustainable is the truck factor, asking: "How many people can get hit by a truck, before the project becomes unmaintainable?"; the OpenSSF gold standard requires that is truck factor is $>= 3$ [@OpenSSF2024].
 
-Self checks and badges.
-
 ### Reviewers
 
-To be published in a scientific journal, reviewers need to be able to access and understand the model. Various documentation principles can help to ensure this accessibility, including automatically generated application programming interface references, in-code documentation and the generation of Metadata. Advice on how to write the code is old and simple: "Write code that minimizes the time it would take someone else to understand it---even if that someone else is you." [@Flesch1950].
+To be published in a scientific journal, reviewers need to be able to access and understand the model. Various documentation principles can help to ensure this accessibility, including automatically generated application programming interface references, in-code documentation and the generation of metadata. Advice on how to write the code is old and simple: "Write code that minimizes the time it would take someone else to understand it---even if that someone else is you." [@Flesch1950].
 
 But even before a reviewer invests her time in evaluating a model software, much can be done in advance by the author herself. In fact, where a reviewer might concentrate on model validation, the author could ensure model verification [@Sargent1994]. Verification answers the questions: Does the code do what the author intends it to do? To ensure this, it has become good software practise to employ unit testing and try to reach a good coverage of the test framework over your entire code base [@Ellims2006], and to integrate automated verification with the source code management service as Continuous Integration [CI,@Shahin2017].
 
@@ -157,6 +181,7 @@ How does an author deal with the feedback she receives during a friendly or jour
 
 While most reviewers may only need passive (read) access to the software, it is often desirable to collaboratively develop the software, i.e. involve another person or persons in improving the software. With this collaboration come legal and governance decisions, as well as technical requirements. The legal once concerns copyrights of the different contributors, and often of the employers (research organizations): Many academic institutions do not have yet clear guidelines on the legal aspects of how to contribute to collaborative software or how to accept contributions by other institutions. These can be established in contributor agreements.
 
+<!-- Possibly merge the above sections so that the single - reviewer -
 <!-- often we have MoA or collaboration agreements as legal frameworks -->
 <!-- community building, badges -->
 
@@ -164,86 +189,83 @@ While most reviewers may only need passive (read) access to the software, it is 
 
 The tools used here can roughly be categorized as version control, source code management system, licensing, documentation, packaging, good code, archiving and maintenance, and publication.
 
-<!--
-How long to you want to use the software? Is it a one-off?
--->
-
 <!-- Todo structue below sections under these (or other ) headings -->
 
 ## Version control software
 
-A transparent and reproducible distributed source code management (SCM, a modern term for version control system, VCS) is the basis for good software. The dominant SCM software is Git, originally invented by Linus Torvalds, the creator of Linux. As source code is text, the SCM tracks changes in lines or parts of lines of text. It can be very well used to manage other kinds of changing texts, such as the text of this manuscript. In fact, this manuscript was started with `git init; git add manuscript.md; git commit -m "Added empty manuscript"`, and has been evolving with repeated recording of small changes à la `git add -u; git commit -m "Added sections"`, with descriptive texts in quotation marks, the so-called commit messages.
+A transparent and reproducible distributed source code management (SCM, a modern term for version control system, VCS) is the basis for good software and has been termed "possibly the biggest advance in software development technology" [@Spolsky2010]. The dominant SCM software is Git[^git], originally invented by Linus Torvalds, the creator of Linux. As source code is text, the SCM tracks changes in lines or parts of lines of text. It can be very well used to manage other kinds of changing texts, such as the text of this manuscript. In fact, this manuscript was started with `git init;` `git add manuscript.md;` `git commit -m "Added empty manuscript"`, and has been evolving with repeated recording of small changes à la `git add -u; git commit -m "Added sections"`, with descriptive texts in quotation marks, the so-called commit messages.
 
-With graphical interfaces to Git (such as Fork[^fork], Sourcetree[^sourcetree] or Tortoise[^tortoise]), it is now easy to follow the step-wise development of code (or text documents), go back to points in time or critical development stages, to open experimental deviations from main development (`git branch`) and combine diverging developments (`git merge`). Did you mess up? Simply retrace your step back `git revert`; it helps you even to find in the recorded history those developments where things might have unnoticingly gone wrong with `git bisect`.
+[^git]: https://git-scm.com open source distributed VCS Git. Note: all URLs in this manuscript have been last visited and checked on May 30, 2024.
 
-<!--  Joel Spolsky described distributed version control systems as "possibly the biggest advance in software development technology in the [past] ten years". https://www.joelonsoftware.com/2010/03/17/distributed-version-control-is-here-to-stay-baby/
--->
+With graphical interfaces to Git, such as Sourcetree[^sourcetree], it is now easy to follow the step-wise development of code (or text documents), go back to points in time or critical development stages, to open experimental deviations from main development (`git branch`) and combine diverging developments (`git merge`). Did you mess up? Simply retrace your step back `git revert`; it helps you even to find in the recorded history those developments where things might have unnoticingly gone wrong with `git bisect`.
 
-Git and others are most powerful as distributed version control systems, in combination with other locations on your own computer, an intranet or the internet, for saving your work in different places (the "repositories") while keeping all those versions synchronized. The interaction of two repositories is managed by `git pull` and `git push`, i.e. unidirectional synchronizations. These synchronization commands can be used to synchronize the managed code also across different source code management services, effectively allowing redunandt and distributed backups minimizing the risk of losing the software from technical or human errors.
+[^sourcetree]: https://www.sourcetreeapp.com free Git client
+
+Git and others are most powerful as distributed VCS, in combination with other locations on your own computer, an intranet or the internet, for saving your work in different places (the "repositories") while keeping all those versions synchronized. The interaction of two repositories is managed by the unidirectional synchronizations `git pull` and `git push`. These commands can be used to synchronize the managed code also across different SCM services, effectively allowing redundant and distributed backups minimizing the risk of losing the software from technical or human errors or the risk of vendor lock-in [@Nyman2013].
 
 ## Source code management service
 
-Prominent online SCM services are GitHub, Sourceforge, and Gitlab, but many academic institutions also offer on-premise or cross-institutional GitLab or GitHub as a dedicated service for its students and researchers.
+The most prominent online SCM service is GitHub[^github], but many academic institutions also offer on-premise or cross-institutional dedicated SCM services, such as Lower Saxony's community GitLab[^gitlab] for their students and researchers.
 
 <!-- The platform should be chosen based upon the target group of collaborators. Platforms that are used already within a community are preferred. When there is an organization, a project, or group on this platform already, the developer should aim for adding the source code repository to this organizaiton, in order to increase the visibility of the software within that community. -->
 
-A good reason to choose GitHub is the higher amount of potential contributors on this platform; on-premise GitLabs may be preferred by academic institution, because the code is then hosted in the research center or a dedicated subcontracted partner. But ultimately, the platform should be chosen based upon the collaborator target group.
-This online platform serves as the entrypoint for collaborators to contribute, provides a ticketing system and release managment, and offers functionalities for continuous integration and continuous deployment of the software.
+A good reason to choose GitHub is the higher amount of potential contributors on this platform; on-premise GitLabs may be preferred by academic institution, because the code is then hosted in the research center or by a dedicated subcontracted partner and may offer better data protection. <!-- But ultimately, the platform should be chosen based upon the collaborator target group. -->
+This online platform serves as the entrypoint for collaborators to contribute, provides a ticketing system and release management, and offers functionalities for continuous integration and continuous deployment of the software.
+
+[^github]: https://github.com Public GitHub
+[^gitlab]: https://gitlab.gwdg.de/ Lower Saxony Academic Cloud GitLab
 
 <!--All platforms allow the development to be visible publicly or to be private or accessible only to a small user group  with Git's distributed capabilities it is also straightforward to have both a public and a private version of a repository and synchronize from the private one, where development may be hidden, to a public one.-->
 
 ### Ticketing system
 
-Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one records the occurrence of an error, a "bug report", or a wish for future development, a "feature request". This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system. Beyond the ticketing system, the SCM service may also offer communication facilities like discussion forums, wikis, mailing list or help lines.
+Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one records the occurrence of an error, a "bug report", or a wish for future development, a "feature request". This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system.
+Beyond the ticketing system, the SCM service may also offer communication facilities like discussion forums, wikis, mailing list or help lines, which often provide cross-referencing functionality to Git commits and issues.
 
 <!-- If an on-premise solution is chosen, one should make sure that external collaborators or reviewers can gain access to the source code and participate in discussions. Ideally the on-premise platform allows self-contained account creation. often offer more powerful Continuous Integration systems and may
 -->
 
-### Pull requests
-
 ### Continuous integration and deployment
 
-The collaborative tools they offer, such as issues, merge/pull requests, and continous integration, improve the reusability of the code as each of the following sections offer integrations with the source code management, and/or are represented by the tools that these platforms offer.
+:::warning
+we still need this
+:::
 
-<!--
-The tools used should be adequate for the purpose of the modeling software, geared towards its software life cycle and tailored to its developer and user groups.
--->
+### Pull requests
+
+Pull requests (PR) offer an SCM service managed way to accept other people's changes to your software into your development. Collaborators typically duplicate your software in a _fork_, apply changes locally and then file a PR providing a detailed explanation of the modifications and their purpose. The SCM service allows you to review the changes, possibly ask for further explanations or modifications, to have it automatically tested with CI, and finally to `git merge` the collaborator's work.
 
 ## Licensing
 
-<!-- it's a nobrainer that you *have* to give permission -->
-
-Model software development is a creative process. It thus constitutes intellectual property and the right to determine how the model software can be used, re-used and shared and modified, the copy rights. The exact terms are laid down in what is called a license. Without a license there is no permission, so every model software needs a license, and with it the name of the person or organization holding the copyrights. While some model software may be published under proprietary licenses and without disclosing the source code, the majority of current modelings software is distributed as open source software, as defined by @OSI2024, and under a permissive or copyleft open source license, among them the widely used BSD, MIT, Apache and GPL licenses. <!-- ref most used licenses -->
+Model software development is a creative process. It thus constitutes intellectual property and the right to determine how the model software can be used, re-used and shared and modified, the copyrights. The exact terms are laid down in what is called a license. Without a license there is no permission, so every model software needs a license, and with it the name of the person or organization holding the copyrights. While some model software may be published under proprietary licenses and without disclosing the source code, the majority of current modelings software is distributed as open source software, as defined by @OSI2024, and under a permissive or copyleft open source license, among them the widely used BSD, MIT, Apache and GPL licenses. <!-- ref most used licenses -->
 
 <!-- public money public code -->
 
-There are strategic decisions involved in choosing for copyleft versus permissive licenses, also related to the community in your field and dependent on third-party software used in your modeling software paper. There are tools to support choosing a license[^choosealicense], to manage licenses towards better reuse[^reuse], and to assess the compatiblility of different licenses with a project[^fossology][^ort]
+### Choosing and sorting out different licenses
 
-<!--  ORT -->
+There are strategic decisions involved in choosing for copyleft versus permissive licenses, also related to the community in your field and dependent on third-party software used in your modeling software paper. There are tools to support choosing a license[^choosealicense], to manage licenses towards better reuse[^reuse], and to assess the compatiblility of different licenses with a project[^fossology]^,^[^ort].
 
 [^choosealicense]: https://choosealicense.com
 [^reuse]: https://reuse.software
 [^fossology]: https://www.fossology.org
 [^ort]: https://github.com/oss-review-toolkit/ort
 
-With collaboration also comes the obligation to sort out the copy rights evolving from different contributors, who are all creators and thus natural copyright holders (or their organization). Your contributors may choose to assign their copyrights to you in what is usually called a copyright transfer agreement (CTA), and is well known from scientific publishing models before the Open Access (OA) movement. Your contributors permit you to exercise copy rights arising from their contribution in a separate agreement, a Contributor License Agreement (CLA). The Project Harmony[^harmony] supports the drafting of such agreenments.
+### Contributions
 
-<!--
-https://contributoragreements.org/ Fiduciary License agreements
--->
+With collaboration also comes the obligation to sort out the copyrights evolving from different contributors, who are all creators and thus natural copyright holders (or their organization). Your contributors may choose to assign their copyrights to you in what is usually called a copyright transfer agreement (CTA), and is well known from scientific publishing models before the Open Access (OA) movement. Your contributors may permit you to exercise copyrights arising from their contribution in a separate agreement, a Contributor License Agreement (CLA) or a Fiduciary License Agreement. Project Harmony[^harmony] or the Contributor Agreements[^contributoragreements] support the drafting of such agreements.
 
-[^harmony]: https://www.harmonyagreements.org
+[^harmony]: https://www.harmonyagreements.org Project Harmony
+[^contributoragreements]: https://contributoragreements.org Contributor Agreements
 
-### Contributor guideline
+### Collaboration
 
-:::warning
-Carsten schreibt die section
+<!-- @Singer2008: “ yet little is known about how software engineers perform their work.”2 -->
 
-- Project Harmony
-- Contributor Covenant (Code of Conduct)
-- Platforms, wikis, bugs, emails (oder ist das SCM?)
-- Attribution
-  :::
+Collaborative software engineering is an intensely people-oriented activity [@Singer2008]; to keep both the software as well as the collaboration healthy, many projects adhere to the Contributor Covenant[^covenant]. This provides guidelines for respectful and constructive behavior, it prohibits harassment and discrimination, and overall help maintain a positive and welcoming environment.
+
+[^covenant]: https://www.contributor-covenant.org Contributor Covenant
+
+<!-- git blame does not record individual contributions (they are overwritten), -->
 
 ## Versioning and Releasing
 
@@ -254,11 +276,8 @@ Carsten schreibt die section
 
 In contrast to standard journal publications, software is always a work-in-progress (WIP). Even if there are no new features implemented, software needs to receive regular updates because of the rapid technological development -- both in hardware as well as software. Without updates to the software, scientific analysis may become irreproducible because the software cannot be used, known as "code rot" [@Liew2017]; but also heterogeneous and scattered incremental updates of the the software may lead to "code decay", where the global code quality declines despite local improvements [@Eick2001].
 
-This need for continoues maintenance requires tracking the state of software and to record changes to software. The state can be recorded ideally by a _software bill of material_ [SBOM, @Stewart2022]. In an SCM, each state can be tagged, i.e. marked with an identifier `git tag` that carries a human readable short description as well as version information following a consistent strategy, such as _semantic versioning_[^semver] or _calendar versioning_[^datever].
-
-<!-- to make it reproducible, and in order to evaluate the analysis in the light of subsequent improvements of the software. -->
-
-SCM services also allow the creation of _releases_. They are an elaborated version of tags, and can include further resources, such as additional documentation or pre-compiled binaries. They also integrate with archiving services such as Zenodo (see below) upon a new release.
+This need for continoues maintenance requires tracking the state of software and to record changes to software beyond the capabilities offered by `git log`. The state can be recorded ideally by a _software bill of material_ [SBOM, @Stewart2022]. In an SCM, each state can be marked with an identifier `git tag` that carries a human readable short description as well as version information following a consistent strategy, such as _semantic versioning_[^semver] or _calendar versioning_[^datever].
+SCM services in addition allow the creation of _releases_. They are an elaborated version of tags, and can include further resources, such as additional documentation or pre-compiled binaries. They also integrate with archiving services such as Zenodo (see below) upon a new release.
 
 [^semver]: Semantic versioning https://semver.org
 [^datever]: Calendar versioning https://calver.org
@@ -267,8 +286,6 @@ SCM services also allow the creation of _releases_. They are an elaborated versi
 While changes to the source code are tracked in the SCM, the reasoning behind those and the user-focused communication of these changes should be kept in a change log[^changelog], a technology since long enforcedby the GNU coding standard [@Chen2004].
 
 <!-- GNU coding standard 2002: You can think of the change log as a conceptual ‘‘undo list’’ which explains how earlier versions were different from the current version. People can see the current version; they don’t need the change log to tell them what is in it. What they want from a change log is a clear explanation of how the earlier version differed. -->
-
-<!-- Add the possibility for a permanent DOI with changing versions on Zenodo -->
 
 ## Bundling your application
 
@@ -405,14 +422,56 @@ code coverage. <!-- reports are an invaluable tool in code verification, in part
 
 :::warning
 
-- [ ] needs to be written (PS)
+- [x] needs to be written (PS)
+  - Unfortunately I am not familiar with OpenABM.org, so I left this out
+- [ ] to be reviewed by Carsten
       :::
 
+Archiving the source code for model and post-processing routines is essential
+to follow Good Scientific Practices. As modellers change their working
+conditions frequently, it is crucial that this archive is publicly available,
+and stable for at least ten years.
+
+The most simple solution for open-source projects is using the Software
+Heritage Project[^software-heritage]. Many SCMs are already
+crawled by this project, so when you upload your repository and make it
+publicly available, it will be archived automatically. If your SCM is not
+crawled by the Software Heritage Project, you can add it manually.
+
+A more citeable archiving solution is guaranteed by uploading
+the source code and generating a Digital Object Identifier (DOI). There are
+various institutional platforms that offer this service, the most prominent
+one being Zenodo[^zenodo]. Uploading source code on zenodo does not
+only archive the source code, it makes it citeable, too. To improve the
+findability of the upload on zenodo, one should additionally group the projects
+into so-called communities. Either there are already existing communities, or
+the modelling community itself decides to create a community.
+
+Most of these platforms additionally offer to create versioned DOIs, meaning
+that each upload gets its own DOI, and all versions are shown on the same page.
+You should use this framework in combination with releases. That way, each
+release gets its own DOI and the contributions to the release are citable.
+Various helpers exist to automate this upload, such as Zenodo's
+GitHub integration[^zenodo-integration], or the hermes workflow[^hermes] [@Druskat2022].
+
+[^software-heritage]: https://www.softwareheritage.org/
+[^zenodo]: https://zenodo.org
+[^zenodo-integration]: https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content
+[^hermes]: https://github.com/hermes-hmc/hermes
+
+<!-- Add the possibility for a permanent DOI with changing versions on Zenodo -->
+
+<!--
+- Meinel, M., Druskat, S., Kelling, J., Bertuch, O., Knodel, O., & Pape, D. hermes (Version proof-of-concept) [Computer software]
+ -->
+
+<!--
 - OpenABM.org
 - Zenodo (communities)
 - DOI
 - softwareheritage.org
 - hermes
+ -->
 
 ## Governance
 
@@ -433,11 +492,41 @@ A benevolent dictator in software development refers to a leadership style where
 
 :::warning
 
-- [ ] needs to be written (PS)
+- [x] needs to be written (PS)
+- [ ] to be reviewed by Carsten
       :::
 
+Many journals nowadays request to publish the source code that has been used
+to generate figures alongside to the journal publication. While this is
+useful from the reusability perspective, it does not acknowledge the amount of
+work that has been put into the software, documentation, etc., nor does it take
+into account that the software might be developped further after the paper has
+been published.
+
+Therefore we recommend to publish software not only as part of the scientific
+publication, but additionally in a software journal, such as the Journal of
+Open Source Software [JOSS, @Smith2018].
+These journals are meant to be _developer-friendly_, i.e. when following the
+above-mentioned tools for your software, then the barriers
+to publish in these journals are usually quite low. But you get the benefit
+of a peer-reviewed journal publication and acknowledgments of your work on the
+code.
+
+Nevertheless, journal publications are not domain-specific, so they do not
+generally improve the findability of your software. Therefore the most
+important aspect on publish your code (or its metadata) is to list it in a
+platform that your colleagues know.
+We mentioned the communities on Zenodo[^zenodo-communities]
+already, an alternative might be the Research Software Directory[^rsd] [@Spaaks2020]
+that allows to groups software into projects.
+
+[^zenodo-communities]: https://zenodo.org/communities/
+[^rsd]: https://research-software-directory.org/, https://helmholtz.software
+
+<!--
 - Software paper => not part of doc
 - Research Software directory => know your community
+ -->
 
 # Self-checks and badges
 
@@ -533,5 +622,3 @@ Release your code.. Specify how you want your software cited., Assign a license.
 
 <!--  Barton2020 https://www.pnas.org/doi/epdf/10.1073/pnas.2202112119
  Articles that report the results of models are frequentlynot sufficient to reproduce the models, even when the articles describe theunderlying concepts and assumptions. 80% do not provide access to the model code. .  met in December 2021 to establish the OpenModeling Foundation (OMF).. Opinon paper. -->
-
- <!-- @Singer2008: “Software engineering is an intensely people-oriented activity, yet little is known about how software engineers perform their work.”2 -->
