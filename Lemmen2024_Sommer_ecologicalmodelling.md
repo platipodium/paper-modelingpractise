@@ -231,6 +231,8 @@ Git and others are most powerful as distributed VCS, in combination with other l
 
 ## Source code management service
 
+<!-- With subsections Ticketing, CI/CD, PR -->
+
 The most prominent online SCM service is GitHub[^github], but many academic institutions also offer on-premise or cross-institutional dedicated SCM services, such as Lower Saxony's community GitLab[^gitlab] for their students and researchers.
 
 <!-- The platform should be chosen based upon the target group of collaborators. Platforms that are used already within a community are preferred. When there is an organization, a project, or group on this platform already, the developer should aim for adding the source code repository to this organizaiton, in order to increase the visibility of the software within that community. -->
@@ -275,6 +277,8 @@ Pull requests (PR) offer an SCM service managed way to accept other people's cha
 
 ## Licensing
 
+<!-- With subsections choosing, contribution and collaboration -->
+
 Model software development is a creative process. It thus constitutes intellectual property and the right to determine how the model software can be used, re-used and shared and modified, i.e. the copyrights.
 The exact terms are laid down in what is called a license. Without a license there is no permission, so every model software needs a license, and with it the name of the person or organization holding the copyrights. While some model software may be published under proprietary licenses and without disclosing the source code, the majority of current modelings software is distributed as open source software, as defined by @OSI2024, and under a permissive or copyleft open source license, among them the widely used BSD, MIT, Apache and GPL licenses.
 
@@ -309,10 +313,7 @@ Collaborative software engineering is an intensely people-oriented activity [@Si
 
 ## Versioning and Releasing
 
-<!--
-- Keepachangelog (also concerning input/output of the model)
-- Distribute pre-compiled binaries?
--->
+<!-- With no subsections -->
 
 In contrast to standard journal publications, software is always a work-in-progress (WIP). Even if there are no new features implemented, software needs to receive regular updates because of the rapid technological development -- both in hardware as well as software. Without updates to the software, scientific analysis may become irreproducible because the software cannot be used, known as "code rot" [@Liew2017]; but also heterogeneous and scattered incremental updates of the the software may lead to "code decay", where the global code quality declines despite local improvements [@Eick2001].
 
@@ -328,6 +329,8 @@ While changes to the source code are tracked in the SCM, the reasoning behind th
 <!-- GNU coding standard 2002: You can think of the change log as a conceptual ‘‘undo list’’ which explains how earlier versions were different from the current version. People can see the current version; they don’t need the change log to tell them what is in it. What they want from a change log is a clear explanation of how the earlier version differed. -->
 
 ## Bundling your application
+
+<!-- With subsections packaging, containers -->
 
 :::info
 
@@ -376,21 +379,21 @@ podman (redhat) und kubernetes for container orchestration.
 
 ## Documentation
 
-:::info
+<!-- With subsection ReadMe, contributing guide , automated documentaiton, badges -->
 
-- [ ] to be reviewed by Carsten
-- [ ] needs citations
-- [x] needs to be rewritten from a user-perspective. Who am I and what is my software, and what do I need?
-      :::
+Proper documentation often determines a model software's impact and usability. Most developers use inline comments for code, and they are indeed important, but their impact on helping other scientists in contributing or using the software is limited. Above all, proper ReadMe text files (often in Markdown format as `ReadMe.md`) are important, even if the author is its sole user. The ReadMe is the first entry point for the user to the software to understand what he or she is looking at, as SCM services are rendering an HTML representation.
+A ReadMe can provide an overview of the software, its purpose, and its scope. A well-crafted ReadMe can enhance user experience by providing clear, concise, and relevant information about the software. It can also include a brief description of the software's architecture and its main components, as well as installation instructions.
 
-Proper documentation often determines a model software's impact and usability. Most developers use inline comments for code, and they are indeed important, but their impact on helping other scientists in contributing or using the software is limited. Above all, proper ReadMe text files (often in Markdown format) are important, even if the author is her sole user. The ReadMe is the first entry point for the user of contributor to the software to understand, what he or she is looking at, as SCM services are rendering an HTML representation to the user. It can provide an overview of the software, its purpose, and its scope. A well-crafted ReadMe can enhance user experience by providing clear, concise, and relevant information about the software. It can also include a brief description of the software's architecture and its main components, as well as installation instructions.
+A contributing guide, often in the form of a `Contributing.md` file, fosters a collaborative environment and encourages contributions from other researchers. It provides guidelines on how to contribute to the software, the coding standards to follow, and the process for submitting changes. This ensures that the software continues to evolve and improve, benefitting the entire research community.
 
-Another essential part of your documentation is the contributing guide. This document fosters a collaborative environment and encourages contributions from other researchers. It provides guidelines on how to contribute to the software, the coding standards to follow, and the process for submitting changes. This ensures that the software continues to evolve and improve, benefitting the entire research community.
+For post-processing routines, that shall be used by other researchers as well, automated documentation tools like Sphinx[^sphinx] or MkDocs[^mkdocs] help creating a well-documented and user-friendly software. They automate the process of building documentation.
 
-For post-processing routines, that shall be used by other researchers as well, automated documentation tools like Sphinx[^sphinx] or MkDocs[^mkdocs] exist that help creating a well-documented and user-friendly software. They automate the process of building documentation, and are invaluable in any long-living software project. They ensure that the documentation, including the API documentation, is always up-to-date. Additionally, they support doctests, which are tests embedded in the documentation. This ensures that the examples in the documentation work as expected, enhancing the reliability of the documentation. Such documentations should at their minimum contain the following sections:
+<!--, and are invaluable in any long-living software project. --> By including  inline code comments, they support an up-to-date API documentation; additionally, they support *doctests*, which ensures that the examples in the documentation work as expected, enhancing the reliability of the documentation.
 
-[^sphinx]:
-[^mkdocs]:
+[^sphinx]: https://www.sphinx-doc.org
+[^mkdocs]: https://www.mkdocs.org
+
+Important sections in any documentation are
 
 1. **Installation Instructions**: Detailed and clear installation instructions eliminate guesswork, making the software accessible to a broader audience. These instructions should cover various operating systems and potential issues that might arise during the installation process. They should also specify the prerequisites, such as required libraries or dependencies.
 
@@ -399,6 +402,25 @@ For post-processing routines, that shall be used by other researchers as well, a
 3. **API Documentation**: API documentation provides a detailed description of how the software's functions work, the parameters they take, and the output they return. This is crucial for users who want to integrate the software into their own code or use it for more complex tasks. Good API documentation enhances the software's usability and encourages its adoption.
 
 4. **Developer Manual**: If you aim for contributions by other researchers, the developer manual is a must-have for the onboarding. It contains more detailed information about the framework that you are developing, that do not have place in the _contributing guide_ or _user manual_.
+
+### Self-checks and badges
+
+<!-- Lee2018
+Often, the top of your README files will include badges that, when rendered, show the status of the software. One common source of badges is shields.io, which can dynamically generate badges for your project. Common badges include ones that show whether automated tests are passing (such those from travis-ci.org), what percentage of the code that the tests cover, whether the documentation is up to date, and more. Although not necessary, these badges instill confidence in the quality of your project and convey important information at a glance and are therefore highly recommended.
+- https://www.repostatus.org/#active
+- Open SSF best practices
+
+Clearly defining the objectives and scope of the model.
+Using appropriate model structure and complexity.
+Documenting assumptions and limitations.
+Validating and verifying the model with empirical data.
+Conducting sensitivity analysis to understand model behavior.
+Providing clear and transparent documentation.
+Collaborating with domain experts for model development.
+Adhering to coding standards and version control.
+Ensuring model reproducibility.
+Communicating results effectively.
+-->
 
 ## Code formatting and linting
 
@@ -417,7 +439,7 @@ Linters, such as flake8, go a step further by analyzing the code for potential e
 
 Linters and formatters should both be combined in pre-commit hooks. Pre-commit hooks facilitate the formatting and linting process by automatically running these tools before each commit. This ensures that all committed code adheres to the defined standards, further enhancing code quality and readability.
 
-## Code Structure
+### Code Structure
 
 :::warning
 
@@ -561,28 +583,6 @@ that allows to groups software into projects.
 - Software paper => not part of doc
 - Research Software directory => know your community
  -->
-
-# Self-checks and badges
-
-- https://www.repostatus.org/#active
-- Open SSF best practices
-
-Clearly defining the objectives and scope of the model.
-Using appropriate model structure and complexity.
-Documenting assumptions and limitations.
-Validating and verifying the model with empirical data.
-Conducting sensitivity analysis to understand model behavior.
-Providing clear and transparent documentation.
-Collaborating with domain experts for model development.
-Adhering to coding standards and version control.
-Ensuring model reproducibility.
-Communicating results effectively.
-
-<!-- why it does not work
-- lack of funding sustainability
-- lack of resource to do GMSP
-- change of personnel
--->
 
 ## Software development templates
 
