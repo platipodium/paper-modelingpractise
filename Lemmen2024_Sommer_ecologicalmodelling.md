@@ -1,10 +1,10 @@
 ---
-title: Good Modeling Software Practises
+title: Good Modeling Software Practices
 journal: Ecological Modelling
 keywords:
-  - Good Modeling Practise
-  - Good Software Practise
-  - Good Research Practise
+  - Good Modeling Practice
+  - Good Software Practice
+  - Good Research Practice
 author:
   - name: Carsten Lemmen
     affil: 1
@@ -24,7 +24,7 @@ license: CC-BY-4.0
 bibliography: paper.bib
 SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 SPDX-License-Identifier: CC-BY-4.0
-abstract: "In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems.  Along the modeling chain, Good Modeling Practices have been evolving that ensure -- amongst others -- that models are transparent and replicable.   Whenever such models are represented in software, good modeling meet good software practises, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, publication of a software paper and archiving. Too often in existing socio-environemntal model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modelers have shied away from publishing their model as open source out of fear that having to add good software practise is too demanding.  We here argue for making a habit of following a list of simple and not so simple practices early on in the implementation of the model.  We contextualize cherry-picked and hands-on practices for supporting good modeling practises, and we demonstrate their application in the example context of the Viable North Sea fisheries socio-ecological systems model."
+abstract: "In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. Along the modelling chain, Good Modelling Practices have been evolving that ensure -- amongst others -- that models are transparent and replicable. Whenever such models are represented in software, good modelling meets good software practices, such as a tractable software development workflow, good code, collaborative development and governance, attribution of copyrights and acknowledgement of intellectual property, continuous integration and deployment, publication of a software paper and archiving. Too often in existing socio-environmental model software, these practices have been regarded as an add-on to be considered at a later stage only; in fact, many modellers have shied away from publishing their model as open source out of fear that having to add good software practice is too demanding. We here argue for making a habit of following a list of simple and not so simple practices early on in the implementation of the model. We contextualise cherry-picked and hands-on practices for supporting good modelling practices, and we demonstrate their application in the example context of the Viable North Sea fisheries socio-ecological systems model."
 acknowledgement: "This research is funded by the PACES programme Changing Coasts of the Helmholtz Gemeinschaft and an outcome of the Multiple Stressors on North Sea Life (MuSSeL) project funded by the German Ministry of Education and Research (BMBF, grant 03F0862A), and the DataHub Project of the Helmholtz Association [@Castell2023]. This manuscript benefitted from discussions in the context of the Open Modeling Foundation (OMF, https://www.openmodelingfoundation.org). We thank the open source communities that make ours and other modelers' work possible, among them the developers of and contributors to Git, Python, pandoc, and LaTeX."
 authorcontributions: "C.L.: Conceptualization, Methodology, Writing – original draft, Writing – review & editing. P.S.: Writing - original draft, Writing - review & editing."
 abbreviations:
@@ -39,7 +39,7 @@ abbreviations:
   - short: KISS
     long: Keep it simple, stupid!
   - short: GMP
-    long: Good Modeling Practise
+    long: Good Modeling Practice
   - short: ODD
     long: Overview, Design, Details
   - short: VCS
@@ -49,7 +49,7 @@ abbreviations:
   - short: CoMSES
     long: Network for Computational Modeling in the Social and Ecological Sciences
   - short: GMP
-    long: Good Modeling Practise
+    long: Good Modeling Practice
   - short: OOP
     long: Object-oriented programming
   - short: WIP
@@ -100,6 +100,8 @@ abbreviations:
     long: Open Access
   - short: PEP
     long: Python Enhancement Proposal
+  - short: AI
+    long: Artificial Intelligence
 ---
 
 # Introduction
@@ -107,13 +109,13 @@ abbreviations:
 In socio-environmental sciences, models are frequently used as tools to represent, understand, project and predict the behaviour of these complex systems. The degree of a model's formalization ranges from conceptual to mathematical equations to implementation in software, and--by definition--all of these models are purpose-driven simplifications of the system they represent [@Stachowiak1973;@Romanowska2015]. We here concentrate on computational models, i.e. on socio-environmental models implemented in software, and there are many of those out there: Currently the CoMSES Network lists 1117 models [@Comses2024codebase]; @Janssen2015 asked 42 modelers about their inventory of aquatic ecosystem models and came up with a list of 278 different models, more than a decade after @Benz2001 counted some 1360 ecological model softwares.
 
 So computational models are plenty and omnipresent in our field. But despite their undoubted value, they have been criticised as "unscientific", as they often escape a strict requirement of falsifiability: the code may be verifiable only within certain accuracy ranges but not universally; the model may be validated only in site-specific application but not universally [@Refsgaard2004].
-So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practise demands an awareness of the sensitivity [] to parametrization" (p.16). From here on, GMP were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
+So all we can do is to provide at best verified and validated models, and Good Modeling Practices (GMP) aim at ensuring this. Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practice demands an awareness of the sensitivity [] to parametrization" (p.16). From here on, GMP were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
-Good Modeling Practises appear as five phases in the model life cycle [@Jakeman2024; their table 1]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modeling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model --- possibly foremost its purpose, scope and assumptions [@Wang2023] --- GMSP is concerned with the quality and reliability of a model's software implementation and beyond: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow Good Scientific Practise [@DFG2022].
+Good Modeling Practices appear as five phases in the model life cycle [@Jakeman2024; their table 1]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modeling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model --- possibly foremost its purpose, scope and assumptions [@Wang2023] --- GMSP is concerned with the quality and reliability of a model's software implementation and beyond: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow Good Scientific Practice [@DFG2022].
 
-Other scientific and technical fields where software plays a major role developed the concept of Good Software Practise, which can be traced back to the origins of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well" [@Ritchie1974]. These little tools should allow to develop new software in a better way, argued @Kernighan1976, for example by following the DRY principle: "Do not repeat yourself", and to KISS --- "keep it simple, stupid!" [@Stroop1960;@Raymond2003].
+Other scientific and technical fields where software plays a major role developed the concept of Good Software Practice, which can be traced back to the origins of the Unix systems, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well" [@Ritchie1974]. These little tools should allow to develop new software in a better way, argued @Kernighan1976, for example by following the DRY principle: "Do not repeat yourself", and to KISS --- "keep it simple, stupid!" [@Stroop1960;@Raymond2003].
 
-<!--. [@Kernighan1999] published the practise of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to .
+<!--. [@Kernighan1999] published the practice of programming, which was followed up by The Art of Unix Programming [@Raymond2003], of which the first chapter's content is a single acronym: KISS, short for "keep it simple, stupid!", an initially military slang attributed to .
 There was also a political component to it, advocated by Richard Stallman and implemented by researchers in universities like Berkeley and MIT: information should be free and computer programs should not be owned by companies but be public goods [@Stallman1983]. T
 -->
 
@@ -123,7 +125,7 @@ Cotemporaneously the Free Software movement emerged to emancipate software from 
 - Raymond provides a series of design rules:
 -->
 
-“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2019;@Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like @Comses2024fair educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, @Wilson2017 formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts. Together, good practises in modeling, software development, and research form a triangle around Good Modeling Software Practises ([Figure 1](#fig:triangle)).
+“Better software, better research” is a slogan by the Software Sustainability Institute (SSI), promoting better planning, development, reliability, performance and collaboration in research software, and advocationg for the recognition of the work of the people that develop such software but are often not acknowledged in publications as the major form of scientific output -- the Research Software Engineers (RSE) [@Katz2019;@Hettrick2022]. International agreements require that research data must be Findable, Accessiple, Interoperable, and Reusable [@Wilkinson2016]. Consequently, also software should be FAIR: (F) easy to find; (A) retrievable via standardised protols; (I) interoperates with other software by data exchange or an application programming interfaces (API), and (R) can be understood, modified, built upon, or incorporated into other software [@Barker2022]. Research organizations like @Comses2024fair educate about FAIR research software, including rich metadata, code management, archiving, documentation, and licensing. And as this seems too large a burden for many, @Wilson2017 formulated the "Good Enough Practices in Scientific Computing", addressing good enough data managment, software organization, collaboration, project organization, change tracking, and manuscripts. Together, good practices in modeling, software development, and research form a triangle around Good Modeling Software Practices ([Figure 1](#fig:triangle)).
 
 :::warning
 
@@ -142,11 +144,11 @@ Ethics: Indigenous Peoples’ rights and wellbeing should be the primary concern
 
 <div id="fig:triangle">
 
-![The triangle formed by good practises in modeling, software and research \label{fig:triangle}](Figure_1.pdf)
+![The triangle formed by good practices in modeling, software and research \label{fig:triangle}](Figure_1.pdf)
 
 </div>
 
-Despite these published best practise guidelines, much of the model source code corpus, roughly 80% [@Barton2022] is not published at all along with the scientific publication, and for a trivial reason:
+Despite these published best practice guidelines, much of the model source code corpus, roughly 80% [@Barton2022] is not published at all along with the scientific publication, and for a trivial reason:
 @Barnes2010's survey stated that "the code is a little raw" was named as the main reason for not publishing the model.
 Here we aim to address this fear and help build confidence that the model code is good enough in line with @Wilson2016 and @Barnes2010;
 beyond those, we break them down to concrete recipes on how to implement those good practices during the modeling software creation process.
@@ -156,7 +158,7 @@ You may deviate from the tools we selected, or disagree with them, and you may a
 
 ## Structure
 
-All models start with a purpose. That has since long bin the number one Good Modeling Practise advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at at your computational model -- the purpose-driven and simplified representation of your system in software.
+All models start with a purpose. That has since long bin the number one Good Modeling Practice advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at at your computational model -- the purpose-driven and simplified representation of your system in software.
 
 Socio-environmental modeling software can be created by a _single person_; in fact, it often is in student or postdoc projects or individual programming sprints [@Hettrick2022]. Unfortunately from a software developing perspective, the necessity of having to be a domain expert at the same time means that 90% of scientists are self-taught developers without formal training in software engineering, and who spend 30% of their time on software development [@Wilson2016].
 That one person will have to read her own code and to apply it for simulations, she will have to align the software development with her research, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state. All of this necessitates to some degree that the work is stored redundantly in backups, and that changes are documented. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update [@Rosero2016].
@@ -177,7 +179,7 @@ Software sustainabilty not only critical once a larger user base is established 
 - CL: true, but how to rephrase it without losing this last point?
 -->
 
-Good Scientific Practise demands that primary data are available for a minimum of 10 years after when a scientific publications relies on them, and so should models [@DFG2022].
+Good Scientific Practice demands that primary data are available for a minimum of 10 years after when a scientific publications relies on them, and so should models [@DFG2022].
 This is often a difficult requirement when models are developed in externally funded projects, when hardware and software environment change, or where mobility requirements demand for relocations of staff and frequent change of jobs. Mobility is a good argument in such circumstances for releasing your model as Free and Open Source Software (FOSS) so that the developer herself can take it along.
 
 <!-- @todo Citation needed on support from communities, -->
@@ -208,7 +210,7 @@ While most reviewers may only need passive (read) access to the software, it is 
 <!-- often we have MoA or collaboration agreements as legal frameworks -->
 <!-- community building, badges -->
 
-# Tools for Good Modeling Software Practise
+# Tools for Good Modeling Software Practice
 
 The tools described here can roughly be categorized as version control, source code management system, licensing, documentation, packaging, good code, archiving and maintenance, and publication.
 
@@ -261,7 +263,7 @@ Beyond the ticketing system, the SCM service may also offer communication facili
 
 <!-- Hint to "Fail fast" philosophy?" -->
 
-CI is a development practise where developers integrate code into a shared repository frequently, ideally several times a day, but at least on every `git push` to a repository. Each integration is then verified by an automated build and automated tests to detect errors as quickly as possible; the frequent and automated check reduce the risk of accumulating errors.
+CI is a development practice where developers integrate code into a shared repository frequently, ideally several times a day, but at least on every `git push` to a repository. Each integration is then verified by an automated build and automated tests to detect errors as quickly as possible; the frequent and automated check reduce the risk of accumulating errors.
 SCM services like GitLab or GitHub provide such automated integrations, called "Actions" on GitHub, but there are many CI tools available outside the comprehensive SCM services, such as Circle CI[^circleci].
 CD is often triggered after the CI ends with success. In this automation, the products of a modeling software can be provisioned, such as a complete binary package for download, an updated and nicely formatted documentation, or a suite of simulation results and their statistical evalution, for example. CD often interacts with other external services to update web pages, to upload to package repositories, or to submit to an archiving service.
 
@@ -423,11 +425,11 @@ Linters and formatters should both be combined in pre-commit hooks. Pre-commit h
       :::
 
 - Clear, consise, well-commented
-- Accessible and consistent naming practise (community standards, conventions) PEP8
+- Accessible and consistent naming practice (community standards, conventions) PEP8
 - Modular, complex tasks in managable functions, API
 - error handling
 - reuse and recycle, don't reinvent the wheel, use small tools [@Kernighan1976]
-- The practise of programming "Simplicity, Generality, clarity" Worst case in scientific models: IO combined with core functionality.
+- The practice of programming "Simplicity, Generality, clarity" Worst case in scientific models: IO combined with core functionality.
 - Encapsulation, OOP
 
 ## Maintenance
@@ -563,7 +565,7 @@ that allows to groups software into projects.
 # Self-checks and badges
 
 - https://www.repostatus.org/#active
-- Open SSF best practises
+- Open SSF best practices
 
 Clearly defining the objectives and scope of the model.
 Using appropriate model structure and complexity.
@@ -582,13 +584,19 @@ Communicating results effectively.
 - change of personnel
 -->
 
-## DRY - good software development templates
+## Software development templates
 
-Despite the many benefits of good research software engineering techniques, the above mentioned techniques and tools unarguably put a significant burden on the scientist.
+Despite the many benefits of good research software engineering techniques, the multitude and the complexity of some of the techniques and tools unarguably put a significant burden on the modeller.
+Not only does it require time to get used to them, the rapid technological development makes it difficult to stay up-to-date. The diverse skill sets of researchers and time constraints further complicates the situation [@Wilson2016].
 
-Not only that it requires quite some time to get used to them, the rapid technological development makes it difficult to stay up-to-date. The diverse skill sets of researchers and time constraints further complicates the situation. Consequently, software often becomes obsolete, challenging to maintain, and prone to errors. New projects should therefore be derived from software templates that implement these techniques, such as [@Pirogov2024] or [@Sommer2024]. To maintain the software derived from these packages, one can utilize cruft [^https://cruft.github.io/cruft] such as demonstrated by [@Sommer2024], or cookietemple[^https://github.com/cookiejar/cookietemple/]. Especially the fork- and cruft-based approach by [@Sommer2024] provides a methodology for modelling ecosystems to provide a standardized setup for post-processing routines, plugins, etc., implementing all the techniques and tools from the previous sections.
+<!--Consequently, software often becomes obsolete, challenging to maintain, and prone to errors. -->
 
-# Good enough modeling software practise - a use case
+New modeling software projects can be derived from templates that already provision these techniques [@Pirogov2024;@Sommer2024] from the start of a project. Cruft[^cruft] and cookietemple[^cookietemple] keep things up to date behind the scene. @Sommer2024 provide a fork- and cruft-based methodology for modelling ecosystems: they provide a standardized setup for post-processing routines, plugins, etc., implementing many of the techniques and tools mentionend in this manuscript.
+
+[^cruft]: https://cruft.github.io/cruft
+[^cookietemple]: https://github.com/cookiejar/cookietemple
+
+# Good enough modeling software practice - a use case
 
 Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea coastal fisheries [@Lemmen2023,@Lemmen2024]. It is an agent-based model coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python/R data pre- and postprocessing scripts. Its source code is managed by Git, with a primary SCM service on an academic Gitlab[^vinos-gitlab] and a secondary one on public Github. On the primary SCM, GitLab issues provide the ticketing system, a CI produces docker images of the software and its dependencies for different versions of the underlying operating system and the NetLogo IDE and then performs unit and replicability testing. As part of the CD, a small production simulation generates model results and pushes them to a static web page on the SCM service; the documents provided with the model (ODD, JOSS, this manuscript, and others) are compiled from their version-controlled sources to pdfs and uploaded. The CD is integrated with Mkdocs and pushes to a public readthedocs instance for the user guide. On the secondary CI, a release management hooks into Zenodo to provide permanent and DOI citable archives for each model release.
 Locally, a pre-commit workflow, triggered upon each `git commit` ensures that the copyrights and license catalogs are complete for each file, that all structured documents comply with their respective type definition, and that python codes conform to PEP8 coding standards. The tools used for this are `reuse`, `black`, `flake8`, more general formatters to remove empty line endings, syntax checkers for metadata in `yaml`, `toml`, and `json` structured formats, and the general-purpose code beautifier `prettier`.
@@ -598,9 +606,11 @@ In the program root folder, a `CITATION.cff` suggests how to cite the software, 
 
 # Conclusion
 
-# References {.unnumbered}
+Good Practices have been maturing in the areas of software, modeling, and research. Adopting all of them for socio-environmental modeling establishes Good Modeling Software Practices: Replicability and citability meet automated verification, rights management and collaboration meet purpose-driven simplification and validation.
+Good Modeling Software Practice also means that you don't have to do it all at once. The supporting tools are numerous, and most follow a philosophy to do one thing only and to do it well: they can be employed one by one. Publish your modeling software -- it's good enough [@Allen2019;@Barnes2010]! By learning and applying one tool at a time, everyone can acquire a corpus of practices that eventually lead to better modeling software -- and better research [@Katz2019].
+The recent surge in Artificial Intelligence (AI) applications, has created an array of emerging good practices in the areas of security [@Polemi2023], data treatment [@Makarov2021], and in supporting software development [@Pudari2023], amongst others. They will need to be negotiated by society but eventually also find their place in supporting Good Modeling Software Practices.
 
-<!-- Comment to this was that instead of bullet lists there should be hands-on. -->
+# References {.unnumbered}
 
 <!-- Rosero et al:
 15 Years of Software Regression Testing Techniques — A Survey
