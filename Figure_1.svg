@@ -37,11 +37,11 @@
      inkscape:window-x="1777"
      inkscape:window-y="70"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g4424-2" />
+     inkscape:current-layer="svg192" />
   <text
      xml:space="preserve"
      id="text525"
-     style="font-size:40px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect527)"
+     style="font-size:40px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect527);display:inline"
      transform="translate(29.220277,-22.262774)" />
   <path
      sodipodi:type="star"
@@ -89,12 +89,12 @@
            x="149.36441"
            y="82.132729"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
-           id="tspan4417">Modeling</tspan><tspan
+           id="tspan4417">Modelling</tspan><tspan
            sodipodi:role="line"
            x="149.36441"
            y="98.799355"
            id="tspan4415"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practice</tspan></text>
     </g>
   </g>
   <g
@@ -127,33 +127,33 @@
          x="150"
          y="96.89257"
          id="tspan4415-8"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practice</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:Poppins;text-align:center;text-anchor:middle"
-       x="274.55994"
+       x="270.55994"
        y="-9.2205744"
        id="text4413-6-1"><tspan
          sodipodi:role="line"
          id="tspan4411-6-0"
-         x="274.55994"
+         x="270.55994"
          y="-9.2205744"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Good</tspan><tspan
          sodipodi:role="line"
-         x="274.55994"
+         x="270.55994"
          y="7.4460502"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
-         id="tspan4417-7-1">Modeling</tspan><tspan
+         id="tspan4417-7-1">Modelling</tspan><tspan
          sodipodi:role="line"
-         x="274.55994"
+         x="270.55994"
          y="24.112675"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'"
          id="tspan6088">Software</tspan><tspan
          sodipodi:role="line"
-         x="274.55994"
+         x="270.55994"
          y="40.779301"
          id="tspan4415-8-8"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practice</tspan></text>
     <g
        id="g4424-7"
        transform="translate(235.16949,1.2711902)">
@@ -184,7 +184,7 @@
            x="150"
            y="96.89257"
            id="tspan4415-5"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practise</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;font-family:Poppins;-inkscape-font-specification:'Poppins Bold'">Practice</tspan></text>
     </g>
   </g>
 </svg>
