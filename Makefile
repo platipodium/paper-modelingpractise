@@ -119,3 +119,6 @@ declaration: declaration_of_interest.md
 
 Figure_1.pdf: Figure_1.svg
 	svg2pdf $< $@
+
+arxiv: tex
+	zip Lemmen2024_Sommer_arxiv.zip $(TEX) Figure_1.pdf elsevier.cls
