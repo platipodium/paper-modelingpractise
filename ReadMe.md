@@ -60,20 +60,13 @@ Area(s) of Expertise: Modelling practice, uncertainty analysis, system identific
 
 ### Manuscript submission information:
 
-Deadlines for submission
-
-Submission deadline: May 31, 2024.
-
 For any queries in submitting your manuscript to Ecological Modelling, please kindly contact Dr. Hsuan (Rose) Wang <Hsiaohsuan.Wang@ag.tamu.edu>. Please reach out to Dr. Sondoss Elsawah for EMS and Dr. Tony Jakeman for SESMO respectively.
-
-When submitting your manuscript please select the article type “VSI: Good Modelling Practice”. Please submit your manuscript before the submission deadline.
-
-All submissions deemed suitable to be sent for peer review will be reviewed by at least two independent reviewers. Once your manuscript is accepted, it will go into production, and will be simultaneously published in the current regular issue and pulled into the online Special Issue. Articles from this Special Issue will appear in different regular issues of the journal, though they will be clearly marked and branded as Special Issue articles.
-
-Keywords:
-Modelling practices; Integrated assessment and modelling; Socio-ecological systems; Decision support; uncertainty; scaling
 
 # Reviewers
 
 - Maria Pierce (TI Baltic Sea Fisheries)
 - Koen Meesters (WUR Modeling group)
+
+# Preprint
+
+Lemmen, C., & Sommer, P. S. (2024). Good Modelling Software Practices. Ecological Modelling, submitted. http://arxiv.org/abs/2405.21051

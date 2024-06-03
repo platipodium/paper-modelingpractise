@@ -1,15 +1,15 @@
 #!/usr/bin/env python
+# SPDX-FileContributor: Carsten Lemmen
+# SPDX-FileContributor: Michael Färber
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Färber
+# SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 
 """
 Pandoc filter for replacing divs with LaTeX environments
 Based  from https://github.com/01mf02/pandocfilters
 Modified to take care of hedgedoc :::info and :::warning blocks
 converted to minipage
-SPDX-FileContributor: Carsten Lemmen
-SPDX-FileContributor: Michael Färber
-SPDX-LicenseIdentifier: GPL-3.0-or-later
-SPDX-FileCopyright: Michael Färber
-SPDX-FileCopyright: 2024 Helmholtz-Zentrum hereon GmbH
 """
 
 from pandocfilters import toJSONFilter, RawInline, Para
