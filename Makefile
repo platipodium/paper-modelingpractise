@@ -38,9 +38,9 @@ TXT=$(SRC:.md=.txt)
 BIB=$(SRC:.md=.bib)
 
 .PHONY: all pdf html docx odt epub tex txt allbib localbib \
-  assets elsevier-logo ecomod-cover
+  assets elsevier-logo ecomod-cover diff
 
-all:  tex pdf
+all:  tex pdf diff
 pdf:	$(PDF) $(SRC) Makefile
 html:	$(HTML) $(SRC) Makefile
 docx: $(DOCX) $(SRC) Makefile
@@ -122,3 +122,7 @@ Figure_1.pdf: Figure_1.svg
 
 arxiv: tex
 	zip Lemmen2024_Sommer_arxiv.zip $(TEX) Figure_1.pdf elsevier.cls
+
+diff: tex archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex
+	latexdiff archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex $(TEX) > $(TEX:.tex=-diff.tex)
+	pdflatex $(TEX:.tex=-diff.tex)
