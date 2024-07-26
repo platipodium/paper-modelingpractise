@@ -31,14 +31,16 @@ PDF=$(SRC:.md=.pdf)
 PPTX=$(SRC:.md=.pptx)
 HTML=$(SRC:.md=.html)
 TEX=$(SRC:.md=.tex)
+DIFFTEX=$(SRC:.md=-diff.tex)
 DOCX=$(SRC:.md=.docx)
+POINT=$(SRC:.md=-pointreply.md)
 ODT=$(SRC:.md=.odt)
 EPUB=$(SRC:.md=.epub)
 TXT=$(SRC:.md=.txt)
 BIB=$(SRC:.md=.bib)
 
 .PHONY: all pdf html docx odt epub tex txt allbib localbib \
-  assets elsevier-logo ecomod-cover diff
+  assets elsevier-logo ecomod-cover diff point
 
 all:  tex pdf diff
 pdf:	$(PDF) $(SRC) Makefile
@@ -124,5 +126,8 @@ arxiv: tex
 	zip Lemmen2024_Sommer_arxiv.zip $(TEX) Figure_1.pdf elsevier.cls
 
 diff: tex archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex
-	latexdiff archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex $(TEX) > $(TEX:.tex=-diff.tex)
-	pdflatex $(TEX:.tex=-diff.tex)
+	latexdiff archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex $(TEX) > $(DIFFTEX)
+	pdflatex $(DIFFTEX)
+
+point: $(POINT)
+	$(CMD) -s  -o $(POINT:.md=.pdf) $<
