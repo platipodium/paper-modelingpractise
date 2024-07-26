@@ -262,6 +262,10 @@ Collaborative software engineering is an intensely people-oriented activity [@Si
 
 [^covenant]: https://www.contributor-covenant.org Contributor Covenant
 
+Traditionally in science, mostly the authors of scientific publications are acknowledged and cited. But for scientific software, there are more roles that do not qualify for authorship: foremost those of the research software engineers, but also, e.g., data managers, administrators, friendly reviewers, HPC support staff. The All Contributors[^allcontributors] bot integrates with the GitHub SCM service and facilitates proper acknowledgement of those and other non-author groups.
+
+[^allcontributors]: https://allcontributors.org/#
+
 > You **_must_** have a license for yourself and contributions and you **_should_** have guidelines for collaboration.
 
 ## Versioning and Releasing
