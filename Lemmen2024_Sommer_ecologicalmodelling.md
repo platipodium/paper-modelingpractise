@@ -145,11 +145,11 @@ We start off by motivating each of the good practices and contextualizing them t
 We describe the tools that can be used in a non-exhaustive way covering the entire range of good practices.
 You may deviate from the tools we selected, or disagree with them, and you may add others or leave some out that we suggested.
 
-## Structure
+# Good practices for whom?
 
-All models start with a purpose [@Edmonds2019]; and the purpose must be stated. That has since long bin the number one Good Modelling Practice advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at your computational model -- a purpose-driven and simplified representation of your system in software.
+All models start with a purpose [@Edmonds2019]; and the purpose must be stated. That has since long bin the number one Good Modelling Practice advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at your computational model -- a purpose-driven and simplified representation of your system in software. This model is by and for yourself, it is for readers and reviewers, and it is by and for your collaborators, constituting three tiers of user groups that are targeted by tools addressing Good Modeling Softare Practice.
 
-### Single authors
+## Single authors -- yourself
 
 Socio-environmental modelling software can be created by a _single person_; in fact, it often is in student or postdoc projects or individual programming sprints [@Hettrick2022]. Unfortunately from a software development perspective, the necessity of having to be a domain expert at the same time means that 90% of scientists are self-taught developers without formal training in software engineering [@Wilson2016].
 That one person will have to read her own code and to apply it for simulations, she will have to align the software development with her research, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state. All of this necessitates to some degree that the work is stored redundantly in backups, and that changes are documented. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update [@Rosero2016].
@@ -161,7 +161,7 @@ For many scientific model authors, getting stuff done may be more important than
 There are many tools available to structure and ameliorate the work for the less preferred actions. Some that help with clarifying legal constraints and documentation, and others that help with structuring the development process, among them source code management services.
 One criterion to assess whether software is sustainable is the truck factor, asking: "How many people can get hit by a truck, before the project becomes unmaintainable?"; the OpenSSF gold standard requires that is truck (or bus) factor is $>= 3$ [@OpenSSF2024].
 
-### Reviewers
+## Reviewers and readers
 
 If the model is to be used to produce scientific results subject to _peer review_, the single person will have to ensure reproducibility of results. She will have to subject it to an editor or a reviewer, thus make it readable and understandable, and document it. And sometimes, she might be asked to support the reviewers in executing the model somewhere outside her own computer infrastructure. When feedback comes, there should be a platform to file the individual concerns and address them.
 
@@ -171,7 +171,7 @@ But even before a reviewer invests her time in evaluating a model software, much
 
 How does an author deal with the feedback she receives during a friendly or journal-led review? Often, this comes as an itemized list of points to address; as such it is in an ideal form to be converted to _tickets_ or _issues_ in the SCM service, or a dedicated issue tracker system linked to the model software. Improvements to the model code can then be tied to the issue tracker, transparently documenting the resolution of those issues, and helping to formulate the rebuttal to reviewer critique.
 
-### Collaborators
+## Collaborators
 
 If at least one _other person_ is using the model, the permission issue --- also known as the license -- becomes pertinent. This other user needs a way to communicate with the developer, for feature requests or for reporting bugs. If that person intents to improve on your work, the permissions become more important, needing contributor agreements and codes of conduct. How are decisions made about the now joint modelling software -- some form of governance model needs to be established. With the growth of a community, even a community management system might be required, with granular access, distributed roles, and fine-grained permissions.
 

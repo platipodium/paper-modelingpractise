@@ -3,27 +3,31 @@ SPDX-FileCopyrightText:  2024 Helmholtz-Zentrum hereon GmbH
 SPDX-License-Identifier: CC-BY-NC-4.0
 -->
 
-# Reviewer #1: Major Revision
+# Point-by-point reply to reviewer comments
+
+## Reviewer #1
 
 This overview paper introduces "good modelling software practices" that integrate good modeling practices, good software engineering practices, and good scientific practices in contrast with the increasingly common "good software engineering practices for domain X" or "FAIR software practices for domain X" that often bring good software engineering practices that are well-known and commonly used in industry (e.g., big tech companies like FAANG) to create quality software to academia.
 
-> Q: This could be an important contribution but the authors go into too much unnecessary detail in some parts and not enough details in others, where they introduce complex concepts like pull requests and git commands without much clear guidance.
+1. This could be an important contribution but the authors go into too much unnecessary detail in some parts and not enough details in others, where they introduce complex concepts like pull requests and git commands without much clear guidance.
 
-A:
+- A:
 
-> Q: Take more time to describe what Continuous Integration and Continuous Delivery are with clear examples of how it works in GitHub or GitLab.
+2. Q: Take more time to describe what Continuous Integration and Continuous Delivery are with clear examples of how it works in GitHub or GitLab.
 
-A:
+- A:
 
-> Q: Recommend that model authors learn to use git in a disciplined way, leaving clear and cogent provenance trails via good git commit messages that preserve context, history and provenance of your code e.g., https://www.conventionalcommits.org/en/v1.0.0/
+3. Q: Recommend that model authors learn to use git in a disciplined way, leaving clear and cogent provenance trails via good git commit messages that preserve context, history and provenance of your code e.g., https://www.conventionalcommits.org/en/v1.0.0/
 
-A:
+- A:
 
 > Q: Provide clear, actionable guidance to help new model authors and existing model authors.
 
+- A:
+
 > Q: Improve the structure of the paper by removing unnecessary sections
 
-A: We condensed the introductory sections on single/review/collaborations and joined the scattered parts under these themes.
+- A: We condensed the introductory sections on single/review/collaborations and joined the scattered parts under these themes.
 
 > Q: divide recommendations into must-haves and would-be-nice guidance at a minimum.
 
@@ -41,7 +45,7 @@ For example:
 4. Make sure it is clear how one can run your computational model with a full description of how to actually use your model. Cover acceptable inputs and expected outputs, assumptions
 5. Make sure it is clear what your computational model's purpose is, it's scope, and assumptions (which is covered in the Purpose section but then half-heartedly described in 2.6 Documentation as "can provide an". Clear and cogent narrative documentation is a must for any computational model.
 
-## Other miscellaneous comments:
+### Miscellaneous comments:
 
 > Q: Software bill of materials seems to be mostly industry vaporware
 
@@ -69,19 +73,21 @@ A:
 
 > The final section that discusses how the authors' computational model meets the rubric is useful and should be given more space to explain how and why they help make the model better.
 
-# Reviewer #2: Minor Revision
+## Reviewer #2
 
-> Q: The introduction bleeds into the content of the paper without any discernible break - this makes it hard for the reader to mentally file away what they are reading.
+I commend you on the comprehensiveness of this paper!
 
-A: we streamlined the different section on individual/reviewer/collaboration topics creating a clearer separation.
+1. Q: The introduction bleeds into the content of the paper without any discernible break - this makes it hard for the reader to mentally file away what they are reading.
+
+- A: we streamlined the different section on individual/reviewer/collaboration topics creating a clearer separation. We also restructured the paper into 1. Introduction the new section 2. Tool addresses 3. Tools for GMSP and 4. Example
 
 > The Paper sets out .. to empower the reader to apply Good Modelling Software Practices to their work. It does a very good job in motivating this ... However, you do not provide any sort of overview for the reader to refer back to when taking in so much densely compiled information. Whilst I do not feel this should be a requirement for publication, I do feel that the accessibility and thereby value of the work would be greatly enhanced by providing some type of overview and referring back to it in the text. I have no opinion on which form this should take - examples would be: a graph, a table, a metaphor, a map, etc.
 
-## Here are all the little remarks, comments and suggestions:
+### Little remarks, comments and suggestions:
 
 All suggestions (reproducible, captialisation, truck, bus) have been adopted.
 
-### Introduction:
+#### Introduction:
 
 - "So all we can do is to provide at best verified and validated models, and Good Modelling Practices (GMP) aim at ensuring this." This sentence bears a lot of weight since it is the transition from 'domain issues' (the sentence before) to 'solutions through practices' (the rest of the paper) - this is purely a matter of style, but 'so all we can do' feels a little defeatist. My suggestion would be to elaborate a little more (a sentence or two) on the relationship between 'domain issues' and 'solutions through practices', and give it a more positive spin while you're there...
 
@@ -92,7 +98,7 @@ All suggestions (reproducible, captialisation, truck, bus) have been adopted.
 - "...can take it along." I am fine with this, but it is very informal
 - "While most reviewers may only need passive (read) access to the software..." as far as I know 'passive' access is not a common term, while 'read' is. Perhaps it would be nice to further distinguish between read, execute and write, since 'execute' is something a reviewer probably would want to do
 
-### Tools for Good Modelling Software Practice:
+#### Tools for Good Modelling Software Practice:
 
 - grammar: "This need for continuous maintenance requires tracking the state of software and to record changes to software beyond the capabilities offered by git log." perhaps use the gerund for both cases: tracking the state of software and recording changes...
 - spelling: "The building and deployment of packages is usuallyintegrated " space missing...
@@ -102,13 +108,11 @@ All suggestions (reproducible, captialisation, truck, bus) have been adopted.
 - grammar? "Many SCMs are already crawled by this project, so when you upload your repository and make it publicly available, it will be archived automatically." this sentence feels weird, but I'm afraid I don't know why...
 - grammar " put into the software, documentation" perhaps rather and 'and' than a comma?
 
-### Good enough modelling software practice - a use case
+#### Good enough modelling software practice - a use case
 
 - spelling "title: Ggent-based model coded in NetLogo " .. i guess that should be an 'A'
 - I really like the addition of the 'context-example' and like that it comes at the end
 
-### Conclusion
+#### Conclusion
 
 - replicability? see comment for abstract...
-
-I commend you on the comprehensiveness of this paper!
