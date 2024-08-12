@@ -1,0 +1,83 @@
+abbreviations:
+  - short: ABM
+    long: Agent-based Model
+  - short: ViNoS
+    long: Viable North Sea
+  - short: MuSSeL
+    long: Multiple Stressors on North Sea Life
+  - short: DRY
+    long: Do not repeat yourself
+  - short: KISS
+    long: Keep it simple, stupid!
+  - short: GMP
+    long: Good Modelling Practice
+  - short: ODD
+    long: Overview, Design, Details
+  - short: VCS
+    long: Version Control System
+  - short: SCM
+    long: Source Code Management
+  - short: CoMSES
+    long: Network for Computational Modeling in the Social and Ecological Sciences
+  - short: GMSP
+    long: Good Modelling Software Practice
+  - short: OOP
+    long: Object-oriented programming
+  - short: WIP
+    long: Work in progress
+  - short: SemVer
+    long: Semantic versioning
+  - short: CalVer
+    long: Calendar versioning
+  - short: CI
+    long: Continuous Integration
+  - short: CFF
+    long: Citation File Format
+  - short: CD
+    long: Continuous Deployment
+  - short: CTA
+    long: Copyright Transfer Agreement
+  - short: CLA
+    long: Contributor License Agreement
+  - short: OS
+    long: Open Source
+  - short: OSI
+    long: Open Source Initiative
+  - short: RT
+    long: Regression Testing
+  - short: PR
+    long: Pull Request
+  - short: RSE
+    long: Research Software Engineer
+  - short: SSI
+    long: Software Sustainability Institute
+  - short: MIT
+    long: Massachusetts Institute of Technology
+  - short: BSD
+    long: Berkeley Software Distribution
+  - short: GNU
+    long: GNU is Not Unix
+  - short: GPL
+    long: GNU General Public License
+  - short: CC
+    long: Creative Commons
+  - short: DOI
+    long: Digital Object Identifier
+  - short: OMF
+    long: Open Modeling Foundation
+  - short: JOSS
+    long: Journal of Open Source Software
+  - short: FOSS
+    long: Free and Open Source Software
+  - short: OA
+    long: Open Access
+  - short: PEP
+    long: Python Enhancement Proposal
+  - short: AI
+    long: Artificial Intelligence
+  - short: FLA
+    long: Fiduciary License Agreement
+  - short: JSON
+    long: JavaScript Object Notation
+  - short: YAML
+    long: YAML Ain't Markup Language

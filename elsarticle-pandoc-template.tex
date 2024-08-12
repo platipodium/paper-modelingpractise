@@ -187,8 +187,8 @@ $endif$
 %%% or \MSC[2008] code \sep code (2000 is the default)
 $if(keywords)$
 \begin{keyword}
-$for(keywords)$$keywords$\sep
-$endfor$
+$for(keywords)$$keywords$
+$sep$$endfor$
 \end{keyword}
 $endif$
 
@@ -196,5 +196,16 @@ $endif$
 \end{frontmatter}
 
 $body$
+
+$if(abbreviations)$
+\subsection*{The following abbreviations are used in this manuscript}
+
+\noindent
+\begin{tabular}{@{}lp{0.8\columnwidth}}
+$for(abbreviations)$
+$abbreviations.short$ & $abbreviations.long$ \\
+$endfor$
+\end{tabular}
+$endif$
 
 \end{document}

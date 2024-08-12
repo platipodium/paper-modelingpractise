@@ -17,12 +17,13 @@ TOCCMD=--toc
 TOCCMD=
 
 LTX=
-CMD=$(PANDOC) $(MDFORMAT) $(BIBCMD) $(TOCCMD)
+CMD=$(PANDOC) $(ABBREV) $(MDFORMAT) $(BIBCMD) $(TOCCMD)
 TEMPLATE=elsarticle-pandoc-template.tex
 
 ## All markdown files in the working directory
 #SRC = $(wildcard *.$(MEXT))
 SRC = Lemmen2024_Sommer_ecologicalmodelling.$(MEXT)
+ABBREV = abbreviations.yaml
 
 ## Location of Pandoc support files.
 PREFIX = $(HOME)/.pandoc
@@ -76,13 +77,13 @@ ecomod-cover: ./assets/X03043800.jpg
 #	$(CMD) -s  --from docx --to latex  -o $@ $<
 #%.pdf:	%.docx Makefile
 #	$(CMD) -s  --from docx --to pdf  -o $@ $<
-%.tex:	%.md  %.bib Makefile  style $(TEMPLATE) assets
+%.tex:	%.md  %.bib Makefile  style $(ABBREV) $(TEMPLATE) assets
 	$(CMD) -s  --filter divenv.py  --template=./$(TEMPLATE)  -o $@ $<
 
-%.pdf:	%.md  %.bib Makefile  style $(TEMPLATE) assets
+%.pdf:	%.md  %.bib Makefile  style $(ABBREV) $(TEMPLATE) assets
 	$(CMD) -s  --filter divenv.py  --template=./$(TEMPLATE)  -o $@ $<
 
-%.docx:	%.md  %.bib Makefile pandoc-scholar.docx assets
+%.docx:	%.md  %.bib $(ABBREV) Makefile pandoc-scholar.docx assets
 	$(CMD)--to=docx --reference-doc=pandoc-scholar.docx -s -o $@ $<
 #	$(CMD)--to=docx --reference-doc=custom-reference.docx -s -o $@ $<
 
