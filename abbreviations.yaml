@@ -1,83 +1,83 @@
 abbreviations:
   - short: ABM
     long: Agent-based Model
-  - short: ViNoS
-    long: Viable North Sea
-  - short: MuSSeL
-    long: Multiple Stressors on North Sea Life
-  - short: DRY
-    long: Do not repeat yourself
-  - short: KISS
-    long: Keep it simple, stupid!
-  - short: GMP
-    long: Good Modelling Practice
-  - short: ODD
-    long: Overview, Design, Details
-  - short: VCS
-    long: Version Control System
-  - short: SCM
-    long: Source Code Management
-  - short: CoMSES
-    long: Network for Computational Modeling in the Social and Ecological Sciences
-  - short: GMSP
-    long: Good Modelling Software Practice
-  - short: OOP
-    long: Object-oriented programming
-  - short: WIP
-    long: Work in progress
-  - short: SemVer
-    long: Semantic versioning
-  - short: CalVer
-    long: Calendar versioning
-  - short: CI
-    long: Continuous Integration
-  - short: CFF
-    long: Citation File Format
-  - short: CD
-    long: Continuous Deployment
-  - short: CTA
-    long: Copyright Transfer Agreement
-  - short: CLA
-    long: Contributor License Agreement
-  - short: OS
-    long: Open Source
-  - short: OSI
-    long: Open Source Initiative
-  - short: RT
-    long: Regression Testing
-  - short: PR
-    long: Pull Request
-  - short: RSE
-    long: Research Software Engineer
-  - short: SSI
-    long: Software Sustainability Institute
-  - short: MIT
-    long: Massachusetts Institute of Technology
+  - short: AI
+    long: Artificial Intelligence
   - short: BSD
     long: Berkeley Software Distribution
+  - short: CalVer
+    long: Calendar versioning
+  - short: CC
+    long: Creative Commons
+  - short: CD
+    long: Continuous Deployment
+  - short: CFF
+    long: Citation File Format
+  - short: CI
+    long: Continuous Integration
+  - short: CLA
+    long: Contributor License Agreement
+  - short: CoMSES
+    long: Network for Computational Modeling in the Social and Ecological Sciences
+  - short: CTA
+    long: Copyright Transfer Agreement
+  - short: DOI
+    long: Digital Object Identifier
+  - short: DRY
+    long: Do not repeat yourself
+  - short: FLA
+    long: Fiduciary License Agreement
+  - short: FOSS
+    long: Free and Open Source Software
+  - short: GMP
+    long: Good Modelling Practice
+  - short: GMSP
+    long: Good Modelling Software Practice
   - short: GNU
     long: GNU is Not Unix
   - short: GPL
     long: GNU General Public License
-  - short: CC
-    long: Creative Commons
-  - short: DOI
-    long: Digital Object Identifier
-  - short: OMF
-    long: Open Modeling Foundation
   - short: JOSS
     long: Journal of Open Source Software
-  - short: FOSS
-    long: Free and Open Source Software
-  - short: OA
-    long: Open Access
-  - short: PEP
-    long: Python Enhancement Proposal
-  - short: AI
-    long: Artificial Intelligence
-  - short: FLA
-    long: Fiduciary License Agreement
   - short: JSON
     long: JavaScript Object Notation
+  - short: KISS
+    long: Keep it simple, stupid!
+  - short: MIT
+    long: Massachusetts Institute of Technology
+  - short: MuSSeL
+    long: Multiple Stressors on North Sea Life
+  - short: OA
+    long: Open Access
+  - short: ODD
+    long: Overview, Design, Details
+  - short: OMF
+    long: Open Modeling Foundation
+  - short: OOP
+    long: Object-oriented programming
+  - short: OS
+    long: Open Source
+  - short: OSI
+    long: Open Source Initiative
+  - short: PEP
+    long: Python Enhancement Proposal
+  - short: PR
+    long: Pull Request
+  - short: RSE
+    long: Research Software Engineer
+  - short: RT
+    long: Regression Testing
+  - short: SCM
+    long: Source Code Management
+  - short: SemVer
+    long: Semantic versioning
+  - short: SSI
+    long: Software Sustainability Institute
+  - short: VCS
+    long: Version Control System
+  - short: ViNoS
+    long: Viable North Sea
+  - short: WIP
+    long: Work in progress
   - short: YAML
     long: YAML Ain't Markup Language

@@ -40,7 +40,7 @@ So all we can do is to provide at best verified and validated models, and Good M
 
 Examples of such practices often named are: a clear purpose, a thorough domain understanding, going from simple to complex, ensuring reproducibility, exploring sensitivities and validation with good quality data [e.g., @Crout2008]. The first reference to this may have been by @Smagorinsky1982, who claimed that "under any cirumstance, good modeling practice demands an awareness of the sensitivity [] to parametrization" (p.16). From here on, GMP were elaborated and became widespread in the field of hydrology, with the first handbook on the topic by @VanWaveren1999; it has since been applied to all areas of socio-environmental sciences and has been adopted in community standards such as the Overview, Design, Detail (ODD) documentation protocol and its derivatives [@Grimm2006;@Grimm2010;@Grimm2020].
 
-Good Modeling Practices appear as five phases in the model life cycle [Table 1 of @Jakeman2024]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modelling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model --- possibly foremost its purpose, scope and assumptions [@Wang2023] --- GMSP is concerned with the quality and reliability of a model's software implementation and beyond: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow Good Scientific or Research Practice [@DFG2022;@Allea2023].
+Good Modeling Practices appear as five phases in the model life cycle [Table 1 of @Jakeman2024]: (1) Problem scoping and (2) conceptualization, (3) Model formulation and evaluation, (4) application, and (5) perpetuation, and the reiteration of these phases. Good Modelling Software Practices (GMSP) are prominent in phases 3--5, and are thus subsumed under GMP. But where GMP is concerned with the reliability and validity of a model---possibly foremost its purpose, scope and assumptions [@Wang2023]---GMSP is concerned with the quality and reliability of a model's software implementation and beyond: a good quality model software is not restricted to good computer code, but can also aid to support iterations through the model life cycle and help to follow Good Scientific or Research Practice [@DFG2022;@Allea2023].
 
 Other scientific and technical fields where software plays a major role developed the concept of Good Software Practice; it can be traced back to the origins of the Unix system, which has at its core not a monolithic but highly granular structure of many little programs that "do one thing only, and do it well" [@Ritchie1974]. These little tools should allow to develop new software in a better way, argued @Kernighan1976, for example by following the DRY principle: "Do not repeat yourself", and to KISS --- "keep it simple, stupid!" [@Stroop1960;@Raymond2003].
 Cotemporaneously the Free Software movement emerged to emancipate software from the ownership of companies and consider it a public good, to be (1) run for any purpose, (2) studied and modified, (3) distributed, and (4) modified and distributed [@Stallman1983;@Stallman1996], and with it the practices to ensure these freedoms in Open Source software. Educating about good practices became central in projects such as the Software Carpentry [@Wilson2016], highlighting the utility of live coding, pair programming and "open everything".
@@ -66,14 +66,14 @@ You may deviate from the tools we selected, or disagree with them, and you may a
 
 # Good practices for whom?
 
-All models start with a purpose [@Edmonds2019]; and the purpose must be stated. That has since long bin the number one Good Modelling Practice advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at your computational model -- a purpose-driven and simplified representation of your system in software. This model is by and for yourself, it is for readers and reviewers, and it is by and for your collaborators, constituting three tiers of user groups that are targeted by tools addressing Good Modeling Softare Practice.
+All models start with a purpose [@Edmonds2019]; and the purpose must be stated. That has since long been the number one Good Modeling Practise advice put forward. It doesn't hurt to know about your domain, either, and most often a scientific software is developed by a domain expert [@Wilson2016]. Speak to other experts, develop a conceptual model, only then start formalizing your model in math and in software [@Wang2023;@Romanowska2015;@Grimm2006] to arrive at your computational model -- a purpose-driven and simplified representation of your system in software. This model is by and for yourself, it is for readers and reviewers, and it is by and for your collaborators, constituting three tiers of user groups that are targeted by tools addressing Good Modeling Software Practice.
 
 ## Single authors -- yourself
 
 Socio-environmental modelling software can be created by a _single person_; in fact, it often is in student or postdoc projects or individual programming sprints [@Hettrick2022]. Unfortunately from a software development perspective, the necessity of having to be a domain expert at the same time means that 90% of scientists are self-taught developers without formal training in software engineering [@Wilson2016].
 That one person will have to read her own code and to apply it for simulations, she will have to align the software development with her research, will have to understand what she did in the past, she will have to retrace the steps that led her to the current state. All of this necessitates to some degree that the work is stored redundantly in backups, and that changes are documented. She would like to ensure that code changes do not break previous work, and does that by testing the model after every update [@Rosero2016].
 
-Authors of scientific models eventually become authors or co-authors of scientific publications arising from or with the help of a model. As scientific authors, they are bound by ethical considerations such as the Guidelines for Safeguarding Good Scientific Practice, among them the unambiguous declaration of intellectual property to the work and ensuring availability of the model for a prolonged period of time [@DFG2022;@Allea2023]. The declaration of intellectual property carries with it the proper acknowledgement of software the model is built on, and respecting the permissions pertaining to the sources used. The archiving requirement carries with it the obligation to ensure that technical failures or changes in the circumstances of the model author do not lead to the loss of the model: decentralized backups or public repositories help.
+Authors of scientific models eventually become authors or co-authors of scientific publications arising from or with the help of a model. As scientific authors, they are bound by ethical considerations such as the Guidelines for Safeguarding Good Scientific Practice, among them the unambiguous declaration of own and third-party intellectual property to the work and ensuring availability of the model for a prolonged period of time [@DFG2022;@Allea2023]. The declaration of intellectual property carries with it the proper acknowledgement of software the model is built on, and respecting the copyrights and permissions pertaining to the sources used. The archiving requirement carries with it the obligation to ensure that technical failures or changes in the circumstances of the model author do not lead to the loss of the model: decentralized backups or public repositories help.
 
 For many scientific model authors, getting stuff done may be more important than documenting it thoroughly, usefulness is more valued than red tape, spontaneous ideas are implemented preferably over those layed down in a management plan; individual agency supersedes organizational processes. In this way, scientific model software development reflects the ideas formulated in agile development: "Individuals and interactions over processes and tools. Working software over comprehensive documentation. Customer collaboration over contract negotiation. Responding to change over following a plan" [@Beck2001]. And while the items on the left are valued more, the items on the right are still important.<!-- this could go to discussion -->
 
@@ -274,17 +274,21 @@ Adherence to community conventions is a key aspect of this process. For instance
 
 ### Code formatting and linting
 
-Following such conventions can be facilitated by using automated formatters. They play a crucial role in maintaining these conventions. Tools like Black and isort for python adjust the code to meet specific formatting guidelines, eliminating the need for manual formatting and ensuring consistency across the codebase.
-Linters, such as flake8, go a step further by analyzing the code for potential errors and violations of coding standards. They provide feedback that can help developers improve their code quality and adhere to best practices. A general-purpose tool for many file formats and languages is Prettier[^prettier].
+Following such conventions can be facilitated by using automated formatters. They play a crucial role in maintaining these conventions. Tools like Black[^black] or isort[^isrot] adjust (python) code to meet specific formatting guidelines, eliminating the need for manual formatting and ensuring consistency across the codebase.
+Linters, such as flake8, go a step further by verifying the code against coding standards[^flake], or Ruff[^ruff], which integrates linting and formatting. They all provide feedback that can help developers improve their code quality and adhere to best practices. A general-purpose tool for many file formats and languages is Prettier[^prettier].
 
-Linters and formatters should both be combined in pre-commit hooks[^pre-commit]. Pre-commit hooks facilitate the formatting and linting process by automatically running these tools before each commit. This ensures that all committed code adheres to the defined standards, further enhancing code quality and readability.
+Linters and formatters can be combined in pre-commit hooks[^precommit]. Pre-commit hooks facilitate the formatting and linting process by automatically running a list of tools before each commit. This ensures that all committed code adheres to the defined standards, further enhancing code quality and readability.
 
+[^flake]: https://www.flake8rules.com List of Python coding standards for automated verification
+[^black]: https://black.readthedocs.io Python formatter
+[^isort]: https://pycqa.github.io/isort/ Python import sorter
+[^ruff]: https://docs.astral.sh/ruff Python linter and formatter
 [^prettier]: https://prettier.io General purpose code prettifier
-[^pre-commit]: https://pre-commit.com Triggers checks before `git` `commit`
+[^precommit]: https://pre-commit.com Triggers checks before `git` `commit`
 
 ### Code Structure
 
-Good code is probably the oldest of all good practices, going back to the single-purpose unix tools [@Kernighan1999] that do one thing and do it well. This philosophy has found its way into larger programs, which are broken down into manageable and readable building blocks, often functions or modules, that have a clear and documented way to interact with the rest of the code, the Application Programming Interface (API). Better yet, encapsulate functionalities and allow interaction only via dedicated accessors.
+Good code is probably the oldest of all good practices, going back to the single-purpose unix tools [@Kernighan1999]. This philosophy has found its way into larger programs, which are broken down into manageable and readable building blocks, often functions or modules, that have a clear and documented way to interact with the rest of the code, the Application Programming Interface (API). Better yet, encapsulate functionalities and allow interaction only via dedicated accessors.
 
 Separate concerns, don't mix functionality with visual appearance, avoid mixing input and output with processing. Try to implement error handling and try to break your own code. Often, there is no need to code a functionality yourself, better re-use someone else's working solution from an existing library or piece of code, "be ruthless about eliminating duplication" [@Wilson2017]. Together with human-readable and consistent naming practise, which may follow community conventions, following this advice should provide simplicity, generality, clarity, the "bedrock[s] of good software" [@Kernighan1999].
 
@@ -293,7 +297,7 @@ Separate concerns, don't mix functionality with visual appearance, avoid mixing 
 As code gets more complex, it is important to be able to ensure that the smaller units of the code function as expected. For this, the concept of _unit tests_ has been developed, where in principle every code unit has a mirrored part either within the code or separate from it in a testing framework. So every time you write a new function, think about (and implement) how its functionality can be tested. How much of a code is covered with test is called the _coverage_, and the coverage can help you identify parts of the code that are not well tested.
 But even if all units of a code are correct, their interaction may not be, and a model might be dyfunctional or produce unreasonable results. To catch these, regression and reproducibility tests (RT) are regularly run [@Rosero2016].
 
-> You **_must_** provide readable code and you **_should_** use automated tools.
+> You **_must_** provide readable code and you **_should_** use automated tools for formatting, linting, and verification.
 
 ## Archiving
 
@@ -303,20 +307,18 @@ conditions frequently, it is crucial that this archive is publicly available,
 and stable for at least ten years [@DFG2022].
 
 The most simple solution for open-source projects is using the Software
-Heritage Project[^software-heritage]. Many SCMs are already
+Heritage Project[^software-heritage]. Many SCM services are already
 crawled by this project, so when you upload your repository and make it
-publicly available, it will be archived automatically. If your SCM is not
+publicly available, it will be archived automatically. If your SCM service is not
 crawled by the Software Heritage Project, you can add it manually.
 
 A more citeable archiving solution is guaranteed by uploading
 the source code and generating a Digital Object Identifier (DOI). There are
 various institutional platforms that offer this service, the most prominent
-one being Zenodo[^zenodo]. Uploading source code on Zenodo does not
-only archive the source code, it makes it citeable, too.
+one is likely Zenodo[^zenodo].
 Most of these platforms additionally offer to create versioned DOIs, meaning
-that each upload gets its own DOI, and there is one single DOI that represents all versions of the package.
-Used in combination with releases, each
-release gets its own DOI and the contributions to the release are citable.
+that each upload gets its own DOI, and there is one single DOI that represents all versions of the model software.
+Used in combination with releases, each release gets its own DOI and the contributions to the release are citeable separately.
 Various helpers exist to automate this upload, such as Zenodo's
 GitHub integration[^zenodo-integration], or the hermes workflow[^hermes] [@Druskat2022].
 
@@ -325,18 +327,18 @@ GitHub integration[^zenodo-integration], or the hermes workflow[^hermes] [@Drusk
 [^zenodo-integration]: https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content
 [^hermes]: https://github.com/hermes-hmc/hermes
 
-Less integrated with SCM services are community portals, e.g. the OpenABM [@Janssen2008]. Here,
+Less integrated with SCM services are community portals. On CoMSES.net, e.g.,
 the code can be archived along with a documentation and metadata. It is optionally reviewed and
-assigned a DOI for citeability.
+assigned a DOI for citeability [@Janssen2008].
 
-> You **_must_** archive and you **_should_** do this on community platforms.
+> You **_must_** archive and you **_should_** do this on a community platform.
 
 ## Publish your model
 
 Many scientifc journals nowadays request to publish the source code that has been used
 to generate figures alongside the journal publication. While this is
-useful from the reusability perspective, it does not acknowledge the amount of
-work that has been put into the software, documentation [@Hettrick2024]; nor does it take
+useful from a reusability perspective, it does not acknowledge the amount of
+work that has been put into the software or its documentation [@Hettrick2024]; nor does it take
 into account that the software might be developed further after the paper has
 been published.
 
@@ -346,7 +348,9 @@ Such software journals, e.g. the Journal of
 Open Source Software [JOSS, @Smith2018] are meant to be developer-friendly, i.e. they integrate with
 the development workflow and tools used to follow Good Software Practices.
 
-While journal publications are not domain-specific, so they do not
+<!-- add JORS -->
+
+Such software journal publications are not domain-specific, so they do not
 generally improve the findability of your software. Therefore the most
 important aspect on publish your code (or its metadata) is to list it in a
 platform that your colleagues know, such as the communities on Zenodo[^zenodo-communities].
@@ -360,12 +364,12 @@ that also allows to group software into projects and interests.
 
 ## Software development templates
 
-Despite the many benefits of good research software engineering techniques, the multitude and the complexity of some of the techniques and tools unarguably put a significant burden on the modeller.
-Not only does it require time to get used to them, the rapid technological development makes it difficult to stay up-to-date. The diverse skill sets of researchers and time constraints further complicates the situation [@Wilson2016].
+Despite the many benefits of good research software engineering techniques, the multitude and the complexity of some of the techniques and tools put a burden on the modeller.
+Not only does it require acquiring new knowledge, the rapid technological development makes it also difficult to stay up-to-date. The diverse skill sets of researchers and time constraints further complicates the situation [@Wilson2016].
 
 <!--Consequently, software often becomes obsolete, challenging to maintain, and prone to errors. -->
 
-New modelling software projects can be derived from templates that already provision these techniques [@Pirogov2024;@Sommer2024] from the start of a project. Cruft[^cruft] and cookietemple[^cookietemple] keep things up to date behind the scene. @Sommer2024 provide a fork- and cruft-based methodology for modelling ecosystems: they provide a standardized setup for post-processing routines, plugins, etc., implementing many of the techniques and tools mentionend in this manuscript.
+New modelling software projects can be derived from templates that already provision these techniques from the start of a project [@Pirogov2024]. Cruft[^cruft] and cookietemple[^cookietemple] keep things up to date behind the scene. @Sommer2024, e.g., provide a fork- and cruft-based methodology for modelling ecosystems: they provide a standardized setup for post-processing routines, plugins, etc., implementing many of the techniques and tools mentionend in this manuscript.
 
 [^cruft]: https://cruft.github.io/cruft
 [^cookietemple]: https://github.com/cookiejar/cookietemple
@@ -374,10 +378,10 @@ New modelling software projects can be derived from templates that already provi
 
 # Good enough modelling software practice - a use case
 
-Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea coastal fisheries [@Lemmen2023;@Lemmen2024] coded in NetLogo [@Wilensky1999] embedded in a larger software system containing data, and Python/R data pre- and postprocessing scripts. Its source code is managed by Git, with a primary SCM service on an academic Gitlab[^vinos-gitlab] and a secondary one on public Github. On the primary SCM, GitLab issues provide the ticketing system, a CI produces docker images of the software and its dependencies for different versions of the underlying operating system and the NetLogo IDE and then performs unit and replicability testing. As part of the CD, a small production simulation generates model results and pushes them to a static web page on the SCM service; the documents provided with the model (ODD, JOSS, this manuscript, and others) are compiled from their version-controlled sources to pdfs and uploaded. The CD is integrated with Mkdocs and pushes to a public readthedocs instance for the user guide. On the secondary CI, a release management hooks into Zenodo to provide permanent and DOI citable archives for each model release.
+Viable North Sea (ViNoS) is a socio-ecological model of the German North Sea coastal fisheries [@Lemmen2023;@Lemmen2024] coded in NetLogo [@Wilensky1999] and embedded in a larger software system containing data, and Python/R data pre- and postprocessing scripts. Its source code is managed by Git, with a primary SCM service on an academic Gitlab[^vinos-gitlab] and a secondary one on public Github. On the primary SCM, GitLab issues provide the ticketing system, a CI produces docker images of the software and its dependencies for different versions of the underlying operating system and the NetLogo IDE and then performs unit and replicability testing. As part of the CD, a small production simulation generates model results and pushes them to a static web page on the SCM service; the documents provided with the model (ODD, JOSS, this manuscript, and others) are compiled from their version-controlled sources to pdfs and uploaded. The CD is integrated with Mkdocs and pushes to a public readthedocs instance for the user guide. On the secondary CI, a release management hooks into Zenodo to provide permanent and DOI citable archives for each model release.
 Locally, a pre-commit workflow, triggered upon each `git` `commit` ensures that the copyrights and license catalogs are complete for each file, that all structured documents comply with their respective type definition, and that python codes conform to PEP8 coding standards. The tools used for this are `reuse`, `black`, `flake8`, more general formatters to remove empty line endings, syntax checkers for metadata in `yaml`, `toml`, and `json` structured formats, and the general-purpose code beautifier `prettier`.
 
-In the program root folder, a `CITATION.cff` suggests how to cite the software, a `codemeta.json` provides package metainformation, a `ChangeLog.md` the user-oriented change information. Every directory contains at least a `ReadMe.md`. The model has been archived on Zenodo with a version tracking DOI; it has also been deposited on OpenABM, together with its ODD [@Lemmen2023]. A software paper has been published in JOSS [@Lemmen2024].
+In the program root folder, a `CITATION.cff` suggests how to cite the software, a `codemeta.json` provides package metainformation, a `ChangeLog.md` the user-oriented change information. Every directory contains at least a `ReadMe.md`. The model has been archived on Zenodo, and on CoMSES.net together with its ODD [@Lemmen2023]. A software paper has been published in JOSS [@Lemmen2024].
 
 <!-- Add research directory, add harmony, add transparent review process, add conda -->
 
@@ -386,9 +390,24 @@ In the program root folder, a `CITATION.cff` suggests how to cite the software, 
 # Conclusion
 
 Good Practices have been maturing in the areas of software, modelling, and research. Adopting all of them for socio-environmental modelling establishes Good Modelling Software Practices: Reproducibility and citability meet automated verification, rights management and collaboration meet purpose-driven simplification and validation.
-Good Modelling Software Practice also means that you don't have to do it all at once. The supporting tools are numerous, and most follow a philosophy to do one thing only and to do it well: they can be learned and employed one by one. Publish your modelling software -- it's good enough [@Allen2019;@Barnes2010]! By learning and applying one tool at a time, everyone can acquire a corpus of practices that eventually lead to better modelling software -- and better research [@Katz2019].
 
-<!-- reiterate here the must haves and should haves and can haves -->
+For this, you **must**
+
+- have version control and distributed redundancy,
+- use a collaboration platform
+- have a license and documentation
+- provide readable code
+- archive and publish your model software
+
+You **should**
+
+- use CI
+- have guidelines for collaboration.
+- elaborate documentation.
+- use automated tools for formatting, linting, and verification.
+- should target a community platform.
+
+Good Modelling Software Practice also means that you don't have to do it all at once. The supporting tools are numerous, and most follow a philosophy to do one thing only and to do it well: they can be learned and employed one by one. Publish your modelling software -- it's good enough [@Allen2019;@Barnes2010]! By learning and applying one tool at a time, everyone can acquire a corpus of practices that eventually lead to better modelling software---and better research [@Katz2019].
 
 The recent surge in Artificial Intelligence (AI) applications, has created an array of emerging good practices in the areas of security [@Polemi2023], data treatment [@Makarov2021], and in supporting software development [@Pudari2023], amongst others. They will need to be negotiated by society but eventually also find their place in supporting Good Modelling Software Practices.
 
