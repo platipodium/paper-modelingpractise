@@ -73,6 +73,8 @@ abbreviations:
     long: Semantic versioning
   - short: SSI
     long: Software Sustainability Institute
+  - short: URL
+    long: Uniform Resource Locator
   - short: VCS
     long: Version Control System
   - short: ViNoS
