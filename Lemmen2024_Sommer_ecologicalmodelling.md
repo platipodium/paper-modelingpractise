@@ -276,10 +276,11 @@ Adherence to community conventions is a key aspect of this process. For instance
 ### Code formatting and linting
 
 Following such conventions can be facilitated by using automated formatters. They play a crucial role in maintaining these conventions. Tools like Black[^black] or isort[^isrot] adjust (python) code to meet specific formatting guidelines, eliminating the need for manual formatting and ensuring consistency across the codebase.
-Linters, such as flake8, go a step further by verifying the code against coding standards[^flake], or Ruff[^ruff], which integrates linting and formatting. They all provide feedback that can help developers improve their code quality and adhere to best practices. A general-purpose tool for many file formats and languages is Prettier[^prettier].
+Language-specific linters, such as ESLint[^eslint], flake8 or linter-formatters such as Ruff[^ruff], go a step further by running also checks against coding quality rules[^flake]. They all provide feedback that can help developers improve their code quality and adhere to best practices. A general-purpose tool for many file formats and languages is Prettier[^prettier].
 
 Linters and formatters can be combined in pre-commit hooks[^precommit]. Pre-commit hooks facilitate the formatting and linting process by automatically running a list of tools before each commit. This ensures that all committed code adheres to the defined standards, further enhancing code quality and readability.
 
+[^eslint]: https://eslint.org Javascript linter
 [^flake]: https://www.flake8rules.com List of Python coding standards for automated verification
 [^black]: https://black.readthedocs.io Python formatter
 [^isort]: https://pycqa.github.io/isort/ Python import sorter
