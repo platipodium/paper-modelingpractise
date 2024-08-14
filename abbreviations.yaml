@@ -38,6 +38,8 @@ abbreviations:
     long: GNU is Not Unix
   - short: GPL
     long: GNU General Public License
+  - short: IP
+    long: Intellectual Property
   - short: JOSS
     long: Journal of Open Source Software
   - short: JSON

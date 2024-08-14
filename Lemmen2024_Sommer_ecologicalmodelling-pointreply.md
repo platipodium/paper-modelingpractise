@@ -15,7 +15,7 @@ This overview paper introduces "good modelling software practices" that integrat
 
 2. Q: Take more time to describe what Continuous Integration and Continuous Delivery are with clear examples of how it works in GitHub or GitLab.
 
-- A: As the variety of CI and CD pipelines and tools are too much, we explicitly avoided to go into too many details here. We added a concrete examples in section 4.
+- A: As the variety of CI and CD pipelines and tools are too much, we explicitly avoided to go into too many details here. We elaborated on the CI description on the example in section 4.
 
 3. Q: Recommend that model authors learn to use git in a disciplined way, leaving clear and cogent provenance trails via good git commit messages that preserve context, history and provenance of your code e.g., https://www.conventionalcommits.org/en/v1.0.0/
 
@@ -23,7 +23,7 @@ This overview paper introduces "good modelling software practices" that integrat
 
 > Q: Provide clear, actionable guidance to help new model authors and existing model authors.
 
-- A:
+- A: We believe that we do provide this guidance to a degree that is still within the limitations of an overview paper
 
 > Q: Improve the structure of the paper by removing unnecessary sections
 
@@ -31,15 +31,15 @@ This overview paper introduces "good modelling software practices" that integrat
 
 > Q: divide recommendations into must-haves and would-be-nice guidance at a minimum.
 
-A: We initially tried to refrain from a valuation of a tool recommendation. Following this advice however, we now identified and marked must/should/may after each subsection in a summary sentence.
+A: We now identified and marked must/should/may after each subsection in a summary sentence.  We added a figure (Figure 2) summarizing these must/should/may haves and summarised them in our conclusion section.
 
 > Q: Offering an API is useless - it might be around for what, 1-5 years and then get hacked and taken down or stop being able to be built and disappear?)
 
-A: We're not talking about an exposed REST API here, but about clear interface descriptions in each functional unit of code.  We clarified this in the text.
+A: Here is a misunderstanding on what we mean with API.  We refer to clear interface descriptions in each functional unit of code.  We clarified this in the text.  The aims is that even the functional units of your model are now safer to use by yourself and better reusable by others; it is also one of the fundamentals of documentation driven development.
 
 > Q: If you think your code has commercial potential, offer a dual license for commercial and open source use or only offer a commercial license.
 
-A:
+A: We implemented this suggestions.
 
 > Q: General guidance for 99% of academics to whom this article is aimed should be: publish your code. give it an appropriate open source license. Put it into a version control system, for yourself, and others. Then provide clear and actionable guidance on how to write good code, refactor and modularize it as you explore the possibility and conceptual space of your computational model. Write tests, and use continuous integration and continuous delivery to make it easy to see if your tests are still passing without having to manually run them.
 
@@ -53,9 +53,8 @@ For example:
 4. Make sure it is clear how one can run your computational model with a full description of how to actually use your model. Cover acceptable inputs and expected outputs, assumptions
 5. Make sure it is clear what your computational model's purpose is, it's scope, and assumptions (which is covered in the Purpose section but then half-heartedly described in 2.6 Documentation as "can provide an". Clear and cogent narrative documentation is a must for any computational model.
 
-### Miscellaneous comments:
-
 > Q: Software bill of materials seems to be mostly industry vaporware
+
 
 > Q: discussion of benevolent dictator model of development is probably unnecessary and out of scope
 

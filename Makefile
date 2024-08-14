@@ -54,7 +54,7 @@ txt:  $(TXT) $(SRC) Makefile
 
 # Pull some files from Elsevier so we don't have to store them on the
 # repository
-assets: ecomod-cover elsevier-logo
+assets: ecomod-cover elsevier-logo  Figure_1.pdf Figure_2.pdf
 elsevier-logo: ./assets/elsevier-non-solus-new-with-wordmark.pdf
 ./assets/elsevier-non-solus-new-with-wordmark.svg:
 	wget -O $@ https://cdn.elsevier.io/matrix/includes/svg/logo-elsevier-wordmark.svg
@@ -123,8 +123,11 @@ declaration: declaration_of_interest.md
 Figure_1.pdf: Figure_1.svg
 	svg2pdf $< $@
 
+Figure_2.pdf: Figure_2.svg
+	svg2pdf $< $@
+
 arxiv: tex
-	zip Lemmen2024_Sommer_arxiv.zip $(TEX) Figure_1.pdf elsevier.cls
+	zip Lemmen2024_Sommer_arxiv.zip $(TEX) Figure_1.pdf Figure_2.pdf elsevier.cls
 
 diff: tex archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex
 	latexdiff archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex $(TEX) > $(DIFFTEX)
