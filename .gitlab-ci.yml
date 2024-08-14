@@ -19,8 +19,7 @@ pages:
   stage: deploy
   script:
     - cp -r .gitlab/public .
-    - cp ./Lemmen2024_modelingpractise.pdf public/Lemmen2024_modelingpractise.pdf
-  #    - cp ./Lemmen2024_modelingpractise.cff public/Lemmen2024_modelingpractise.cff
+    - cp ./Lemmen2024_Sommer_ecologicalmodelling.pdf public/Lemmen2024_Sommer_ecologicalmodelling.pdf
   artifacts:
     paths:
       - public/

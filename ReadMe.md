@@ -11,9 +11,7 @@ SPDX-License-Identifier: CC-BY-NC-4.0
 [![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/codebase.helmholtz.cloud/mussel/paper-modelingpractise)
 [![Prettier style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-In this folder, the Good Modeling Practise joint special issue paper is compiled.
-
-Pad: https://notes.desy.de/QOCyGjeKQc2-9ST37MgPfg?edit
+In this repository, the Good Modeling Practise joint special issue paper on Good Modeling Software Practise is compiled.  This repository is public and mirrored on the Helmholtz GitLab https://codebase.helmholtz.cloud/mussel/paper-modelingpractise and on GitHub https://github.com/platipodium/paper-modelingpractise.git.
 
 # Good modeling software practises
 
@@ -60,21 +58,13 @@ Area(s) of Expertise: Modelling practice, uncertainty analysis, system identific
 
 ### Manuscript submission information:
 
-Deadlines for submission
-
-Submission deadline: May 31, 2024.
-
 For any queries in submitting your manuscript to Ecological Modelling, please kindly contact Dr. Hsuan (Rose) Wang <Hsiaohsuan.Wang@ag.tamu.edu>. Please reach out to Dr. Sondoss Elsawah for EMS and Dr. Tony Jakeman for SESMO respectively.
 
-When submitting your manuscript please select the article type “VSI: Good Modelling Practice”. Please submit your manuscript before the submission deadline.
+# Reviewers
 
-All submissions deemed suitable to be sent for peer review will be reviewed by at least two independent reviewers. Once your manuscript is accepted, it will go into production, and will be simultaneously published in the current regular issue and pulled into the online Special Issue. Articles from this Special Issue will appear in different regular issues of the journal, though they will be clearly marked and branded as Special Issue articles.
+- Maria Pierce (TI Baltic Sea Fisheries)
+- Koen Meesters (WUR Modeling group)
 
-Keywords:
-Modelling practices; Integrated assessment and modelling; Socio-ecological systems; Decision support; uncertainty; scaling
+# Preprint
 
-## Viable North Sea (ViNoS): A NetLogo Agent-based Model of German Small-scale Fisheries
-
-Viable North Sea (ViNoS) is an Agent-based Model (ABM) of the German Small-scale Fisheries. As a Social-Ecological Systems (SES) model it focusses on the adaptive behaviour of fishers facing regulatory, economic, and resource changes. Small-scale fisheries are an important part both of the cultural perception of the German North Sea coast and of its fishing industry. These fisheries are typically family-run operations that use smaller boats and traditional fishing methods to catch a variety of bottom-dwelling species, including plaice, sole, and brown shrimp.
-
-Fishers in the North Sea face area competition with other uses of the sea---long practiced ones like shipping, gas exploration and sand extractions, and currently increasing ones like marine protection and offshore wind farming (OWF). German authorities have just released a new maritime spatial plan implementing the need for 30% of protection areas (of these 30% as no-use zones) demanded by the United Nations High Seas Treaty and aiming at up to 70 GW of offshore wind power generation by 2045. Fisheries in the North Sea also have to adjust to the northward migration of their established resources following the climate heating of the water. And they have to re-evaluate their economic balance by figuring in the foreseeable rise in oil price and the need for re-investing into their aged fleet.
+Lemmen, C., & Sommer, P. S. (2024). Good Modelling Software Practices. Ecological Modelling, submitted. http://arxiv.org/abs/2405.21051

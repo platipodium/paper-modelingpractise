@@ -27,10 +27,31 @@
 \setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
 \usepackage[colorlinks=true]{hyperref}
+\usepackage{xurl}
 \usepackage{calc}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+$if(graphics)$
+ \usepackage{graphicx}
+ \makeatletter
+ \newsavebox\pandoc@box
+ \newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+   \sbox\pandoc@box{#1}%
+   \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+   \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+   \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+   \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+   \else\usebox{\pandoc@box}%
+   \fi%
+ }
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+$endif$
 
 % Define page style with header on the first page
 \fancypagestyle{firstpage}{
@@ -128,7 +149,7 @@ $for(author)$
 \author%
 $if(author.affil)$[$author.affil$]$endif$%
 {%
-$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
+%$if(author.orcid)$\href{https://orcid.org/$authors.orcid$}{\includegraphics[width=1em]{./assets/logo-orcid-eps-converted-to}}\,$endif$
 $author.name$$if(author.email)$\corref{$author.email$}$endif$}
 $sep$$endfor$
 
@@ -167,8 +188,8 @@ $endif$
 %%% or \MSC[2008] code \sep code (2000 is the default)
 $if(keywords)$
 \begin{keyword}
-$for(keywords)$$keywords$\sep
-$endfor$
+$for(keywords)$$keywords$
+$sep$\sep $endfor$
 \end{keyword}
 $endif$
 
@@ -176,5 +197,33 @@ $endif$
 \end{frontmatter}
 
 $body$
+
+\vspace{6pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(acknowledgement)$
+\textbf{Acknowledgements: }$acknowledgement$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(authorcontributions)$
+\textbf{Author contributions: }$authorcontributions$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(conflictsofinterest)$
+\textbf{Conflicts of Interest: }$conflictsofinterest$}
+$endif$
+
+$if(abbreviations)$
+\subsection*{The following abbreviations are used in this manuscript}
+
+\noindent
+\begin{tabular}{@{}lp{0.8\columnwidth}}
+$for(abbreviations)$
+$abbreviations.short$ & $abbreviations.long$ \\
+$endfor$
+\end{tabular}
+$endif$
 
 \end{document}

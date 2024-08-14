@@ -17,12 +17,13 @@ TOCCMD=--toc
 TOCCMD=
 
 LTX=
-CMD=$(PANDOC) $(MDFORMAT) $(BIBCMD) $(TOCCMD)
+CMD=$(PANDOC) $(ABBREV) $(MDFORMAT) $(BIBCMD) $(TOCCMD)
 TEMPLATE=elsarticle-pandoc-template.tex
 
 ## All markdown files in the working directory
 #SRC = $(wildcard *.$(MEXT))
 SRC = Lemmen2024_Sommer_ecologicalmodelling.$(MEXT)
+ABBREV = abbreviations.yaml
 
 ## Location of Pandoc support files.
 PREFIX = $(HOME)/.pandoc
@@ -31,16 +32,18 @@ PDF=$(SRC:.md=.pdf)
 PPTX=$(SRC:.md=.pptx)
 HTML=$(SRC:.md=.html)
 TEX=$(SRC:.md=.tex)
+DIFFTEX=$(SRC:.md=-diff.tex)
 DOCX=$(SRC:.md=.docx)
+POINT=$(SRC:.md=-pointreply.md)
 ODT=$(SRC:.md=.odt)
 EPUB=$(SRC:.md=.epub)
 TXT=$(SRC:.md=.txt)
 BIB=$(SRC:.md=.bib)
 
 .PHONY: all pdf html docx odt epub tex txt allbib localbib \
-  assets elsevier-logo ecomod-cover
+  assets elsevier-logo ecomod-cover diff point
 
-all:  tex pdf
+all:  tex pdf diff
 pdf:	$(PDF) $(SRC) Makefile
 html:	$(HTML) $(SRC) Makefile
 docx: $(DOCX) $(SRC) Makefile
@@ -51,7 +54,7 @@ txt:  $(TXT) $(SRC) Makefile
 
 # Pull some files from Elsevier so we don't have to store them on the
 # repository
-assets: ecomod-cover elsevier-logo
+assets: ecomod-cover elsevier-logo  Figure_1.pdf Figure_2.pdf
 elsevier-logo: ./assets/elsevier-non-solus-new-with-wordmark.pdf
 ./assets/elsevier-non-solus-new-with-wordmark.svg:
 	wget -O $@ https://cdn.elsevier.io/matrix/includes/svg/logo-elsevier-wordmark.svg
@@ -74,13 +77,13 @@ ecomod-cover: ./assets/X03043800.jpg
 #	$(CMD) -s  --from docx --to latex  -o $@ $<
 #%.pdf:	%.docx Makefile
 #	$(CMD) -s  --from docx --to pdf  -o $@ $<
-%.tex:	%.md  %.bib Makefile  style $(TEMPLATE) assets
-	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
+%.tex:	%.md  %.bib Makefile  style $(ABBREV) $(TEMPLATE) assets
+	$(CMD) -s  --filter divenv.py  --template=./$(TEMPLATE)  -o $@ $<
 
-%.pdf:	%.md  %.bib Makefile  style $(TEMPLATE) assets
-	$(CMD) -s  --template=./$(TEMPLATE)  -o $@ $<
+%.pdf:	%.md  %.bib Makefile  style $(ABBREV) $(TEMPLATE) assets
+	$(CMD) -s  --filter divenv.py  --template=./$(TEMPLATE)  -o $@ $<
 
-%.docx:	%.md  %.bib Makefile pandoc-scholar.docx assets
+%.docx:	%.md  %.bib $(ABBREV) Makefile pandoc-scholar.docx assets
 	$(CMD)--to=docx --reference-doc=pandoc-scholar.docx -s -o $@ $<
 #	$(CMD)--to=docx --reference-doc=custom-reference.docx -s -o $@ $<
 
@@ -113,3 +116,22 @@ docker:
 
 docker-make:
 	docker run -v $(shell pwd):/home -it ubuntu-pandoc make -C /home
+
+declaration: declaration_of_interest.md
+	pandoc -o declaration_of_interest.docx $<
+
+Figure_1.pdf: Figure_1.svg
+	svg2pdf $< $@
+
+Figure_2.pdf: Figure_2.svg
+	svg2pdf $< $@
+
+arxiv: tex
+	zip Lemmen2024_Sommer_arxiv.zip $(TEX) Figure_1.pdf Figure_2.pdf elsevier.cls
+
+diff: tex archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex
+	latexdiff archive/Lemmen2024_Sommer_ecologicalmodelling_initial.tex $(TEX) > $(DIFFTEX)
+	pdflatex $(DIFFTEX)
+
+point: $(POINT)
+	$(CMD) -s  -o $(POINT:.md=.pdf) $<
