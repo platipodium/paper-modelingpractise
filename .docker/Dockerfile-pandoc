@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
    texlive-plain-generic texlive-fonts-recommended texlive-latex-extra \
    texlive-luatex texlive-fonts-extra fonts-hack fonts-open-sans \
    fonts-lmodern  citation-style-language-styles pandoc latexmk \
-   openssl ca-certificates texlive-science wget dpkg librsvg2-bin
+   openssl ca-certificates texlive-science wget dpkg librsvg2-bin \
+   svg2pdf
 
 FROM ubuntulatex
 
