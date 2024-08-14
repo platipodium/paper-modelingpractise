@@ -134,7 +134,7 @@ An SCM service is  the entrypoint for collaborators to contribute, provides a ti
 
 ### Ticketing system
 
-Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one records the occurrence of an error, a _bug report_, or a wish for future development, a _feature request_. This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system.
+Often things don't work right away, or an error is detected in the software. For this, SCM services offer ticketing (also called bug tracker or issue tracking) systems, where one records the occurrence of an error, a _bug report_, or a wish for future development, a _feature request_. This works well for a single person, but even better when collaborators and reviewers of the software record their observations on faulty or missing issues with the software on this ticketing system.  Git commit messages can be linked to these issues mentioning the hash-prefixed issue number, and they should carry a "fix:" or "feat:" prefix when they resolve a bug or implement a new feature[^conventionalcommits].
 Beyond the ticketing system, the SCM service may also offer communication facilities like discussion forums, wikis, mailing list or service desks, which often provide cross-referencing functionality to Git commits and issues.
 
 ### Continuous integration and deployment
