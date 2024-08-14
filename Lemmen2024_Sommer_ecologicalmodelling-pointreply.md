@@ -100,7 +100,9 @@ All suggestions (reproducible, capitalisation, truck vs. bus) have been adopted.
 
 #### Introduction:
 
-- "So all we can do is to provide at best verified and validated models, and Good Modelling Practices (GMP) aim at ensuring this." This sentence bears a lot of weight since it is the transition from 'domain issues' (the sentence before) to 'solutions through practices' (the rest of the paper) - this is purely a matter of style, but 'so all we can do' feels a little defeatist. My suggestion would be to elaborate a little more (a sentence or two) on the relationship between 'domain issues' and 'solutions through practices', and give it a more positive spin while you're there...
+> Q: "So all we can do is to provide at best verified and validated models, and Good Modelling Practices (GMP) aim at ensuring this." This sentence bears a lot of weight since it is the transition from 'domain issues' (the sentence before) to 'solutions through practices' (the rest of the paper) - this is purely a matter of style, but 'so all we can do' feels a little defeatist. My suggestion would be to elaborate a little more (a sentence or two) on the relationship between 'domain issues' and 'solutions through practices', and give it a more positive spin while you're there...
+
+- A: we contextualized with some more literature and framed it in a more spirited way.
 
 > Q: the historic context given is great! (This paper might amuse you: VERIFICATION, VALIDATION AND ACCREDITATION OF SIMULATION MODELS, Osman Balci, 1997)
 
