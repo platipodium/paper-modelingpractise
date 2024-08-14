@@ -54,15 +54,19 @@ For example:
 5. Make sure it is clear what your computational model's purpose is, it's scope, and assumptions (which is covered in the Purpose section but then half-heartedly described in 2.6 Documentation as "can provide an". Clear and cogent narrative documentation is a must for any computational model.
 
 > Q: Software bill of materials seems to be mostly industry vaporware
-
+- A: Agreed and removed
 
 > Q: discussion of benevolent dictator model of development is probably unnecessary and out of scope
 
-A:
+A: We disagree. Thinking about the roles within collaborative development and about conflict resolution is  currently underestimated, but it is a low-hanging fruit towards Good Practices.
 
 > Q: authors may want also want to include a reference to 'ruff' which does all of what black and flake8 do: https://docs.astral.sh/ruff/
 
+A: We included ruff as suggested.
+
 > authors should replace the discussion of "code rot" with the notion of Software Collapse which captures the issues of shifting dependencies more accurately https://doi.org/10.1109/MCSE.2019.2900945
+
+A: We prefer the term code rot as it excites the sensory emotion of foul smell and loneliness by neglect.  It may be a slow process. These connotations are not triggered by the alternative wording Software Collapse.
 
 > authors should consider referencing the "Containerization for creating reusable model code" paper at https://doi.org/10.18174/sesmo.18074 for an overview of containerization and how it can be used for building computational models. References to Singularity should be updated to use Apptainer for HPC / HTC environments.
 
@@ -72,9 +76,10 @@ A:
 
 > Replace references to OpenABM with the CoMSES Computational Model Library
 
-> self-assessed software badges from shields.io are generally self-created and may not be worth much since they are dependent on the quality and rigor of the badge issuer (and anyone can create a badge asserting anything via shields.io). More useful would be a discussion of badges from CI/CD pipelines that automatically display test coverage, whether the latest build passed, howfairis compliance (https://github.com/fair-software/howfairis) etc.
+> self-assessed software badges from shields.io are generally self-created and may not be worth much since they are dependent on the quality and rigor of the badge issuer (and anyone can create a badge asserting anything via shields.io). More useful would be a discussion of badges from CI/CD pipelines that automatically display test coverage, whether the latest build passed, howfairis compliance (https://github.com/fair-software/howfairis) etc. Regarding badges, ACM offers an artifact evaluation rubric that may be worth greater community adoption https://sigsim.acm.org/conf/pads/2022/blog/artifact-evaluation/ and NISO reproducibility badging definitions should also be included https://doi.org/10.3789/niso-rp-31-2021
 
-> Regarding badges, ACM offers an artifact evaluation rubric that may be worth greater community adoption https://sigsim.acm.org/conf/pads/2022/blog/artifact-evaluation/ and NISO reproducibility badging definitions should also be included https://doi.org/10.3789/niso-rp-31-2021
+A: We tried to implement howfairis but the project itself seems too immature at this stage to be recommended.  There are many open issues, it is not robust, and all test we performed failed with one of serveral known issues.  We elaborated on badges and added certified ones to those you self-assign. We also added literature on supporting the argument that badges help to promote a project and have a positive relationship with open culture.
+
 
 > Fitting in a reference to https://doi.org/10.7554/eLife.49547 may also be useful, though this targets computational modeling in psychology and neuroscience and behavioral models many of the same principles apply.
 

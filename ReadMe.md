@@ -11,9 +11,7 @@ SPDX-License-Identifier: CC-BY-NC-4.0
 [![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/codebase.helmholtz.cloud/mussel/paper-modelingpractise)
 [![Prettier style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-In this folder, the Good Modeling Practise joint special issue paper is compiled.
-
-Pad: https://notes.desy.de/QOCyGjeKQc2-9ST37MgPfg?edit
+In this repository, the Good Modeling Practise joint special issue paper on Good Modeling Software Practise is compiled.  This repository is public and mirrored on the Helmholtz GitLab https://codebase.helmholtz.cloud/mussel/paper-modelingpractise and on GitHub https://github.com/platipodium/paper-modelingpractise.git.
 
 # Good modeling software practises
 
