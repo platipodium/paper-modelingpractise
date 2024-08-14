@@ -27,6 +27,7 @@
 \setlist[enumerate]{leftmargin=*,labelsep=4.9mm}
 
 \usepackage[colorlinks=true]{hyperref}
+\usepackage{xurl}
 \usepackage{calc}
 \usepackage{longtable}
 \usepackage{booktabs}
@@ -196,6 +197,23 @@ $endif$
 \end{frontmatter}
 
 $body$
+
+\vspace{6pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(acknowledgement)$
+\textbf{Acknowledgements: }$acknowledgement$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(authorcontributions)$
+\textbf{Author contributions: }$authorcontributions$
+$endif$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(conflictsofinterest)$
+\textbf{Conflicts of Interest: }$conflictsofinterest$}
+$endif$
 
 $if(abbreviations)$
 \subsection*{The following abbreviations are used in this manuscript}

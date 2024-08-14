@@ -11,15 +11,15 @@ This overview paper introduces "good modelling software practices" that integrat
 
 1. This could be an important contribution but the authors go into too much unnecessary detail in some parts and not enough details in others, where they introduce complex concepts like pull requests and git commands without much clear guidance.
 
-- A:
+- A: We reduced some of the `git` commands used and elaborated on the interpretation of those.
 
 2. Q: Take more time to describe what Continuous Integration and Continuous Delivery are with clear examples of how it works in GitHub or GitLab.
 
-- A:
+- A: As the variety of CI and CD pipelines and tools are too much, we explicitly avoided to go into too many details here. We added a concrete examples in section 4.
 
 3. Q: Recommend that model authors learn to use git in a disciplined way, leaving clear and cogent provenance trails via good git commit messages that preserve context, history and provenance of your code e.g., https://www.conventionalcommits.org/en/v1.0.0/
 
-- A:
+- A: We implemented this recommendation.
 
 > Q: Provide clear, actionable guidance to help new model authors and existing model authors.
 
@@ -33,9 +33,17 @@ This overview paper introduces "good modelling software practices" that integrat
 
 A: We initially tried to refrain from a valuation of a tool recommendation. Following this advice however, we now identified and marked must/should/may after each subsection in a summary sentence.
 
-> Offering an API is useless - it might be around for what, 1-5 years and then get hacked and taken down or stop being able to be built and disappear?) If you think your code has commercial potential, offer a dual license for commercial and open source use or only offer a commercial license.
+> Q: Offering an API is useless - it might be around for what, 1-5 years and then get hacked and taken down or stop being able to be built and disappear?)
 
-General guidance for 99% of academics to whom this article is aimed should be: publish your code. give it an appropriate open source license. Put it into a version control system, for yourself, and others. Then provide clear and actionable guidance on how to write good code, refactor and modularize it as you explore the possibility and conceptual space of your computational model. Write tests, and use continuous integration and continuous delivery to make it easy to see if your tests are still passing without having to manually run them.
+A: We're not talking about an exposed REST API here, but about clear interface descriptions in each functional unit of code.  We clarified this in the text.
+
+> Q: If you think your code has commercial potential, offer a dual license for commercial and open source use or only offer a commercial license.
+
+A:
+
+> Q: General guidance for 99% of academics to whom this article is aimed should be: publish your code. give it an appropriate open source license. Put it into a version control system, for yourself, and others. Then provide clear and actionable guidance on how to write good code, refactor and modularize it as you explore the possibility and conceptual space of your computational model. Write tests, and use continuous integration and continuous delivery to make it easy to see if your tests are still passing without having to manually run them.
+
+A: We fully agree with this statement.  Our attribution of *must* and *should* paragraphs reflects this.
 
 For example:
 
@@ -77,42 +85,29 @@ A:
 
 I commend you on the comprehensiveness of this paper!
 
-1. Q: The introduction bleeds into the content of the paper without any discernible break - this makes it hard for the reader to mentally file away what they are reading.
+1. Q: The introduction bleeds into the content of the paper without any discernible break - this makes it hard for the reader to mentally file away what they are reading. I suggest ending the Introduction before point 1.1 !!!!
 
 - A: we streamlined the different section on individual/reviewer/collaboration topics creating a clearer separation. We also restructured the paper into 1. Introduction the new section 2. Tool addresses 3. Tools for GMSP and 4. Example
 
 > The Paper sets out .. to empower the reader to apply Good Modelling Software Practices to their work. It does a very good job in motivating this ... However, you do not provide any sort of overview for the reader to refer back to when taking in so much densely compiled information. Whilst I do not feel this should be a requirement for publication, I do feel that the accessibility and thereby value of the work would be greatly enhanced by providing some type of overview and referring back to it in the text. I have no opinion on which form this should take - examples would be: a graph, a table, a metaphor, a map, etc.
 
+A:
+
+
 ### Little remarks, comments and suggestions:
 
-All suggestions (reproducible, captialisation, truck, bus) have been adopted.
+All suggestions (reproducible, capitalisation, truck vs. bus) have been adopted.  All grammar and orthographic mistakes addressed have been fixed.
 
 #### Introduction:
 
 - "So all we can do is to provide at best verified and validated models, and Good Modelling Practices (GMP) aim at ensuring this." This sentence bears a lot of weight since it is the transition from 'domain issues' (the sentence before) to 'solutions through practices' (the rest of the paper) - this is purely a matter of style, but 'so all we can do' feels a little defeatist. My suggestion would be to elaborate a little more (a sentence or two) on the relationship between 'domain issues' and 'solutions through practices', and give it a more positive spin while you're there...
 
-- the historic context given is great! (This paper might amuse you: VERIFICATION, VALIDATION AND ACCREDITATION OF SIMULATION MODELS, Osman Balci, 1997)
-- I suggest ending the Introduction before point 1.1 !!!!
-- spelling: " That has since long bin the number one Good Modelling Practice advice put forward." bin - been
-- grammar: " Good Scientific Practice demands that primary data are available for a minimum of 10 years after when a scientific publications relies on them, and so should models " delete the 'when'
+> Q: the historic context given is great! (This paper might amuse you: VERIFICATION, VALIDATION AND ACCREDITATION OF SIMULATION MODELS, Osman Balci, 1997)
+
+A:
+
 - "...can take it along." I am fine with this, but it is very informal
 - "While most reviewers may only need passive (read) access to the software..." as far as I know 'passive' access is not a common term, while 'read' is. Perhaps it would be nice to further distinguish between read, execute and write, since 'execute' is something a reviewer probably would want to do
 
-#### Tools for Good Modelling Software Practice:
 
-- grammar: "This need for continuous maintenance requires tracking the state of software and to record changes to software beyond the capabilities offered by git log." perhaps use the gerund for both cases: tracking the state of software and recording changes...
-- spelling: "The building and deployment of packages is usuallyintegrated " space missing...
-- grammar: " in the CI and CI workflow, and regularly is scheduled with a release." - ..and is regularly scheduled...
 - repetition: "Flesch (1950) once stated that "Code should be written to minimize the time it would take for someone else to understand it". " - the repetition (you already use this quote earlier in the text) without acknowledgement feels a bit off - perhaps rather go with something along the lines of 'As already quoted earlier' or something like that...
-- spelling: "But even if all units of a code are correct, their interaction may not be, and a model might be dyfunctional or produce unreasonable results." add an s to dyfunctional...
-- grammar? "Many SCMs are already crawled by this project, so when you upload your repository and make it publicly available, it will be archived automatically." this sentence feels weird, but I'm afraid I don't know why...
-- grammar " put into the software, documentation" perhaps rather and 'and' than a comma?
-
-#### Good enough modelling software practice - a use case
-
-- spelling "title: Ggent-based model coded in NetLogo " .. i guess that should be an 'A'
-- I really like the addition of the 'context-example' and like that it comes at the end
-
-#### Conclusion
-
-- replicability? see comment for abstract...
